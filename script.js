@@ -6,7 +6,6 @@
 (() => {
     "use strict";
 
-
     /* =====================================================
        DOM READY
     ===================================================== */
@@ -17,24 +16,41 @@
            ELEMENTS
         ================================================= */
 
+        const root =
+            document.documentElement;
+
+        const body =
+            document.body;
+
         const passwordScreen =
-            document.getElementById("password-screen");
+            document.getElementById(
+                "password-screen"
+            );
 
         const passwordForm =
-            document.getElementById("password-form");
+            document.getElementById(
+                "password-form"
+            );
 
         const passwordInput =
-            document.getElementById("site-password");
+            document.getElementById(
+                "site-password"
+            );
 
         const passwordError =
-            document.getElementById("password-error");
+            document.getElementById(
+                "password-error"
+            );
 
         const togglePassword =
-            document.getElementById("toggle-password");
+            document.getElementById(
+                "toggle-password"
+            );
 
         const loader =
-            document.getElementById("loader");
-
+            document.getElementById(
+                "loader"
+            );
 
         /* =================================================
            CONFIGURATION
@@ -49,35 +65,45 @@
         const LOADER_DURATION =
             3200;
 
-
         /* =================================================
-           BASIC BODY STATE
+           INITIAL STATE
         ================================================= */
 
-        document.body.classList.add("locked");
-
+        body.classList.add("locked");
 
         /* =================================================
-           HELPERS
+           HELPER — MAKE WEBSITE VISIBLE
         ================================================= */
 
         function unlockWebsite() {
 
-            document.body.classList.remove("locked");
+            body.classList.remove(
+                "locked"
+            );
 
-            document.body.classList.add("site-ready");
+            body.classList.add(
+                "site-ready"
+            );
 
             document
                 .querySelectorAll(".reveal")
                 .forEach((element) => {
 
-                    element.classList.add("active");
-                    element.classList.add("visible");
+                    element.classList.add(
+                        "active"
+                    );
+
+                    element.classList.add(
+                        "visible"
+                    );
 
                 });
 
         }
 
+        /* =================================================
+           HELPER — HIDE PASSWORD SCREEN
+        ================================================= */
 
         function hidePasswordScreen() {
 
@@ -88,6 +114,9 @@
             passwordScreen.classList.add(
                 "access-success"
             );
+
+            passwordScreen.style.pointerEvents =
+                "none";
 
             setTimeout(() => {
 
@@ -100,19 +129,23 @@
                 passwordScreen.style.opacity =
                     "0";
 
-            }, 950);
+            }, 1000);
 
         }
 
+        /* =================================================
+           HELPER — RESTART LOADER
+        ================================================= */
 
-        function showLoader() {
+        function restartLoader() {
 
             if (!loader) {
-                unlockWebsite();
                 return;
             }
 
-            loader.classList.remove("hide");
+            loader.classList.remove(
+                "hide"
+            );
 
             loader.style.display =
                 "grid";
@@ -123,25 +156,50 @@
             loader.style.opacity =
                 "1";
 
-            restartLoaderBar();
+            loader.style.pointerEvents =
+                "auto";
 
-            setTimeout(() => {
+            /* Restart progress bar */
 
-                hideLoader();
+            const loaderBar =
+                loader.querySelector(
+                    ".loader-line i"
+                );
 
-            }, LOADER_DURATION);
+            if (loaderBar) {
+
+                loaderBar.style.animation =
+                    "none";
+
+                loaderBar.style.width =
+                    "0%";
+
+                void loaderBar.offsetWidth;
+
+                loaderBar.style.animation =
+                    "loadingLine 2.2s ease forwards";
+
+            }
 
         }
 
+        /* =================================================
+           HELPER — HIDE LOADER
+        ================================================= */
 
         function hideLoader() {
 
             if (!loader) {
+
                 unlockWebsite();
+
                 return;
+
             }
 
-            loader.classList.add("hide");
+            loader.classList.add(
+                "hide"
+            );
 
             loader.style.pointerEvents =
                 "none";
@@ -159,39 +217,29 @@
 
                 unlockWebsite();
 
-            }, 950);
+            }, 900);
 
         }
 
+        /* =================================================
+           HELPER — START LOADER
+        ================================================= */
 
-        function restartLoaderBar() {
+        function startLoader() {
 
-            const loaderBar =
-                document.querySelector(
-                    ".loader-line i"
-                );
+            restartLoader();
 
-            if (!loaderBar) {
-                return;
-            }
+            setTimeout(() => {
 
-            loaderBar.style.animation =
-                "none";
+                hideLoader();
 
-            loaderBar.style.width =
-                "0%";
-
-            /*
-             * Force browser reflow so the animation
-             * restarts every time.
-             */
-            void loaderBar.offsetWidth;
-
-            loaderBar.style.animation =
-                "loadingLine 2.2s ease forwards";
+            }, LOADER_DURATION);
 
         }
 
+        /* =================================================
+           PASSWORD SUCCESS
+        ================================================= */
 
         function grantAccess() {
 
@@ -210,47 +258,41 @@
 
             }
 
-            /*
-             * First remove access screen.
-             */
             hidePasswordScreen();
 
-            /*
-             * Then start loader.
-             */
             setTimeout(() => {
 
-                showLoader();
+                startLoader();
 
-            }, 350);
+            }, 250);
 
         }
 
+        /* =================================================
+           PASSWORD FAILURE
+        ================================================= */
 
         function denyAccess() {
 
-            if (!passwordError) {
-                return;
+            if (passwordError) {
+
+                passwordError.textContent =
+                    "ACCESS DENIED — INVALID ACCESS KEY";
+
+                passwordError.style.color =
+                    "#ff5577";
+
+                passwordError.classList.remove(
+                    "password-error-shake"
+                );
+
+                void passwordError.offsetWidth;
+
+                passwordError.classList.add(
+                    "password-error-shake"
+                );
+
             }
-
-            passwordError.textContent =
-                "ACCESS DENIED — INVALID ACCESS KEY";
-
-            passwordError.style.color =
-                "#ff5577";
-
-            passwordError.classList.remove(
-                "password-error-shake"
-            );
-
-            /*
-             * Restart shake animation.
-             */
-            void passwordError.offsetWidth;
-
-            passwordError.classList.add(
-                "password-error-shake"
-            );
 
             if (passwordInput) {
 
@@ -263,9 +305,8 @@
 
         }
 
-
         /* =================================================
-           PASSWORD VISIBILITY
+           PASSWORD SHOW / HIDE
         ================================================= */
 
         if (
@@ -303,9 +344,8 @@
 
         }
 
-
         /* =================================================
-           PASSWORD SUBMIT
+           PASSWORD FORM
         ================================================= */
 
         if (passwordForm) {
@@ -331,6 +371,7 @@
                         denyAccess();
 
                         return;
+
                     }
 
                     grantAccess();
@@ -339,7 +380,6 @@
             );
 
         }
-
 
         /* =================================================
            SESSION CHECK
@@ -350,15 +390,7 @@
                 SESSION_KEY
             ) === "true";
 
-
         if (accessGranted) {
-
-            /*
-             * Existing session:
-             * No password screen.
-             * No loader.
-             * Open website directly.
-             */
 
             if (passwordScreen) {
 
@@ -371,11 +403,16 @@
                 passwordScreen.style.opacity =
                     "0";
 
+                passwordScreen.style.pointerEvents =
+                    "none";
+
             }
 
             if (loader) {
 
-                loader.classList.add("hide");
+                loader.classList.add(
+                    "hide"
+                );
 
                 loader.style.display =
                     "none";
@@ -395,10 +432,9 @@
 
         }
 
-
-        /* =================================================
+        /* =====================================================
            THEME SYSTEM
-        ================================================= */
+        ===================================================== */
 
         const themes = [
 
@@ -484,9 +520,8 @@
 
         ];
 
-
-        let currentTheme = -1;
-
+        let currentTheme =
+            -1;
 
         function changeTheme() {
 
@@ -515,9 +550,6 @@
             const theme =
                 themes[currentTheme];
 
-            const root =
-                document.documentElement;
-
             root.style.setProperty(
                 "--accent-1",
                 theme.a1
@@ -540,30 +572,27 @@
 
         }
 
-
         changeTheme();
-
 
         setInterval(
             changeTheme,
             7000
         );
 
-
-        /* =================================================
+        /* =====================================================
            MOUSE POSITION / GLOW
-        ================================================= */
+        ===================================================== */
 
         document.addEventListener(
             "mousemove",
             (event) => {
 
-                document.documentElement.style.setProperty(
+                root.style.setProperty(
                     "--mouse-x",
                     `${event.clientX}px`
                 );
 
-                document.documentElement.style.setProperty(
+                root.style.setProperty(
                     "--mouse-y",
                     `${event.clientY}px`
                 );
@@ -571,20 +600,27 @@
             }
         );
 
-
-        /* =================================================
-           REVEAL OBSERVER
-        ================================================= */
+        /* =====================================================
+           REVEAL ANIMATION
+        ===================================================== */
 
         const revealElements =
             document.querySelectorAll(
                 ".reveal"
             );
 
+        revealElements.forEach(
+            (element, index) => {
+
+                element.style.transitionDelay =
+                    `${(index % 5) * 80}ms`;
+
+            }
+        );
 
         if (
-            "IntersectionObserver"
-            in window
+            "IntersectionObserver" in
+            window
         ) {
 
             const revealObserver =
@@ -613,10 +649,10 @@
 
                     },
                     {
-                        threshold: 0.12
+                        threshold:
+                            0.10
                     }
                 );
-
 
             revealElements.forEach(
                 (element) => {
@@ -642,24 +678,9 @@
 
         }
 
-
-        /* =================================================
-           REVEAL STAGGER
-        ================================================= */
-
-        revealElements.forEach(
-            (element, index) => {
-
-                element.style.transitionDelay =
-                    `${(index % 5) * 80}ms`;
-
-            }
-        );
-
-
-        /* =================================================
+        /* =====================================================
            MOBILE MENU
-        ================================================= */
+        ===================================================== */
 
         const menuButton =
             document.querySelector(
@@ -670,7 +691,6 @@
             document.querySelector(
                 ".nav-links"
             );
-
 
         if (
             menuButton &&
@@ -687,7 +707,6 @@
 
                 }
             );
-
 
             navLinks
                 .querySelectorAll("a")
@@ -710,10 +729,9 @@
 
         }
 
-
-        /* =================================================
+        /* =====================================================
            NAV ACTIVE STATE
-        ================================================= */
+        ===================================================== */
 
         const sections =
             document.querySelectorAll(
@@ -725,7 +743,6 @@
                 ".nav-links a"
             );
 
-
         function updateActiveNav() {
 
             if (!sections.length) {
@@ -735,12 +752,12 @@
             let current =
                 sections[0].id;
 
-
             sections.forEach(
                 (section) => {
 
                     const sectionTop =
-                        section.offsetTop - 180;
+                        section.offsetTop -
+                        180;
 
                     if (
                         window.scrollY >=
@@ -754,7 +771,6 @@
 
                 }
             );
-
 
             navAnchors.forEach(
                 (link) => {
@@ -781,7 +797,6 @@
 
         }
 
-
         window.addEventListener(
             "scroll",
             updateActiveNav,
@@ -790,13 +805,11 @@
             }
         );
 
-
         updateActiveNav();
 
-
-        /* =================================================
-           SMOOTH INTERNAL LINKS
-        ================================================= */
+        /* =====================================================
+           SMOOTH ANCHOR LINKS
+        ===================================================== */
 
         document
             .querySelectorAll(
@@ -833,13 +846,15 @@
 
                             event.preventDefault();
 
-                            target.scrollIntoView({
-                                behavior:
-                                    "smooth",
+                            target.scrollIntoView(
+                                {
+                                    behavior:
+                                        "smooth",
 
-                                block:
-                                    "start"
-                            });
+                                    block:
+                                        "start"
+                                }
+                            );
 
                         }
                     );
@@ -847,16 +862,14 @@
                 }
             );
 
-
-        /* =================================================
+        /* =====================================================
            NEBULA PARALLAX
-        ================================================= */
+        ===================================================== */
 
         const nebulaElements =
             document.querySelectorAll(
                 ".nebula"
             );
-
 
         window.addEventListener(
             "scroll",
@@ -872,8 +885,12 @@
                             (index + 1) *
                             0.025;
 
-                        element.style.translate =
-                            `0 ${scroll * speed}px`;
+                        element.style.transform =
+                            `translate3d(
+                                0,
+                                ${scroll * speed}px,
+                                0
+                            )`;
 
                     }
                 );
@@ -884,16 +901,14 @@
             }
         );
 
-
-        /* =================================================
+        /* =====================================================
            TILT CARDS
-        ================================================= */
+        ===================================================== */
 
         const tiltCards =
             document.querySelectorAll(
                 ".glass-card, .skill-card, .now-card, .contact-card"
             );
-
 
         tiltCards.forEach(
             (card) => {
@@ -906,8 +921,8 @@
                             card.getBoundingClientRect();
 
                         if (
-                            rect.width === 0 ||
-                            rect.height === 0
+                            !rect.width ||
+                            !rect.height
                         ) {
                             return;
                         }
@@ -920,21 +935,19 @@
                             event.clientY -
                             rect.top;
 
-                        const centerX =
-                            rect.width / 2;
-
-                        const centerY =
-                            rect.height / 2;
-
                         const rotateX =
-                            ((y - centerY) /
-                                centerY) *
-                            -4;
+                            (
+                                (y -
+                                    rect.height / 2) /
+                                (rect.height / 2)
+                            ) * -4;
 
                         const rotateY =
-                            ((x - centerX) /
-                                centerX) *
-                            4;
+                            (
+                                (x -
+                                    rect.width / 2) /
+                                (rect.width / 2)
+                            ) * 4;
 
                         card.style.transform =
                             `perspective(800px)
@@ -944,7 +957,6 @@
 
                     }
                 );
-
 
                 card.addEventListener(
                     "mouseleave",
@@ -959,16 +971,14 @@
             }
         );
 
-
-        /* =================================================
+        /* =====================================================
            HERO PHOTO PARALLAX
-        ================================================= */
+        ===================================================== */
 
         const heroPhoto =
             document.querySelector(
                 ".photo-frame"
             );
-
 
         if (heroPhoto) {
 
@@ -990,11 +1000,14 @@
 
                     heroPhoto.style.transform =
                         `rotate(2deg)
-                         translate(${x}px, ${y}px)`;
+                         translate3d(
+                            ${x}px,
+                            ${y}px,
+                            0
+                         )`;
 
                 }
             );
-
 
             heroPhoto.addEventListener(
                 "mouseleave",
@@ -1008,20 +1021,19 @@
 
         }
 
-
-        /* =================================================
+        /* =====================================================
            SKILL BARS
-        ================================================= */
+        ===================================================== */
 
         const skillBars =
             document.querySelectorAll(
                 ".skill-line i, .progress i"
             );
 
-
         if (
             skillBars.length &&
-            "IntersectionObserver" in window
+            "IntersectionObserver" in
+            window
         ) {
 
             const skillObserver =
@@ -1040,7 +1052,7 @@
                                 const bar =
                                     entry.target;
 
-                                const width =
+                                const targetWidth =
                                     bar.dataset.width ||
                                     bar.style.width ||
                                     "80%";
@@ -1052,7 +1064,7 @@
                                     () => {
 
                                         bar.style.width =
-                                            width;
+                                            targetWidth;
 
                                     },
                                     150
@@ -1067,10 +1079,10 @@
 
                     },
                     {
-                        threshold: 0.35
+                        threshold:
+                            0.30
                     }
                 );
-
 
             skillBars.forEach(
                 (bar) => {
@@ -1084,10 +1096,9 @@
 
         }
 
-
-        /* =================================================
-           FLOATING PARTICLES
-        ================================================= */
+        /* =====================================================
+           FLOATING NEON PARTICLES
+        ===================================================== */
 
         function createParticle() {
 
@@ -1102,11 +1113,8 @@
             const size =
                 Math.random() * 4 + 1;
 
-            particle.style.width =
-                `${size}px`;
-
-            particle.style.height =
-                `${size}px`;
+            particle.style.position =
+                "fixed";
 
             particle.style.left =
                 `${Math.random() * 100}%`;
@@ -1114,58 +1122,88 @@
             particle.style.top =
                 `${Math.random() * 100}%`;
 
-            particle.style.position =
-                "fixed";
+            particle.style.width =
+                `${size}px`;
+
+            particle.style.height =
+                `${size}px`;
+
+            particle.style.borderRadius =
+                "50%";
 
             particle.style.pointerEvents =
                 "none";
 
+            /*
+             * IMPORTANT:
+             * Never use negative z-index here.
+             * Negative z-index was causing particles
+             * to disappear behind the page background.
+             */
             particle.style.zIndex =
-                "-1";
-
-            particle.style.borderRadius =
-                "50%";
+                "2";
 
             particle.style.background =
                 "var(--accent-2)";
 
             particle.style.boxShadow =
-                "0 0 15px var(--accent-2)";
+                `
+                0 0 8px var(--accent-2),
+                0 0 16px var(--accent-2),
+                0 0 28px var(--accent-1)
+                `;
+
+            const startOpacity =
+                Math.random() * 0.5 + 0.25;
 
             particle.style.opacity =
-                Math.random() * .5 + .15;
+                startOpacity;
 
             const duration =
                 Math.random() * 8 + 8;
 
+            const driftX =
+                Math.random() * 120 - 60;
+
+            const driftY =
+                Math.random() * -220 - 60;
+
             particle.animate(
                 [
+
                     {
                         transform:
-                            "translate3d(0,0,0)",
+                            "translate3d(0,0,0) scale(.6)",
+
                         opacity:
-                            .1
+                            0.15
                     },
 
                     {
+
                         transform:
                             `translate3d(
-                                ${Math.random() * 100 - 50}px,
-                                ${Math.random() * -180 - 50}px,
+                                ${driftX}px,
+                                ${driftY}px,
                                 0
-                            )`,
+                            ) scale(1.2)`,
+
                         opacity:
-                            .8
+                            0.95
                     },
 
                     {
+
                         transform:
-                            "translate3d(0,0,0)",
+                            "translate3d(0,0,0) scale(.6)",
+
                         opacity:
-                            .1
+                            0.15
                     }
+
                 ],
                 {
+
                     duration:
                         duration * 1000,
 
@@ -1177,19 +1215,20 @@
                 }
             );
 
-            document.body.appendChild(
+            body.appendChild(
                 particle
             );
 
         }
 
-
         /*
-         * Keep particle count reasonable.
+         * 55 particles = nice neon atmosphere
+         * without making the page too heavy.
          */
+
         for (
             let i = 0;
-            i < 35;
+            i < 55;
             i++
         ) {
 
@@ -1197,14 +1236,12 @@
 
         }
 
-
-        /* =================================================
+        /* =====================================================
            CURSOR TRAIL
-        ================================================= */
+        ===================================================== */
 
         let lastTrailTime =
             0;
-
 
         document.addEventListener(
             "mousemove",
@@ -1214,7 +1251,8 @@
                     Date.now();
 
                 if (
-                    now - lastTrailTime <
+                    now -
+                    lastTrailTime <
                     45
                 ) {
                     return;
@@ -1231,36 +1269,63 @@
                 trail.className =
                     "cursor-trail";
 
+                trail.style.position =
+                    "fixed";
+
                 trail.style.left =
                     `${event.clientX}px`;
 
                 trail.style.top =
                     `${event.clientY}px`;
 
-                document.body.appendChild(
+                trail.style.width =
+                    "7px";
+
+                trail.style.height =
+                    "7px";
+
+                trail.style.borderRadius =
+                    "50%";
+
+                trail.style.pointerEvents =
+                    "none";
+
+                trail.style.zIndex =
+                    "99999";
+
+                trail.style.background =
+                    "var(--accent-2)";
+
+                trail.style.boxShadow =
+                    "0 0 18px var(--accent-2)";
+
+                body.appendChild(
                     trail
                 );
 
-
                 trail.animate(
                     [
+
                         {
                             transform:
                                 "translate(-50%,-50%) scale(1)",
 
                             opacity:
-                                .8
+                                0.85
                         },
 
                         {
+
                             transform:
                                 "translate(-50%,-50%) scale(0)",
 
                             opacity:
                                 0
                         }
+
                     ],
                     {
+
                         duration:
                             550,
 
@@ -1268,7 +1333,6 @@
                             "ease-out"
                     }
                 );
-
 
                 setTimeout(
                     () => {
@@ -1282,13 +1346,14 @@
             }
         );
 
-
-        /* =================================================
+        /* =====================================================
            IMAGE ERROR HANDLING
-        ================================================= */
+        ===================================================== */
 
         document
-            .querySelectorAll("img")
+            .querySelectorAll(
+                "img"
+            )
             .forEach(
                 (image) => {
 
@@ -1296,23 +1361,34 @@
                         "error",
                         () => {
 
-                            /*
-                             * Prevent infinite error loops.
-                             */
                             if (
-                                image.dataset.fallbackApplied ===
+                                image.dataset.errorHandled ===
                                 "true"
                             ) {
                                 return;
                             }
 
-                            image.dataset.fallbackApplied =
+                            image.dataset.errorHandled =
                                 "true";
 
                             console.warn(
-                                "Image failed to load:",
-                                image.src
+                                "Image could not be loaded:",
+                                image.getAttribute(
+                                    "src"
+                                )
                             );
+
+                            /*
+                             * We intentionally DO NOT
+                             * replace your image with an
+                             * external image.
+                             *
+                             * This prevents your original
+                             * design from unexpectedly changing.
+                             */
+
+                            image.style.opacity =
+                                "0.25";
 
                         }
                     );
@@ -1320,10 +1396,9 @@
                 }
             );
 
-
-        /* =================================================
-           VISIBILITY / ANIMATION PAUSE
-        ================================================= */
+        /* =====================================================
+           VISIBILITY API
+        ===================================================== */
 
         document.addEventListener(
             "visibilitychange",
@@ -1331,9 +1406,13 @@
 
                 const animatedElements =
                     document.querySelectorAll(
-                        ".nebula, .starfield, .starfield-two, .grid-floor"
+                        `
+                        .nebula,
+                        .starfield,
+                        .starfield-two,
+                        .grid-floor
+                        `
                     );
-
 
                 animatedElements.forEach(
                     (element) => {
@@ -1349,10 +1428,9 @@
             }
         );
 
-
-        /* =================================================
+        /* =====================================================
            INTERACTIVE VIDEO
-        ================================================= */
+        ===================================================== */
 
         const interactiveVideo =
             document.querySelector(
@@ -1369,7 +1447,6 @@
                 "#interactiveVideo .video-play-hint"
             );
 
-
         if (
             interactiveVideo &&
             videoContainer
@@ -1377,17 +1454,16 @@
 
             function playInteractiveVideo() {
 
-                const playPromise =
+                const promise =
                     interactiveVideo.play();
 
-
                 if (
-                    playPromise &&
-                    typeof playPromise.then ===
+                    promise &&
+                    typeof promise.then ===
                     "function"
                 ) {
 
-                    playPromise
+                    promise
                         .then(() => {
 
                             if (playHint) {
@@ -1403,7 +1479,7 @@
                             if (playHint) {
 
                                 playHint.style.opacity =
-                                    ".9";
+                                    "0.9";
 
                             }
 
@@ -1413,13 +1489,11 @@
 
             }
 
-
             function pauseInteractiveVideo(
                 reset = false
             ) {
 
                 interactiveVideo.pause();
-
 
                 if (reset) {
 
@@ -1431,7 +1505,7 @@
                     } catch (error) {
 
                         console.warn(
-                            "Unable to reset video:",
+                            "Video reset failed:",
                             error
                         );
 
@@ -1439,22 +1513,23 @@
 
                 }
 
-
                 if (playHint) {
 
                     playHint.style.opacity =
-                        ".9";
+                        "0.9";
 
                 }
 
             }
 
-
             videoContainer.addEventListener(
                 "mouseenter",
-                playInteractiveVideo
-            );
+                () => {
 
+                    playInteractiveVideo();
+
+                }
+            );
 
             videoContainer.addEventListener(
                 "mouseleave",
@@ -1466,7 +1541,6 @@
 
                 }
             );
-
 
             videoContainer.addEventListener(
                 "click",
@@ -1489,7 +1563,6 @@
                 }
             );
 
-
             interactiveVideo.addEventListener(
                 "ended",
                 () => {
@@ -1497,7 +1570,7 @@
                     if (playHint) {
 
                         playHint.style.opacity =
-                            ".9";
+                            "0.9";
 
                     }
 
@@ -1506,10 +1579,9 @@
 
         }
 
-
-        /* =================================================
-           CONSOLE
-        ================================================= */
+        /* =====================================================
+           FINAL CONSOLE
+        ===================================================== */
 
         console.log(
 `
@@ -1520,13 +1592,13 @@
 ║       Welcome to my universe 🚀      ║
 ║                                      ║
 ║       Theme changes every 7 sec.     ║
+║       Neon particles: ACTIVE        ║
+║       Private access: ACTIVE         ║
 ║                                      ║
 ╚══════════════════════════════════════╝
 `
         );
 
-
     });
-
 
 })();

@@ -5392,3 +5392,52 @@ body.site-ready {
     display:
         none !important;
 }
+/* =========================================================
+   FINAL BACKGROUND LAYER FIX
+========================================================= */
+
+/* Neon animated background must stay ABOVE body background */
+#theme-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0 !important;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Main website content stays above the animated background */
+main,
+.nav,
+footer {
+    position: relative;
+    z-index: 2;
+}
+
+/* Keep decorative background elements behind content */
+#theme-bg .nebula,
+#theme-bg .starfield,
+#theme-bg .starfield-two,
+#theme-bg .grid-floor,
+#theme-bg .planet-ring {
+    z-index: 0;
+}
+
+/* Mouse glow stays on top */
+body::after {
+    z-index: 999 !important;
+}
+
+/* Password screen and loader always stay above everything */
+#password-screen {
+    z-index: 999999 !important;
+}
+
+#loader {
+    z-index: 99999 !important;
+}
+
+/* Prevent accidental black stacking layer */
+body {
+    position: relative;
+    isolation: isolate;
+}

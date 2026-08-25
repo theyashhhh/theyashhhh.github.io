@@ -1,5 +1,6 @@
 /* =========================================================
    YASHH — STORY PAGE
+   CLEAN / FIXED / FINAL VERSION
 ========================================================= */
 
 :root {
@@ -40,7 +41,7 @@ body {
     overflow-x: hidden;
 }
 
-body::selection {
+::selection {
     background: var(--a2);
     color: #000;
 }
@@ -79,6 +80,7 @@ button {
         var(--a2),
         var(--a3)
     );
+
     border-radius: 20px;
 }
 
@@ -113,8 +115,10 @@ button {
 
 .aurora {
     position: fixed;
+
     width: 55vw;
     height: 55vw;
+
     border-radius: 50%;
 
     filter: blur(90px);
@@ -123,7 +127,8 @@ button {
     z-index: -15;
     pointer-events: none;
 
-    animation: auroraMove 12s ease-in-out infinite alternate;
+    animation:
+        auroraMove 12s ease-in-out infinite alternate;
 }
 
 .aurora-one {
@@ -135,24 +140,32 @@ button {
 .aurora-two {
     right: -20%;
     top: 25%;
+
     background: var(--a2);
+
     animation-delay: -4s;
 }
 
 .aurora-three {
     bottom: -20%;
     left: 30%;
+
     background: var(--a3);
+
     animation-delay: -8s;
 }
 
 @keyframes auroraMove {
     from {
-        transform: translate3d(0, 0, 0) scale(1);
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
     }
 
     to {
-        transform: translate3d(80px, -50px, 0) scale(1.2);
+        transform:
+            translate3d(80px, -50px, 0)
+            scale(1.2);
     }
 }
 
@@ -164,6 +177,7 @@ button {
 #stars {
     position: fixed;
     inset: 0;
+
     z-index: -10;
     pointer-events: none;
 }
@@ -175,6 +189,7 @@ button {
 
 .cursor-glow {
     position: fixed;
+
     left: 0;
     top: 0;
 
@@ -183,9 +198,11 @@ button {
 
     border-radius: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     pointer-events: none;
+
     z-index: 9990;
 
     background:
@@ -203,8 +220,6 @@ button {
 
 /* =========================================================
    STORY LOADER
-   IMPORTANT:
-   HTML uses id="storyLoader"
 ========================================================= */
 
 #storyLoader {
@@ -241,18 +256,21 @@ button {
 }
 
 
-/* Loader background */
+/* =========================================================
+   LOADER BACKGROUND
+========================================================= */
 
 .story-loader-bg {
     position: absolute;
     inset: 0;
+
     overflow: hidden;
     pointer-events: none;
 }
 
 
 /* =========================================================
-   LOADER ORBS
+   LOADER NEON ORBS
 ========================================================= */
 
 .story-neon-orb {
@@ -304,11 +322,15 @@ button {
 @keyframes storyOrbFloat {
     0%,
     100% {
-        transform: translate3d(0, 0, 0) scale(1);
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
     }
 
     50% {
-        transform: translate3d(45px, -30px, 0) scale(1.2);
+        transform:
+            translate3d(45px, -30px, 0)
+            scale(1.2);
     }
 }
 
@@ -466,10 +488,41 @@ button {
     animation-delay: -0.8s;
 }
 
+.story-particles span:nth-child(11) {
+    left: 12%;
+    top: 40%;
+    animation-delay: -2.8s;
+}
+
+.story-particles span:nth-child(12) {
+    left: 40%;
+    top: 45%;
+    animation-delay: -3.5s;
+}
+
+.story-particles span:nth-child(13) {
+    left: 63%;
+    top: 35%;
+    animation-delay: -1.2s;
+}
+
+.story-particles span:nth-child(14) {
+    left: 82%;
+    top: 45%;
+    animation-delay: -2.2s;
+}
+
+.story-particles span:nth-child(15) {
+    left: 52%;
+    top: 90%;
+    animation-delay: -0.7s;
+}
+
 @keyframes storyParticle {
     0%,
     100% {
         opacity: 0.15;
+
         transform:
             translateY(0)
             scale(0.6);
@@ -477,6 +530,7 @@ button {
 
     50% {
         opacity: 1;
+
         transform:
             translateY(-20px)
             scale(1.4);
@@ -493,19 +547,21 @@ button {
     z-index: 10;
 
     width: min(700px, 90%);
+
     text-align: center;
 }
 
 
 /* =========================================================
-   PROFILE
+   LOADER PROFILE
 ========================================================= */
 
 .story-profile {
     width: 130px;
     height: 130px;
 
-    margin: 0 auto 30px;
+    margin:
+        0 auto 30px;
 
     position: relative;
 
@@ -521,10 +577,13 @@ button {
 
     border-radius: 50%;
 
-    border: 1px solid rgba(0, 229, 255, 0.35);
+    border:
+        1px solid
+        rgba(0, 229, 255, 0.35);
 
     box-shadow:
-        0 0 30px rgba(0, 229, 255, 0.20);
+        0 0 30px
+        rgba(0, 229, 255, 0.20);
 }
 
 .story-profile::after {
@@ -540,7 +599,8 @@ button {
         rgba(255, 43, 214, 0.30);
 
     animation:
-        storyProfilePulse 3s ease-in-out infinite;
+        storyProfilePulse
+        3s ease-in-out infinite;
 }
 
 @keyframes storyProfilePulse {
@@ -558,8 +618,7 @@ button {
 
 
 /* =========================================================
-   PROFILE IMAGE RING
-   NO ROTATION
+   LOADER PROFILE IMAGE
 ========================================================= */
 
 .story-profile-ring {
@@ -579,8 +638,11 @@ button {
         );
 
     box-shadow:
-        0 0 30px rgba(0, 229, 255, 0.30),
-        0 0 65px rgba(255, 43, 214, 0.15);
+        0 0 30px
+        rgba(0, 229, 255, 0.30),
+
+        0 0 65px
+        rgba(255, 43, 214, 0.15);
 
     transform: none;
     animation: none;
@@ -593,7 +655,10 @@ button {
     object-fit: cover;
 
     border-radius: 50%;
-    border: 3px solid #05050d;
+
+    border:
+        3px solid
+        #05050d;
 
     transform: none;
     animation: none;
@@ -610,7 +675,8 @@ button {
     font-size: 9px;
     letter-spacing: 5px;
 
-    color: rgba(255, 255, 255, 0.40);
+    color:
+        rgba(255,255,255,0.40);
 }
 
 
@@ -621,7 +687,9 @@ button {
 .story-loader-content h1 {
     margin: 0;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
     font-size:
         clamp(30px, 6vw, 64px);
@@ -635,7 +703,8 @@ button {
     color: #fff;
 
     text-shadow:
-        0 0 20px rgba(139, 92, 246, 0.25);
+        0 0 20px
+        rgba(139,92,246,0.25);
 }
 
 .story-loader-content h1 span {
@@ -660,7 +729,8 @@ button {
     color: transparent;
 
     animation:
-        storyTitleFlow 4s linear infinite;
+        storyTitleFlow
+        4s linear infinite;
 }
 
 @keyframes storyTitleFlow {
@@ -679,16 +749,18 @@ button {
 ========================================================= */
 
 .story-progress {
-    width: min(320px, 70vw);
+    width:
+        min(320px, 70vw);
 
     height: 2px;
 
-    margin: 28px auto 15px;
+    margin:
+        28px auto 15px;
 
     overflow: hidden;
 
     background:
-        rgba(255, 255, 255, 0.08);
+        rgba(255,255,255,0.08);
 }
 
 .story-progress div {
@@ -707,7 +779,8 @@ button {
         0 0 12px #00e5ff;
 
     animation:
-        storyProgress 2.5s ease forwards;
+        storyProgress
+        2.5s ease forwards;
 }
 
 @keyframes storyProgress {
@@ -718,7 +791,7 @@ button {
 
 
 /* =========================================================
-   LOADER TEXT
+   LOADER DESCRIPTION
 ========================================================= */
 
 .story-loader-content > p {
@@ -728,7 +801,7 @@ button {
     letter-spacing: 3px;
 
     color:
-        rgba(255, 255, 255, 0.35);
+        rgba(255,255,255,0.35);
 }
 
 
@@ -740,6 +813,7 @@ button {
     margin-top: 18px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -749,7 +823,7 @@ button {
     letter-spacing: 2px;
 
     color:
-        rgba(255, 255, 255, 0.25);
+        rgba(255,255,255,0.25);
 }
 
 .story-loader-meta i {
@@ -783,11 +857,12 @@ button {
     padding: 0 6vw;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
     background:
-        rgba(3, 3, 10, 0.45);
+        rgba(3,3,10,0.45);
 
     backdrop-filter:
         blur(20px);
@@ -796,7 +871,8 @@ button {
         blur(20px);
 
     border-bottom:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 }
 
 .story-logo {
@@ -807,17 +883,22 @@ button {
     place-items: center;
 
     border:
-        1px solid var(--a2);
+        1px solid
+        var(--a2);
 
     border-radius: 13px;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
+
     font-weight: 800;
 
     color: var(--a2);
 
     box-shadow:
-        0 0 20px rgba(0, 229, 255, 0.15);
+        0 0 20px
+        rgba(0,229,255,0.15);
 }
 
 .story-logo span {
@@ -825,9 +906,12 @@ button {
 }
 
 .story-nav-title {
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
     font-size: 11px;
+
     letter-spacing: 4px;
 
     color: #77778e;
@@ -837,11 +921,13 @@ button {
     padding: 11px 18px;
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius: 50px;
 
     font-size: 10px;
+
     letter-spacing: 1px;
 
     color: #fff;
@@ -858,9 +944,11 @@ button {
     color: var(--a2);
 
     box-shadow:
-        0 0 20px rgba(0, 229, 255, 0.12);
+        0 0 20px
+        rgba(0,229,255,0.12);
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 
@@ -869,28 +957,34 @@ button {
 ========================================================= */
 
 .story-hero {
-    min-height: 100vh;
-
     position: relative;
 
+    min-height: 100vh;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     overflow: hidden;
+
+    isolation: isolate;
 }
 
 .hero-content {
     position: relative;
+
     z-index: 5;
 
-    width: min(850px, 90%);
+    width:
+        min(850px, 90%);
 
     text-align: center;
 }
 
 .eyebrow {
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -899,6 +993,7 @@ button {
     margin-bottom: 30px;
 
     font-size: 9px;
+
     letter-spacing: 4px;
 
     color: #88889d;
@@ -908,14 +1003,18 @@ button {
     width: 35px;
     height: 1px;
 
-    background: var(--a2);
+    background:
+        var(--a2);
 
     box-shadow:
-        0 0 10px rgba(0, 229, 255, 0.35);
+        0 0 10px
+        rgba(0,229,255,0.35);
 }
 
 .story-hero h1 {
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
     font-size:
         clamp(55px, 10vw, 150px);
@@ -945,9 +1044,11 @@ button {
 .story-hero p {
     max-width: 580px;
 
-    margin: 35px auto;
+    margin:
+        35px auto;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     line-height: 1.8;
 }
@@ -956,6 +1057,7 @@ button {
     margin-top: 70px;
 
     font-size: 9px;
+
     letter-spacing: 3px;
 
     color: #6b6b80;
@@ -967,15 +1069,19 @@ button {
     width: 1px;
     height: 45px;
 
-    margin: 0 auto 12px;
+    margin:
+        0 auto 12px;
 
-    background: var(--a2);
+    background:
+        var(--a2);
 
     box-shadow:
-        0 0 12px var(--a2);
+        0 0 12px
+        var(--a2);
 
     animation:
-        scrollLine 1.5s ease-in-out infinite;
+        scrollLine
+        1.5s ease-in-out infinite;
 }
 
 @keyframes scrollLine {
@@ -993,7 +1099,10 @@ button {
 
 
 /* =========================================================
-   HERO ORB
+   HERO ORB — IMPORTANT CENTER FIX
+   NOTE:
+   margin-left / margin-top are used instead of transform
+   because story.js applies transform for mouse parallax.
 ========================================================= */
 
 .hero-orb {
@@ -1005,14 +1114,24 @@ button {
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    margin-left: -250px;
+    margin-top: -250px;
 
     border-radius: 50%;
 
     opacity: 0.55;
 
     pointer-events: none;
+
+    z-index: 1;
+
+    transform: translate3d(0,0,0);
 }
+
+
+/* =========================================================
+   HERO ORB CORE
+========================================================= */
 
 .orb-core {
     position: absolute;
@@ -1023,15 +1142,19 @@ button {
     left: 50%;
     top: 50%;
 
-    transform:
-        translate(-50%, -50%);
+    margin-left: -60px;
+    margin-top: -60px;
 
     display: grid;
+
     place-items: center;
 
     border-radius: 50%;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
+
     font-size: 50px;
 
     color: #fff;
@@ -1043,9 +1166,26 @@ button {
             #080814 65%
         );
 
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
     box-shadow:
-        0 0 70px var(--a1);
+        0 0 35px var(--a1),
+        0 0 70px
+        color-mix(
+            in srgb,
+            var(--a1) 35%,
+            transparent
+        );
+
+    z-index: 5;
 }
+
+
+/* =========================================================
+   HERO ORB RINGS
+========================================================= */
 
 .orb-ring {
     position: absolute;
@@ -1053,44 +1193,106 @@ button {
     left: 50%;
     top: 50%;
 
-    transform:
-        translate(-50%, -50%);
-
     border:
-        1px solid rgba(255, 255, 255, 0.15);
+        1px solid
+        rgba(255,255,255,0.15);
 
     border-radius: 50%;
+
+    transform-origin:
+        center center;
+
+    z-index: 2;
 }
 
 .hero-orb .ring-one {
     width: 230px;
     height: 230px;
 
+    margin-left: -115px;
+    margin-top: -115px;
+
     animation:
-        spin 8s linear infinite;
+        heroRingOne
+        8s linear infinite;
 }
 
 .hero-orb .ring-two {
     width: 360px;
     height: 360px;
 
+    margin-left: -180px;
+    margin-top: -180px;
+
+    border-color:
+        rgba(0,229,255,0.20);
+
     animation:
-        spin 13s linear infinite reverse;
+        heroRingTwo
+        13s linear infinite reverse;
 }
 
 .hero-orb .ring-three {
     width: 500px;
     height: 500px;
 
+    margin-left: -250px;
+    margin-top: -250px;
+
+    border-color:
+        rgba(255,43,214,0.15);
+
     animation:
-        spin 20s linear infinite;
+        heroRingThree
+        20s linear infinite;
 }
 
-@keyframes spin {
+
+/* =========================================================
+   HERO RING ANIMATIONS
+========================================================= */
+
+@keyframes heroRingOne {
+    from {
+        transform:
+            rotateX(65deg)
+            rotateZ(0deg);
+    }
+
     to {
         transform:
-            translate(-50%, -50%)
-            rotate(360deg);
+            rotateX(65deg)
+            rotateZ(360deg);
+    }
+}
+
+@keyframes heroRingTwo {
+    from {
+        transform:
+            rotateX(65deg)
+            rotateY(25deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            rotateX(65deg)
+            rotateY(25deg)
+            rotateZ(360deg);
+    }
+}
+
+@keyframes heroRingThree {
+    from {
+        transform:
+            rotateX(65deg)
+            rotateZ(25deg);
+    }
+
+    to {
+        transform:
+            rotateX(65deg)
+            rotateZ(385deg);
     }
 }
 
@@ -1100,39 +1302,51 @@ button {
 ========================================================= */
 
 .story-section {
-    width: min(1200px, 88%);
+    width:
+        min(1200px, 88%);
 
-    margin: 0 auto;
+    margin:
+        0 auto;
 
-    padding: 150px 0;
+    padding:
+        150px 0;
 
-    position: relative;
+    position:
+        relative;
 }
 
 .section-number {
     margin-bottom: 20px;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    color: var(--a2);
+    color:
+        var(--a2);
 
     font-size: 11px;
+
     letter-spacing: 3px;
 }
 
 .section-heading p {
     margin-bottom: 15px;
 
-    color: #68687d;
+    color:
+        #68687d;
 
     font-size: 9px;
+
     letter-spacing: 4px;
 }
 
 .section-heading h2 {
     margin-bottom: 60px;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
     font-size:
         clamp(35px, 5vw, 65px);
@@ -1141,7 +1355,8 @@ button {
 }
 
 .section-heading h2 span {
-    color: var(--a2);
+    color:
+        var(--a2);
 }
 
 
@@ -1153,8 +1368,8 @@ button {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
+        minmax(0,1fr)
+        minmax(0,1fr);
 
     gap: 70px;
 
@@ -1169,9 +1384,11 @@ button {
     border-radius: 25px;
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
-    background: #07070f;
+    background:
+        #07070f;
 }
 
 .story-photo img {
@@ -1180,7 +1397,8 @@ button {
 
     object-fit: cover;
 
-    filter: saturate(0.8);
+    filter:
+        saturate(0.8);
 
     transition:
         transform 1s ease,
@@ -1188,7 +1406,8 @@ button {
 }
 
 .story-photo:hover img {
-    transform: scale(1.06);
+    transform:
+        scale(1.06);
 
     filter:
         saturate(1)
@@ -1201,27 +1420,34 @@ button {
     left: 20px;
     bottom: 20px;
 
-    padding: 10px 14px;
+    padding:
+        10px 14px;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
     font-size: 9px;
+
     letter-spacing: 3px;
 
     background:
-        rgba(0, 0, 0, 0.65);
+        rgba(0,0,0,0.65);
 
     border:
-        1px solid rgba(255, 255, 255, 0.10);
+        1px solid
+        rgba(255,255,255,0.10);
 
     backdrop-filter:
         blur(10px);
 }
 
 .story-text {
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    line-height: 1.9;
+    line-height:
+        1.9;
 }
 
 .large-text {
@@ -1233,7 +1459,8 @@ button {
 }
 
 .large-text strong {
-    color: var(--a2);
+    color:
+        var(--a2);
 }
 
 .story-text > p {
@@ -1241,7 +1468,8 @@ button {
 }
 
 .story-text b {
-    color: #e9e9f4;
+    color:
+        #e9e9f4;
 }
 
 .quote-box {
@@ -1250,23 +1478,28 @@ button {
     padding: 30px;
 
     border-left:
-        2px solid var(--a3);
+        2px solid
+        var(--a3);
 
     background:
-        rgba(255, 255, 255, 0.025);
+        rgba(255,255,255,0.025);
 
     box-shadow:
-        inset 20px 0 50px rgba(255, 43, 214, 0.02);
+        inset 20px 0 50px
+        rgba(255,43,214,0.02);
 }
 
 .quote-box > span {
     display: block;
 
-    font-family: Georgia, serif;
+    font-family:
+        Georgia,
+        serif;
 
     font-size: 45px;
 
-    color: var(--a3);
+    color:
+        var(--a3);
 }
 
 .quote-box p {
@@ -1283,7 +1516,8 @@ button {
 
     max-width: 900px;
 
-    margin: 0 auto;
+    margin:
+        0 auto;
 }
 
 .timeline::before {
@@ -1312,7 +1546,7 @@ button {
 
     grid-template-columns:
         50px
-        minmax(0, 1fr);
+        minmax(0,1fr);
 
     gap: 30px;
 
@@ -1324,32 +1558,40 @@ button {
     height: 48px;
 
     display: grid;
+
     place-items: center;
 
     border-radius: 50%;
 
-    background: #080812;
+    background:
+        #080812;
 
     border:
-        1px solid var(--a2);
+        1px solid
+        var(--a2);
 
-    color: var(--a2);
+    color:
+        var(--a2);
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
     font-size: 10px;
 
     z-index: 2;
 
     box-shadow:
-        0 0 20px rgba(0, 229, 255, 0.10);
+        0 0 20px
+        rgba(0,229,255,0.10);
 }
 
 .timeline-card {
     padding: 30px;
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     background:
         var(--glass);
@@ -1363,37 +1605,49 @@ button {
 }
 
 .timeline-card:hover {
-    transform: translateX(10px);
+    transform:
+        translateX(10px);
 
     border-color:
-        rgba(0, 229, 255, 0.40);
+        rgba(0,229,255,0.40);
 
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.20);
+        0 20px 60px
+        rgba(0,0,0,0.20);
 }
 
 .timeline-card small {
-    color: var(--a2);
+    color:
+        var(--a2);
 
-    letter-spacing: 3px;
+    letter-spacing:
+        3px;
 
-    font-size: 8px;
+    font-size:
+        8px;
 }
 
 .timeline-card h3 {
-    margin: 13px 0;
+    margin:
+        13px 0;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    font-size: 20px;
+    font-size:
+        20px;
 }
 
 .timeline-card p {
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    line-height: 1.8;
+    line-height:
+        1.8;
 
-    font-size: 14px;
+    font-size:
+        14px;
 }
 
 
@@ -1409,7 +1663,7 @@ button {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr)
+        minmax(0,1fr)
         280px;
 
     gap: 35px;
@@ -1421,15 +1675,17 @@ button {
     overflow: hidden;
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
-    border-radius: 35px;
+    border-radius:
+        35px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(139, 92, 246, 0.10),
-            rgba(0, 229, 255, 0.04)
+            rgba(139,92,246,0.10),
+            rgba(0,229,255,0.04)
         );
 
     transition:
@@ -1439,10 +1695,11 @@ button {
 
 .mindset-card:hover {
     border-color:
-        rgba(0, 229, 255, 0.20);
+        rgba(0,229,255,0.20);
 
     box-shadow:
-        0 30px 90px rgba(0, 0, 0, 0.20);
+        0 30px 90px
+        rgba(0,0,0,0.20);
 }
 
 .mindset-glow {
@@ -1456,11 +1713,14 @@ button {
 
     border-radius: 50%;
 
-    background: var(--a1);
+    background:
+        var(--a1);
 
-    filter: blur(130px);
+    filter:
+        blur(130px);
 
-    opacity: 0.15;
+    opacity:
+        0.15;
 
     pointer-events: none;
 }
@@ -1471,67 +1731,92 @@ button {
 }
 
 .mini-label {
-    color: var(--a2);
+    color:
+        var(--a2);
 
-    letter-spacing: 4px;
+    letter-spacing:
+        4px;
 
-    font-size: 9px;
+    font-size:
+        9px;
 }
 
 .mindset-card h2 {
     position: relative;
 
-    max-width: 800px;
+    max-width:
+        800px;
 
-    margin: 30px 0;
+    margin:
+        30px 0;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
     font-size:
-        clamp(40px, 7vw, 90px);
+        clamp(40px,7vw,90px);
 
-    line-height: 1.05;
+    line-height:
+        1.05;
 }
 
 .mindset-card h2 span {
-    color: var(--a3);
+    color:
+        var(--a3);
 }
 
 .mindset-card > .mindset-content > p {
-    max-width: 550px;
+    max-width:
+        550px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    line-height: 1.8;
+    line-height:
+        1.8;
 }
 
 .mindset-stats {
-    display: flex;
+    display:
+        flex;
 
-    gap: 60px;
+    gap:
+        60px;
 
-    margin-top: 60px;
+    margin-top:
+        60px;
 }
 
 .mindset-stats div {
-    display: flex;
-    flex-direction: column;
+    display:
+        flex;
+
+    flex-direction:
+        column;
 }
 
 .mindset-stats strong {
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    font-size: 25px;
+    font-size:
+        25px;
 
-    color: var(--a2);
+    color:
+        var(--a2);
 }
 
 .mindset-stats span {
-    margin-top: 5px;
+    margin-top:
+        5px;
 
-    color: #77778d;
+    color:
+        #77778d;
 
-    font-size: 10px;
+    font-size:
+        10px;
 }
 
 
@@ -1544,34 +1829,43 @@ button {
 
     width: 100%;
 
-    aspect-ratio: 9 / 16;
+    aspect-ratio:
+        9 / 16;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
-    background: #06060d;
+    background:
+        #06060d;
 
     border:
-        1px solid rgba(255, 255, 255, 0.10);
+        1px solid
+        rgba(255,255,255,0.10);
 
     box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.35);
+        0 25px 70px
+        rgba(0,0,0,0.35);
 }
 
 .mindset-visual video {
     width: 100%;
     height: 100%;
 
-    object-fit: cover;
+    object-fit:
+        cover;
 
-    display: block;
+    display:
+        block;
 
     filter:
         brightness(0.75)
         contrast(1.08);
 
-    transform: scale(1.01);
+    transform:
+        scale(1.01);
 
     transition:
         transform 0.7s ease,
@@ -1579,7 +1873,8 @@ button {
 }
 
 .mindset-visual:hover video {
-    transform: scale(1.06);
+    transform:
+        scale(1.06);
 
     filter:
         brightness(0.84)
@@ -1590,16 +1885,18 @@ button {
     content: "";
 
     position: absolute;
+
     inset: 0;
 
     background:
         linear-gradient(
             to top,
-            rgba(0, 0, 0, 0.82),
+            rgba(0,0,0,0.82),
             transparent 60%
         );
 
-    pointer-events: none;
+    pointer-events:
+        none;
 }
 
 .mindset-visual-text {
@@ -1613,20 +1910,31 @@ button {
 }
 
 .mindset-visual-text span {
-    display: block;
+    display:
+        block;
 
-    margin-bottom: 7px;
+    margin-bottom:
+        7px;
 
-    font-size: 10px;
-    letter-spacing: 3px;
+    font-size:
+        10px;
 
-    opacity: 0.7;
+    letter-spacing:
+        3px;
+
+    opacity:
+        0.7;
 }
 
 .mindset-visual-text strong {
-    font-size: 20px;
-    line-height: 1.1;
-    letter-spacing: 1px;
+    font-size:
+        20px;
+
+    line-height:
+        1.1;
+
+    letter-spacing:
+        1px;
 }
 
 
@@ -1638,39 +1946,51 @@ button {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
-    grid-auto-rows: 280px;
+    grid-auto-rows:
+        280px;
 
-    gap: 18px;
+    gap:
+        18px;
 }
 
 .memory-card {
     position: relative;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 }
 
 .memory-card.tall {
-    grid-row: span 2;
+    grid-row:
+        span 2;
 }
 
 .memory-card.wide {
-    grid-column: span 2;
+    grid-column:
+        span 2;
 }
 
 .memory-card img {
-    width: 100%;
-    height: 100%;
+    width:
+        100%;
 
-    object-fit: cover;
+    height:
+        100%;
 
-    filter: brightness(0.65);
+    object-fit:
+        cover;
+
+    filter:
+        brightness(0.65);
 
     transition:
         transform 0.7s ease,
@@ -1678,29 +1998,43 @@ button {
 }
 
 .memory-card:hover img {
-    transform: scale(1.10);
-    filter: brightness(0.90);
+    transform:
+        scale(1.10);
+
+    filter:
+        brightness(0.90);
 }
 
 .memory-card div {
-    position: absolute;
+    position:
+        absolute;
 
-    left: 20px;
-    bottom: 20px;
+    left:
+        20px;
+
+    bottom:
+        20px;
 }
 
 .memory-card span {
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    color: var(--a2);
+    color:
+        var(--a2);
 
-    font-size: 9px;
+    font-size:
+        9px;
 }
 
 .memory-card h3 {
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    font-size: 18px;
+    font-size:
+        18px;
 }
 
 
@@ -1709,26 +2043,32 @@ button {
 ========================================================= */
 
 .facts-grid {
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
-    gap: 18px;
+    gap:
+        18px;
 }
 
 .fact-card {
-    min-height: 220px;
+    min-height:
+        220px;
 
-    padding: 30px;
+    padding:
+        30px;
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
-    border-radius: 22px;
+    border-radius:
+        22px;
 
     background:
-        rgba(255, 255, 255, 0.025);
+        rgba(255,255,255,0.025);
 
     transition:
         transform 0.4s ease,
@@ -1737,77 +2077,108 @@ button {
 }
 
 .fact-card:hover {
-    transform: translateY(-8px);
+    transform:
+        translateY(-8px);
 
-    border-color: var(--a2);
+    border-color:
+        var(--a2);
 
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.22);
+        0 20px 60px
+        rgba(0,0,0,0.22);
 }
 
 .fact-card > span {
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    color: var(--a2);
+    color:
+        var(--a2);
 
-    font-size: 9px;
+    font-size:
+        9px;
 }
 
 .fact-card h3 {
-    display: flex;
-    align-items: center;
+    display:
+        flex;
 
-    gap: 12px;
+    align-items:
+        center;
 
-    margin: 24px 0 15px;
+    gap:
+        12px;
 
-    font-family: "Orbitron", sans-serif;
+    margin:
+        24px 0 15px;
 
-    font-size: 17px;
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        17px;
 }
 
 .fact-card p {
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    line-height: 1.7;
+    line-height:
+        1.7;
 }
 
 
-/* Gesture icon */
+/* =========================================================
+   GESTURE ICON
+========================================================= */
 
 .gesture-icon {
-    position: relative;
+    position:
+        relative;
 
-    width: 38px;
-    height: 38px;
+    width:
+        38px;
 
-    min-width: 38px;
+    height:
+        38px;
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    min-width:
+        38px;
 
-    border-radius: 12px;
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        12px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(139, 92, 246, 0.18),
-            rgba(0, 229, 255, 0.08)
+            rgba(139,92,246,0.18),
+            rgba(0,229,255,0.08)
         );
 
     border:
         1px solid
-        rgba(0, 229, 255, 0.45);
+        rgba(0,229,255,0.45);
 
     box-shadow:
         inset 0 0 15px
-        rgba(0, 229, 255, 0.10),
+        rgba(0,229,255,0.10),
 
         0 0 15px
-        rgba(0, 229, 255, 0.18);
+        rgba(0,229,255,0.18);
 
     backdrop-filter:
         blur(10px);
@@ -1819,13 +2190,16 @@ button {
 }
 
 .gesture-icon i {
-    font-size: 16px;
+    font-size:
+        16px;
 
-    color: var(--a2);
+    color:
+        var(--a2);
 
     filter:
         drop-shadow(
-            0 0 7px var(--a2)
+            0 0 7px
+            var(--a2)
         );
 
     transition:
@@ -1834,25 +2208,39 @@ button {
 }
 
 .gesture-icon::before {
-    content: "";
+    content:
+        "";
 
-    position: absolute;
+    position:
+        absolute;
 
-    width: 6px;
-    height: 6px;
+    width:
+        6px;
 
-    top: -2px;
-    right: -2px;
+    height:
+        6px;
 
-    border-radius: 50%;
+    top:
+        -2px;
 
-    background: var(--a3);
+    right:
+        -2px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--a3);
 
     box-shadow:
-        0 0 8px var(--a3),
-        0 0 16px var(--a3);
+        0 0 8px
+        var(--a3),
 
-    opacity: 0.8;
+        0 0 16px
+        var(--a3);
+
+    opacity:
+        0.8;
 }
 
 .fact-card:hover .gesture-icon {
@@ -1861,27 +2249,31 @@ button {
         rotate(-3deg)
         scale(1.08);
 
-    border-color: var(--a2);
+    border-color:
+        var(--a2);
 
     box-shadow:
         inset 0 0 20px
-        rgba(0, 229, 255, 0.15),
+        rgba(0,229,255,0.15),
 
         0 0 12px
-        rgba(0, 229, 255, 0.35),
+        rgba(0,229,255,0.35),
 
         0 0 30px
-        rgba(0, 229, 255, 0.18);
+        rgba(0,229,255,0.18);
 }
 
 .fact-card:hover .gesture-icon i {
-    transform: scale(1.15);
+    transform:
+        scale(1.15);
 
-    color: var(--a1);
+    color:
+        var(--a1);
 
     filter:
         drop-shadow(
-            0 0 10px var(--a1)
+            0 0 10px
+            var(--a1)
         );
 }
 
@@ -1891,87 +2283,120 @@ button {
 ========================================================= */
 
 .dream-section {
-    min-height: 750px;
+    min-height:
+        750px;
 
-    display: grid;
-    place-items: center;
+    display:
+        grid;
 
-    text-align: center;
+    place-items:
+        center;
 
-    overflow: hidden;
+    text-align:
+        center;
+
+    overflow:
+        hidden;
 }
 
 .dream-bg {
-    position: absolute;
-    inset: 0;
+    position:
+        absolute;
+
+    inset:
+        0;
 
     background:
         radial-gradient(
             circle at center,
-            rgba(0, 229, 255, 0.12),
+            rgba(0,229,255,0.12),
             transparent 45%
         );
 
-    pointer-events: none;
+    pointer-events:
+        none;
 }
 
 .dream-content {
-    position: relative;
+    position:
+        relative;
 
-    max-width: 800px;
+    max-width:
+        800px;
 }
 
 .dream-content h2 {
-    margin: 25px 0;
+    margin:
+        25px 0;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
     font-size:
-        clamp(45px, 7vw, 90px);
+        clamp(45px,7vw,90px);
 
-    line-height: 1;
+    line-height:
+        1;
 }
 
 .dream-content h2 span {
-    display: block;
+    display:
+        block;
 
-    color: var(--a3);
+    color:
+        var(--a3);
 }
 
 .dream-content p {
-    max-width: 600px;
+    max-width:
+        600px;
 
-    margin: 20px auto;
+    margin:
+        20px auto;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    line-height: 1.9;
+    line-height:
+        1.9;
 }
 
 .future-word {
-    position: absolute;
+    position:
+        absolute;
 
-    top: 50%;
-    left: 50%;
+    top:
+        50%;
+
+    left:
+        50%;
 
     transform:
-        translate(-50%, -50%);
+        translate(-50%,-50%);
 
-    z-index: -1;
+    z-index:
+        -1;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
     font-size:
-        clamp(80px, 18vw, 220px);
+        clamp(80px,18vw,220px);
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    color: transparent;
+    color:
+        transparent;
 
     -webkit-text-stroke:
-        1px rgba(255, 255, 255, 0.07);
+        1px
+        rgba(255,255,255,0.07);
 }
 
 
@@ -1980,35 +2405,54 @@ button {
 ========================================================= */
 
 .final-section {
-    min-height: 90vh;
+    min-height:
+        90vh;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display:
+        flex;
 
-    flex-direction: column;
+    align-items:
+        center;
 
-    text-align: center;
+    justify-content:
+        center;
+
+    flex-direction:
+        column;
+
+    text-align:
+        center;
 }
 
 .final-orbit {
-    width: 200px;
-    height: 200px;
+    width:
+        200px;
 
-    position: relative;
+    height:
+        200px;
 
-    margin-bottom: 50px;
+    position:
+        relative;
+
+    margin-bottom:
+        50px;
 }
 
 .final-orbit div {
-    position: absolute;
+    position:
+        absolute;
 
-    inset: 50px;
+    inset:
+        50px;
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
-    display: grid;
-    place-items: center;
+    display:
+        grid;
+
+    place-items:
+        center;
 
     background:
         radial-gradient(
@@ -2018,92 +2462,125 @@ button {
         );
 
     box-shadow:
-        0 0 70px var(--a1);
+        0 0 70px
+        var(--a1);
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    font-size: 40px;
+    font-size:
+        40px;
 }
 
 .final-orbit span {
-    position: absolute;
-    inset: 0;
+    position:
+        absolute;
+
+    inset:
+        0;
 
     border:
-        1px solid rgba(255, 255, 255, 0.20);
+        1px solid
+        rgba(255,255,255,0.20);
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 }
 
 .final-orbit span:nth-child(1) {
     animation:
-        finalOrbitX 7s linear infinite;
+        finalOrbitX
+        7s linear infinite;
 }
 
 .final-orbit span:nth-child(2) {
     animation:
-        finalOrbitY 10s linear infinite reverse;
+        finalOrbitY
+        10s linear infinite reverse;
 }
 
 .final-orbit span:nth-child(3) {
     animation:
-        finalOrbitZ 14s linear infinite;
+        finalOrbitZ
+        14s linear infinite;
 }
 
 @keyframes finalOrbitX {
     to {
-        transform: rotateX(360deg);
+        transform:
+            rotateX(360deg);
     }
 }
 
 @keyframes finalOrbitY {
     to {
-        transform: rotateY(360deg);
+        transform:
+            rotateY(360deg);
     }
 }
 
 @keyframes finalOrbitZ {
     to {
-        transform: rotate(360deg);
+        transform:
+            rotate(360deg);
     }
 }
 
 .final-section > p {
-    color: #66667b;
+    color:
+        #66667b;
 
-    font-size: 9px;
-    letter-spacing: 4px;
+    font-size:
+        9px;
+
+    letter-spacing:
+        4px;
 }
 
 .final-section h2 {
-    margin: 25px 0 40px;
+    margin:
+        25px 0 40px;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
     font-size:
-        clamp(35px, 6vw, 70px);
+        clamp(35px,6vw,70px);
 }
 
 .final-section h2 span {
-    display: block;
+    display:
+        block;
 
-    color: var(--a2);
+    color:
+        var(--a2);
 }
 
 .final-section > a {
-    padding: 15px 25px;
+    padding:
+        15px 25px;
 
     border:
-        1px solid var(--a2);
+        1px solid
+        var(--a2);
 
-    border-radius: 50px;
+    border-radius:
+        50px;
 
-    color: #fff;
+    color:
+        #fff;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    font-size: 10px;
-    letter-spacing: 2px;
+    font-size:
+        10px;
+
+    letter-spacing:
+        2px;
 
     transition:
         background 0.3s ease,
@@ -2113,14 +2590,18 @@ button {
 }
 
 .final-section > a:hover {
-    background: var(--a2);
+    background:
+        var(--a2);
 
-    color: #020208;
+    color:
+        #020208;
 
     box-shadow:
-        0 0 30px var(--a2);
+        0 0 30px
+        var(--a2);
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 }
 
 
@@ -2129,7 +2610,8 @@ button {
 ========================================================= */
 
 .reveal {
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
         translateY(60px);
@@ -2140,7 +2622,8 @@ button {
 }
 
 .reveal.active {
-    opacity: 1;
+    opacity:
+        1;
 
     transform:
         translateY(0);
@@ -2152,59 +2635,89 @@ button {
 ========================================================= */
 
 footer {
-    padding: 30px 6vw;
+    padding:
+        30px 6vw;
 
     border-top:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display:
+        flex;
 
-    gap: 20px;
+    align-items:
+        center;
 
-    color: #555568;
+    justify-content:
+        space-between;
 
-    font-family: "Orbitron", sans-serif;
+    gap:
+        20px;
 
-    font-size: 8px;
-    letter-spacing: 2px;
+    color:
+        #555568;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        2px;
 }
 
 .footer-left,
 .footer-right {
-    flex: 1;
+    flex:
+        1;
 }
 
 .footer-right {
-    text-align: right;
+    text-align:
+        right;
 }
 
 .footer-socials {
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items:
+        center;
 
-    gap: 14px;
+    justify-content:
+        center;
+
+    gap:
+        14px;
 }
 
 .footer-socials a {
-    width: 45px;
-    height: 45px;
+    width:
+        45px;
 
-    display: grid;
-    place-items: center;
+    height:
+        45px;
 
-    color: #fff;
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    color:
+        #fff;
 
     border:
-        1px solid rgba(255, 255, 255, 0.13);
+        1px solid
+        rgba(255,255,255,0.13);
 
-    border-radius: 14px;
+    border-radius:
+        14px;
 
     background:
-        rgba(255, 255, 255, 0.04);
+        rgba(255,255,255,0.04);
 
     backdrop-filter:
         blur(15px);
@@ -2214,59 +2727,72 @@ footer {
 }
 
 .footer-socials i {
-    font-size: 20px;
+    font-size:
+        20px;
 }
 
 .footer-socials a:nth-child(1):hover {
-    color: #ff4db8;
+    color:
+        #ff4db8;
 
-    border-color: #ff4db8;
+    border-color:
+        #ff4db8;
 
     transform:
         translateY(-7px)
         scale(1.08);
 
     box-shadow:
-        0 0 25px rgba(255, 77, 184, 0.40);
+        0 0 25px
+        rgba(255,77,184,0.40);
 }
 
 .footer-socials a:nth-child(2):hover {
-    color: #00f2ea;
+    color:
+        #00f2ea;
 
-    border-color: #00f2ea;
+    border-color:
+        #00f2ea;
 
     transform:
         translateY(-7px)
         scale(1.08);
 
     box-shadow:
-        0 0 25px rgba(0, 242, 234, 0.40);
+        0 0 25px
+        rgba(0,242,234,0.40);
 }
 
 .footer-socials a:nth-child(3):hover {
-    color: #4f8cff;
+    color:
+        #4f8cff;
 
-    border-color: #4f8cff;
+    border-color:
+        #4f8cff;
 
     transform:
         translateY(-7px)
         scale(1.08);
 
     box-shadow:
-        0 0 25px rgba(79, 140, 255, 0.40);
+        0 0 25px
+        rgba(79,140,255,0.40);
 }
 
 .footer-socials a:nth-child(4):hover {
-    color: #fff;
+    color:
+        #fff;
 
-    border-color: #fff;
+    border-color:
+        #fff;
 
     transform:
         translateY(-7px)
         scale(1.08);
 
     box-shadow:
-        0 0 25px rgba(255, 255, 255, 0.35);
+        0 0 25px
+        rgba(255,255,255,0.35);
 }
 
 
@@ -2277,41 +2803,47 @@ footer {
 @media (max-width: 1000px) {
 
     .story-nav {
-        padding: 0 4vw;
+        padding:
+            0 4vw;
     }
 
     .story-nav-title {
-        display: none;
+        display:
+            none;
     }
 
     .intro-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .story-photo img {
-        height: 540px;
+        height:
+            540px;
     }
 
     .facts-grid {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
     .memory-grid {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
     .memory-card.wide {
-        grid-column: span 2;
+        grid-column:
+            span 2;
     }
 
     .mindset-card {
         grid-template-columns:
-            minmax(0, 1fr)
+            minmax(0,1fr)
             240px;
 
-        padding: 55px 35px;
+        padding:
+            55px 35px;
     }
 }
 
@@ -2323,18 +2855,24 @@ footer {
 @media (max-width: 768px) {
 
     .mindset-card {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
-        padding: 45px 28px;
+        padding:
+            45px 28px;
     }
 
     .mindset-visual {
-        width: min(300px, 100%);
-        margin: 0 auto;
+        width:
+            min(300px,100%);
+
+        margin:
+            0 auto;
     }
 
     .mindset-stats {
-        gap: 35px;
+        gap:
+            35px;
     }
 }
 
@@ -2346,63 +2884,128 @@ footer {
 @media (max-width: 600px) {
 
     .story-nav {
-        height: 70px;
+        height:
+            70px;
 
         padding:
             0 18px;
     }
 
     .story-logo {
-        width: 38px;
-        height: 38px;
+        width:
+            38px;
+
+        height:
+            38px;
     }
 
     .back-btn {
-        padding: 9px 12px;
+        padding:
+            9px 12px;
 
-        font-size: 8px;
+        font-size:
+            8px;
     }
 
     .story-hero {
-        min-height: 100svh;
+        min-height:
+            100svh;
     }
 
     .story-hero h1 {
         font-size:
-            clamp(45px, 14vw, 75px);
+            clamp(45px,14vw,75px);
 
-        letter-spacing: -3px;
+        letter-spacing:
+            -3px;
     }
 
+    /* IMPORTANT:
+       Keep orb centered even when story.js applies parallax.
+    */
+
     .hero-orb {
-        width: 300px;
-        height: 300px;
+        width:
+            300px;
+
+        height:
+            300px;
+
+        left:
+            50%;
+
+        top:
+            50%;
+
+        margin-left:
+            -150px;
+
+        margin-top:
+            -150px;
     }
 
     .orb-core {
-        width: 85px;
-        height: 85px;
+        width:
+            85px;
 
-        font-size: 35px;
+        height:
+            85px;
+
+        margin-left:
+            -42.5px;
+
+        margin-top:
+            -42.5px;
+
+        font-size:
+            35px;
     }
 
     .hero-orb .ring-one {
-        width: 150px;
-        height: 150px;
+        width:
+            150px;
+
+        height:
+            150px;
+
+        margin-left:
+            -75px;
+
+        margin-top:
+            -75px;
     }
 
     .hero-orb .ring-two {
-        width: 220px;
-        height: 220px;
+        width:
+            220px;
+
+        height:
+            220px;
+
+        margin-left:
+            -110px;
+
+        margin-top:
+            -110px;
     }
 
     .hero-orb .ring-three {
-        width: 300px;
-        height: 300px;
+        width:
+            300px;
+
+        height:
+            300px;
+
+        margin-left:
+            -150px;
+
+        margin-top:
+            -150px;
     }
 
     .story-section {
-        width: min(92%, 1200px);
+        width:
+            min(92%,1200px);
 
         padding:
             100px 0;
@@ -2410,94 +3013,116 @@ footer {
 
     .section-heading h2 {
         font-size:
-            clamp(34px, 10vw, 55px);
+            clamp(34px,10vw,55px);
 
-        margin-bottom: 45px;
+        margin-bottom:
+            45px;
     }
 
     .story-photo img {
-        height: 460px;
+        height:
+            460px;
     }
 
     .large-text {
-        font-size: 26px;
+        font-size:
+            26px;
     }
 
     .facts-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .memory-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
-        grid-auto-rows: 250px;
+        grid-auto-rows:
+            250px;
     }
 
     .memory-card.tall {
-        grid-row: span 1;
+        grid-row:
+            span 1;
     }
 
     .memory-card.wide {
-        grid-column: span 1;
+        grid-column:
+            span 1;
     }
 
     .mindset-card {
-        padding: 40px 22px;
+        padding:
+            40px 22px;
     }
 
     .mindset-card h2 {
         font-size:
-            clamp(38px, 11vw, 65px);
+            clamp(38px,11vw,65px);
     }
 
     .mindset-stats {
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        gap: 25px;
+        gap:
+            25px;
 
-        margin-top: 40px;
+        margin-top:
+            40px;
     }
 
     .timeline-item {
         grid-template-columns:
             40px
-            minmax(0, 1fr);
+            minmax(0,1fr);
 
-        gap: 15px;
+        gap:
+            15px;
     }
 
     .timeline-dot {
-        width: 40px;
-        height: 40px;
+        width:
+            40px;
+
+        height:
+            40px;
     }
 
     .timeline::before {
-        left: 20px;
+        left:
+            20px;
     }
 
     .timeline-card {
-        padding: 22px;
+        padding:
+            22px;
     }
 
     .timeline-card h3 {
-        font-size: 17px;
+        font-size:
+            17px;
     }
 
     .timeline-card p {
-        font-size: 13px;
+        font-size:
+            13px;
     }
 
     .dream-section {
-        min-height: 650px;
+        min-height:
+            650px;
     }
 
     .dream-content h2 {
         font-size:
-            clamp(40px, 11vw, 70px);
+            clamp(40px,11vw,70px);
     }
 
     .final-section {
-        min-height: 80vh;
+        min-height:
+            80vh;
 
         padding:
             80px 20px;
@@ -2507,24 +3132,30 @@ footer {
         padding:
             30px 20px 40px;
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        text-align: center;
+        text-align:
+            center;
     }
 
     .footer-left,
     .footer-right {
-        flex: auto;
+        flex:
+            auto;
 
-        text-align: center;
+        text-align:
+            center;
     }
 
     .footer-socials {
-        order: 2;
+        order:
+            2;
     }
 
     .cursor-glow {
-        display: none;
+        display:
+            none;
     }
 }
 
@@ -2536,29 +3167,41 @@ footer {
 @media (max-width: 420px) {
 
     .story-loader-content h1 {
-        font-size: 31px;
+        font-size:
+            31px;
 
-        letter-spacing: 2px;
+        letter-spacing:
+            2px;
     }
 
     .story-profile,
     .story-profile-ring {
-        width: 105px;
-        height: 105px;
+        width:
+            105px;
+
+        height:
+            105px;
     }
 
     .story-loader-label {
-        font-size: 8px;
-        letter-spacing: 4px;
+        font-size:
+            8px;
+
+        letter-spacing:
+            4px;
     }
 
     .story-loader-content > p {
-        font-size: 7px;
-        letter-spacing: 2px;
+        font-size:
+            7px;
+
+        letter-spacing:
+            2px;
     }
 
     .story-loader-meta {
-        font-size: 6px;
+        font-size:
+            6px;
     }
 
     .story-nav {
@@ -2567,35 +3210,47 @@ footer {
     }
 
     .back-btn {
-        font-size: 7px;
-        padding: 8px 10px;
+        font-size:
+            7px;
+
+        padding:
+            8px 10px;
     }
 
     .eyebrow {
-        font-size: 7px;
-        letter-spacing: 2px;
+        font-size:
+            7px;
 
-        gap: 8px;
+        letter-spacing:
+            2px;
+
+        gap:
+            8px;
     }
 
     .eyebrow span {
-        width: 20px;
+        width:
+            20px;
     }
 
     .story-hero p {
-        font-size: 13px;
+        font-size:
+            13px;
     }
 
     .story-section {
-        width: 92%;
+        width:
+            92%;
     }
 
     .story-photo img {
-        height: 380px;
+        height:
+            380px;
     }
 
     .quote-box {
-        padding: 22px;
+        padding:
+            22px;
     }
 
     .mindset-card {
@@ -2604,25 +3259,34 @@ footer {
     }
 
     .mindset-visual {
-        width: min(260px, 100%);
+        width:
+            min(260px,100%);
     }
 
     .final-orbit {
-        width: 170px;
-        height: 170px;
+        width:
+            170px;
+
+        height:
+            170px;
     }
 
     .final-orbit div {
-        inset: 42px;
+        inset:
+            42px;
     }
 
     .footer-socials {
-        gap: 9px;
+        gap:
+            9px;
     }
 
     .footer-socials a {
-        width: 42px;
-        height: 42px;
+        width:
+            42px;
+
+        height:
+            42px;
     }
 }
 
@@ -2636,9 +3300,17 @@ footer {
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            0.01ms !important;
     }
 }

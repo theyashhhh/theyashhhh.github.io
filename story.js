@@ -5,11 +5,6 @@
 
 "use strict";
 
-
-/* =========================================================
-   DOM READY
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
@@ -33,9 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
             ".fact-card, .timeline-card, .mindset-card"
         );
 
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
+
 
     /* =====================================================
-       RANDOM STORY THEME
+       RANDOM NEON THEME
     ===================================================== */
 
     const colors = [
@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ];
 
-
     let lastColor = -1;
 
 
@@ -86,70 +85,68 @@ document.addEventListener("DOMContentLoaded", () => {
             index === lastColor
         );
 
-
         lastColor = index;
-
 
         const color =
             colors[index];
 
+        const root =
+            document.documentElement;
 
-        document.documentElement.style.setProperty(
+        root.style.setProperty(
             "--a1",
             color[0]
         );
 
-        document.documentElement.style.setProperty(
+        root.style.setProperty(
             "--a2",
             color[1]
         );
 
-        document.documentElement.style.setProperty(
+        root.style.setProperty(
             "--a3",
             color[2]
         );
-
     }
 
 
     changeStoryTheme();
 
 
-    setInterval(
-        changeStoryTheme,
-        7000
-    );
+    /* Theme rotation */
+
+    const themeInterval =
+        setInterval(
+            changeStoryTheme,
+            7000
+        );
 
 
     /* =====================================================
        STORY LOADER
     ===================================================== */
 
+    let loaderHidden = false;
+
     function hideStoryLoader() {
 
-        if (!storyLoader) {
-            return;
-        }
-
-
-        /* Prevent duplicate execution */
-
         if (
-            storyLoader.classList.contains("hide")
+            !storyLoader ||
+            loaderHidden
         ) {
             return;
         }
 
+        loaderHidden = true;
 
-        storyLoader.classList.add("hide");
+        storyLoader.classList.add(
+            "hide"
+        );
 
         storyLoader.setAttribute(
             "aria-hidden",
             "true"
         );
-
-
-        /* Completely remove it after transition */
 
         setTimeout(() => {
 
@@ -158,24 +155,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 storyLoader.style.display =
                     "none";
 
+                storyLoader.style.pointerEvents =
+                    "none";
             }
 
         }, 1100);
-
     }
 
 
-    /*
-       The loader should NEVER permanently block
-       the page.
+    /* Fallback so loader can never block the page */
 
-       Start a fallback timer immediately.
-    */
-
-    const loaderFallback =
+    let loaderFallback =
         setTimeout(
             hideStoryLoader,
-            3200
+            3400
         );
 
 
@@ -183,12 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "load",
         () => {
 
-            clearTimeout(loaderFallback);
-
+            clearTimeout(
+                loaderFallback
+            );
 
             setTimeout(
                 hideStoryLoader,
-                1200
+                1100
             );
 
         },
@@ -203,24 +197,29 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
 
     const stars =
-        document.getElementById("stars");
+        document.getElementById(
+            "stars"
+        );
 
 
     if (stars) {
 
-        /* Clear old stars */
-
         stars.innerHTML = "";
+
+        const fragment =
+            document.createDocumentFragment();
 
 
         for (
             let i = 0;
-            i < 160;
+            i < 170;
             i++
         ) {
 
             const star =
-                document.createElement("span");
+                document.createElement(
+                    "span"
+                );
 
 
             const size =
@@ -249,9 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "#ffffff";
 
             star.style.opacity =
-                String(
-                    Math.random() * 0.7
-                );
+                `${Math.random() * 0.7 + 0.15}`;
 
             star.style.boxShadow =
                 "0 0 8px #ffffff";
@@ -264,16 +261,20 @@ document.addEventListener("DOMContentLoaded", () => {
             star.style.animationDelay =
                 `-${Math.random() * 5}s`;
 
-
-            stars.appendChild(star);
-
+            fragment.appendChild(
+                star
+            );
         }
 
+
+        stars.appendChild(
+            fragment
+        );
     }
 
 
     /* =====================================================
-       STAR ANIMATION
+       STAR ANIMATION STYLE
     ===================================================== */
 
     if (
@@ -283,12 +284,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
 
         const starStyle =
-            document.createElement("style");
-
+            document.createElement(
+                "style"
+            );
 
         starStyle.id =
             "story-dynamic-star-style";
-
 
         starStyle.textContent = `
 
@@ -298,7 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     opacity: .15;
 
-                    transform: scale(.6);
+                    transform:
+                        scale(.6);
 
                 }
 
@@ -306,7 +308,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     opacity: 1;
 
-                    transform: scale(1.4);
+                    transform:
+                        scale(1.4);
 
                 }
 
@@ -314,11 +317,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         `;
 
-
         document.head.appendChild(
             starStyle
         );
-
     }
 
 
@@ -326,90 +327,78 @@ document.addEventListener("DOMContentLoaded", () => {
        REVEAL ANIMATION
     ===================================================== */
 
+    revealElements.forEach(
+        (element, index) => {
+
+            element.style.transitionDelay =
+                `${(index % 5) * 70}ms`;
+
+        }
+    );
+
+
     if (
-        revealElements.length
+        reduceMotion.matches ||
+        !("IntersectionObserver" in window)
     ) {
 
-        /*
-           Make first viewport content visible
-           even if IntersectionObserver behaves
-           differently in some browser.
-        */
-
         revealElements.forEach(
-            (element, index) => {
+            (element) => {
 
-                element.style.transitionDelay =
-                    `${(index % 5) * 70}ms`;
+                element.classList.add(
+                    "active"
+                );
 
             }
         );
 
+    } else {
 
-        if (
-            "IntersectionObserver" in window
-        ) {
+        const revealObserver =
+            new IntersectionObserver(
 
-            const revealObserver =
-                new IntersectionObserver(
+                (entries, observer) => {
 
-                    (entries, observer) => {
+                    entries.forEach(
+                        (entry) => {
 
-                        entries.forEach(
-                            (entry) => {
-
-                                if (
-                                    entry.isIntersecting
-                                ) {
-
-                                    entry.target.classList.add(
-                                        "active"
-                                    );
-
-                                    observer.unobserve(
-                                        entry.target
-                                    );
-
-                                }
-
+                            if (
+                                !entry.isIntersecting
+                            ) {
+                                return;
                             }
-                        );
 
-                    },
+                            entry.target.classList.add(
+                                "active"
+                            );
 
-                    {
-                        threshold: 0.12,
-                        rootMargin:
-                            "0px 0px -40px 0px"
-                    }
+                            observer.unobserve(
+                                entry.target
+                            );
 
+                        }
+                    );
+
+                },
+
+                {
+                    threshold: 0.12,
+
+                    rootMargin:
+                        "0px 0px -40px 0px"
+                }
+            );
+
+
+        revealElements.forEach(
+            (element) => {
+
+                revealObserver.observe(
+                    element
                 );
 
-
-            revealElements.forEach(
-                (element) => {
-
-                    revealObserver.observe(
-                        element
-                    );
-
-                }
-            );
-
-        } else {
-
-            revealElements.forEach(
-                (element) => {
-
-                    element.classList.add(
-                        "active"
-                    );
-
-                }
-            );
-
-        }
-
+            }
+        );
     }
 
 
@@ -417,38 +406,67 @@ document.addEventListener("DOMContentLoaded", () => {
        CURSOR GLOW
     ===================================================== */
 
-    if (cursorGlow) {
+    if (
+        cursorGlow &&
+        !reduceMotion.matches &&
+        window.matchMedia(
+            "(pointer: fine)"
+        ).matches
+    ) {
+
+        let glowFrame = null;
 
         document.addEventListener(
             "mousemove",
             (event) => {
 
-                cursorGlow.style.left =
-                    `${event.clientX}px`;
+                if (glowFrame) {
+                    cancelAnimationFrame(
+                        glowFrame
+                    );
+                }
 
-                cursorGlow.style.top =
-                    `${event.clientY}px`;
+                glowFrame =
+                    requestAnimationFrame(
+                        () => {
+
+                            cursorGlow.style.left =
+                                `${event.clientX}px`;
+
+                            cursorGlow.style.top =
+                                `${event.clientY}px`;
+
+                        }
+                    );
 
             }
         );
-
     }
 
 
     /* =====================================================
        HERO ORB PARALLAX
+       IMPORTANT:
+       CSS centers the orb using margin.
+       JS only moves that already-centered orb.
     ===================================================== */
 
-    if (heroOrb) {
+    if (
+        heroOrb &&
+        !reduceMotion.matches &&
+        window.matchMedia(
+            "(pointer: fine)"
+        ).matches
+    ) {
 
         let orbFrame = null;
-
 
         document.addEventListener(
             "mousemove",
             (event) => {
 
                 if (orbFrame) {
+
                     cancelAnimationFrame(
                         orbFrame
                     );
@@ -463,25 +481,14 @@ document.addEventListener("DOMContentLoaded", () => {
                                 (
                                     window.innerWidth / 2 -
                                     event.clientX
-                                ) / 35;
+                                ) / 70;
 
 
                             const y =
                                 (
                                     window.innerHeight / 2 -
                                     event.clientY
-                                ) / 35;
-
-
-                            heroOrb.style.setProperty(
-                                "--orb-x",
-                                `${x}px`
-                            );
-
-                            heroOrb.style.setProperty(
-                                "--orb-y",
-                                `${y}px`
-                            );
+                                ) / 70;
 
 
                             heroOrb.style.transform =
@@ -493,101 +500,140 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
 
+
+        /* Reset when mouse leaves browser */
+
+        document.addEventListener(
+            "mouseleave",
+            () => {
+
+                heroOrb.style.transform =
+                    "translate3d(0,0,0)";
+
+            }
+        );
+
+    } else if (heroOrb) {
+
+        heroOrb.style.transform =
+            "translate3d(0,0,0)";
     }
 
 
     /* =====================================================
-       3D TILT
+       3D TILT CARDS
     ===================================================== */
 
-    tiltCards.forEach(
-        (card) => {
+    if (
+        !reduceMotion.matches &&
+        window.matchMedia(
+            "(pointer: fine)"
+        ).matches
+    ) {
 
-            let resetTimeout = null;
+        tiltCards.forEach(
+            (card) => {
 
-
-            card.addEventListener(
-                "mousemove",
-                (event) => {
-
-                    const rect =
-                        card.getBoundingClientRect();
-
-
-                    const x =
-                        event.clientX -
-                        rect.left;
+                let tiltFrame = null;
 
 
-                    const y =
-                        event.clientY -
-                        rect.top;
+                card.addEventListener(
+                    "mousemove",
+                    (event) => {
+
+                        if (tiltFrame) {
+                            cancelAnimationFrame(
+                                tiltFrame
+                            );
+                        }
 
 
-                    const centerX =
-                        rect.width / 2;
+                        tiltFrame =
+                            requestAnimationFrame(
+                                () => {
+
+                                    const rect =
+                                        card.getBoundingClientRect();
 
 
-                    const centerY =
-                        rect.height / 2;
+                                    if (
+                                        rect.width === 0 ||
+                                        rect.height === 0
+                                    ) {
+                                        return;
+                                    }
 
 
-                    const rotateY =
-                        (
-                            x - centerX
-                        ) / 30;
+                                    const x =
+                                        event.clientX -
+                                        rect.left;
 
 
-                    const rotateX =
-                        -(
-                            y - centerY
-                        ) / 30;
+                                    const y =
+                                        event.clientY -
+                                        rect.top;
 
 
-                    card.style.transform =
-                        `perspective(900px)
-                         rotateX(${rotateX}deg)
-                         rotateY(${rotateY}deg)
-                         translateY(-5px)`;
+                                    const centerX =
+                                        rect.width / 2;
 
 
-                    if (resetTimeout) {
+                                    const centerY =
+                                        rect.height / 2;
 
-                        clearTimeout(
-                            resetTimeout
-                        );
+
+                                    const rotateY =
+                                        (
+                                            x - centerX
+                                        ) / 35;
+
+
+                                    const rotateX =
+                                        -(
+                                            y - centerY
+                                        ) / 35;
+
+
+                                    card.style.transform =
+                                        `
+                                        perspective(900px)
+                                        rotateX(${rotateX}deg)
+                                        rotateY(${rotateY}deg)
+                                        translateY(-6px)
+                                        `;
+
+                                }
+                            );
 
                     }
-
-                }
-            );
+                );
 
 
-            card.addEventListener(
-                "mouseleave",
-                () => {
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
 
-                    resetTimeout =
-                        setTimeout(
-                            () => {
+                        if (tiltFrame) {
 
-                                card.style.transform =
-                                    "";
+                            cancelAnimationFrame(
+                                tiltFrame
+                            );
+                        }
 
-                            },
-                            20
-                        );
+                        card.style.transform =
+                            "";
 
-                }
-            );
+                    }
+                );
 
-        }
-    );
+            }
+        );
+
+    }
 
 
     /* =====================================================
        MEMORY IMAGE PARALLAX
-       Works only if memory cards exist.
     ===================================================== */
 
     const memoryImages =
@@ -596,162 +642,185 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    memoryImages.forEach(
-        (image) => {
+    if (
+        !reduceMotion.matches &&
+        window.matchMedia(
+            "(pointer: fine)"
+        ).matches
+    ) {
 
-            const parent =
-                image.parentElement;
+        memoryImages.forEach(
+            (image) => {
+
+                const parent =
+                    image.parentElement;
 
 
-            if (!parent) {
-                return;
+                if (!parent) {
+                    return;
+                }
+
+
+                parent.addEventListener(
+                    "mousemove",
+                    (event) => {
+
+                        const rect =
+                            parent.getBoundingClientRect();
+
+
+                        if (
+                            rect.width === 0 ||
+                            rect.height === 0
+                        ) {
+                            return;
+                        }
+
+
+                        const x =
+                            (
+                                event.clientX -
+                                rect.left
+                            ) /
+                            rect.width -
+                            0.5;
+
+
+                        const y =
+                            (
+                                event.clientY -
+                                rect.top
+                            ) /
+                            rect.height -
+                            0.5;
+
+
+                        image.style.transform =
+                            `
+                            scale(1.08)
+                            translate(
+                                ${x * 12}px,
+                                ${y * 12}px
+                            )
+                            `;
+
+                    }
+                );
+
+
+                parent.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        image.style.transform =
+                            "";
+
+                    }
+                );
+
             }
-
-
-            parent.addEventListener(
-                "mousemove",
-                (event) => {
-
-                    const rect =
-                        parent.getBoundingClientRect();
-
-
-                    const x =
-                        (
-                            event.clientX -
-                            rect.left
-                        ) /
-                        rect.width -
-                        0.5;
-
-
-                    const y =
-                        (
-                            event.clientY -
-                            rect.top
-                        ) /
-                        rect.height -
-                        0.5;
-
-
-                    image.style.transform =
-                        `scale(1.08)
-                         translate(
-                            ${x * 12}px,
-                            ${y * 12}px
-                         )`;
-
-                }
-            );
-
-
-            parent.addEventListener(
-                "mouseleave",
-                () => {
-
-                    image.style.transform =
-                        "";
-
-                }
-            );
-
-        }
-    );
+        );
+    }
 
 
     /* =====================================================
        CURSOR TRAIL
     ===================================================== */
 
-    let trailTime = 0;
+    if (
+        !reduceMotion.matches &&
+        window.matchMedia(
+            "(pointer: fine)"
+        ).matches
+    ) {
+
+        let trailTime = 0;
 
 
-    document.addEventListener(
-        "mousemove",
-        (event) => {
+        document.addEventListener(
+            "mousemove",
+            (event) => {
 
-            const now =
-                Date.now();
-
-
-            if (
-                now - trailTime < 50
-            ) {
-
-                return;
-
-            }
+                const now =
+                    Date.now();
 
 
-            trailTime =
-                now;
-
-
-            const dot =
-                document.createElement("span");
-
-
-            dot.className =
-                "story-cursor-trail";
-
-
-            dot.style.left =
-                `${event.clientX}px`;
-
-            dot.style.top =
-                `${event.clientY}px`;
-
-
-            document.body.appendChild(
-                dot
-            );
-
-
-            dot.animate(
-
-                [
-
-                    {
-                        transform:
-                            "translate(-50%, -50%) scale(1)",
-
-                        opacity: 0.8
-
-                    },
-
-                    {
-
-                        transform:
-                            "translate(-50%, -50%) scale(0)",
-
-                        opacity: 0
-
-                    }
-
-                ],
-
-                {
-
-                    duration: 550,
-
-                    easing: "ease-out"
-
+                if (
+                    now - trailTime < 55
+                ) {
+                    return;
                 }
 
-            );
+
+                trailTime =
+                    now;
 
 
-            setTimeout(
-                () => {
+                const dot =
+                    document.createElement(
+                        "span"
+                    );
 
-                    dot.remove();
 
-                },
-                600
-            );
+                dot.className =
+                    "story-cursor-trail";
 
-        }
-    );
+
+                dot.style.left =
+                    `${event.clientX}px`;
+
+                dot.style.top =
+                    `${event.clientY}px`;
+
+
+                document.body.appendChild(
+                    dot
+                );
+
+
+                dot.animate(
+
+                    [
+                        {
+                            transform:
+                                "translate(-50%,-50%) scale(1)",
+
+                            opacity:
+                                0.85
+                        },
+
+                        {
+                            transform:
+                                "translate(-50%,-50%) scale(0)",
+
+                            opacity:
+                                0
+                        }
+                    ],
+
+                    {
+                        duration:
+                            550,
+
+                        easing:
+                            "ease-out"
+                    }
+
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        dot.remove();
+
+                    },
+                    600
+                );
+
+            }
+        );
+    }
 
 
     /* =====================================================
@@ -765,7 +834,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
 
         const cursorStyle =
-            document.createElement("style");
+            document.createElement(
+                "style"
+            );
 
 
         cursorStyle.id =
@@ -779,7 +850,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 position: fixed;
 
                 width: 5px;
-
                 height: 5px;
 
                 border-radius: 50%;
@@ -788,10 +858,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 z-index: 99999;
 
-                background: var(--a2);
+                background:
+                    var(--a2);
 
                 box-shadow:
-                    0 0 15px var(--a2);
+                    0 0 15px
+                    var(--a2);
 
             }
 
@@ -801,67 +873,78 @@ document.addEventListener("DOMContentLoaded", () => {
         document.head.appendChild(
             cursorStyle
         );
-
     }
 
 
     /* =====================================================
-       SCROLL DEPTH
+       AURORA SCROLL EFFECT
+       FIXED:
+       Does NOT keep adding margin repeatedly.
     ===================================================== */
 
-    let scrollFrame = null;
+    if (
+        !reduceMotion.matches
+    ) {
+
+        let scrollFrame = null;
 
 
-    window.addEventListener(
-        "scroll",
-        () => {
+        window.addEventListener(
+            "scroll",
+            () => {
 
-            if (scrollFrame) {
-                cancelAnimationFrame(
-                    scrollFrame
-                );
+                if (scrollFrame) {
+
+                    cancelAnimationFrame(
+                        scrollFrame
+                    );
+                }
+
+
+                scrollFrame =
+                    requestAnimationFrame(
+                        () => {
+
+                            const scroll =
+                                window.scrollY;
+
+
+                            document
+                                .querySelectorAll(
+                                    ".aurora"
+                                )
+                                .forEach(
+                                    (
+                                        element,
+                                        index
+                                    ) => {
+
+                                        const speed =
+                                            (index + 1) *
+                                            0.018;
+
+
+                                        element.style.transform =
+                                            `
+                                            translate3d(
+                                                0,
+                                                ${scroll * speed}px,
+                                                0
+                                            )
+                                            `;
+
+                                    }
+                                );
+
+                        }
+                    );
+
+            },
+            {
+                passive: true
             }
-
-
-            scrollFrame =
-                requestAnimationFrame(
-                    () => {
-
-                        const scroll =
-                            window.scrollY;
-
-
-                        document
-                            .querySelectorAll(
-                                ".aurora"
-                            )
-                            .forEach(
-                                (
-                                    element,
-                                    index
-                                ) => {
-
-                                    const speed =
-                                        (
-                                            index + 1
-                                        ) *
-                                        0.012;
-
-
-                                    element.style.marginTop =
-                                        `${scroll * speed}px`;
-
-                                }
-                            );
-
-                    }
-                );
-
-        },
-        {
-            passive: true
-        }
-    );
+        );
+    }
 
 
     /* =====================================================
@@ -889,9 +972,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             !href ||
                             href === "#"
                         ) {
-
                             return;
-
                         }
 
 
@@ -910,8 +991,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                         target.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
+                            behavior:
+                                "smooth",
+
+                            block:
+                                "start"
                         });
 
                     }
@@ -922,12 +1006,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       IMAGE FALLBACK
-       Only activates if a local image genuinely fails.
+       IMAGE ERROR HANDLING
     ===================================================== */
 
     document
-        .querySelectorAll("img")
+        .querySelectorAll(
+            "img"
+        )
         .forEach(
             (image) => {
 
@@ -935,19 +1020,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     "error",
                     () => {
 
-                        /*
-                           Do not replace images with an
-                           unrelated external photo.
-                           Hide the broken image instead.
-                        */
+                        image.dataset.imageError =
+                            "true";
 
                         image.style.opacity =
                             "0";
 
-
-                        image.setAttribute(
-                            "data-image-error",
-                            "true"
+                        console.warn(
+                            "Image failed to load:",
+                            image.src
                         );
 
                     },
@@ -961,11 +1042,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       VIDEO SAFETY
+       VIDEO SETUP
     ===================================================== */
 
     document
-        .querySelectorAll("video")
+        .querySelectorAll(
+            "video"
+        )
         .forEach(
             (video) => {
 
@@ -974,11 +1057,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     ""
                 );
 
-
-                /*
-                   Try autoplay where allowed.
-                   Muted autoplay is generally permitted.
-                */
 
                 if (
                     video.autoplay &&
@@ -997,7 +1075,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         playPromise.catch(
                             () => {
-                                /* Browser blocked autoplay. */
+                                /* Autoplay blocked */
                             }
                         );
 
@@ -1017,13 +1095,18 @@ document.addEventListener("DOMContentLoaded", () => {
         "visibilitychange",
         () => {
 
-            const animations =
+            const animatedElements =
                 document.querySelectorAll(
-                    ".aurora, .story-neon-orb, .story-light-beam"
+                    `
+                    .aurora,
+                    .story-neon-orb,
+                    .story-light-beam,
+                    #stars span
+                    `
                 );
 
 
-            animations.forEach(
+            animatedElements.forEach(
                 (element) => {
 
                     element.style.animationPlayState =
@@ -1081,62 +1164,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       REDUCED MOTION
+       REDUCED MOTION LIVE CHECK
     ===================================================== */
 
-    const reduceMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        );
-
-
-    if (
-        reduceMotion.matches
-    ) {
-
-        document
-            .querySelectorAll(
-                ".reveal"
-            )
-            .forEach(
-                (element) => {
-
-                    element.classList.add(
-                        "active"
-                    );
-
-                }
-            );
-
-    }
-
-
-    reduceMotion.addEventListener?.(
-        "change",
+    const handleMotionChange =
         (event) => {
 
             if (
                 event.matches
             ) {
 
-                document
-                    .querySelectorAll(
-                        ".reveal"
-                    )
-                    .forEach(
-                        (element) => {
+                revealElements.forEach(
+                    (element) => {
 
-                            element.classList.add(
-                                "active"
-                            );
+                        element.classList.add(
+                            "active"
+                        );
 
-                        }
-                    );
+                    }
+                );
 
+
+                if (heroOrb) {
+
+                    heroOrb.style.transform =
+                        "translate3d(0,0,0)";
+                }
             }
+        };
 
-        }
-    );
+
+    if (
+        typeof reduceMotion.addEventListener ===
+        "function"
+    ) {
+
+        reduceMotion.addEventListener(
+            "change",
+            handleMotionChange
+        );
+
+    } else if (
+        typeof reduceMotion.addListener ===
+        "function"
+    ) {
+
+        reduceMotion.addListener(
+            handleMotionChange
+        );
+
+    }
 
 
     /* =====================================================
@@ -1148,7 +1225,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     document
-        .querySelectorAll("footer")
+        .querySelectorAll(
+            "footer"
+        )
         .forEach(
             (footer) => {
 
@@ -1158,14 +1237,24 @@ document.addEventListener("DOMContentLoaded", () => {
                         `© ${currentYear}`
                     );
 
-                footer.innerHTML =
-                    footer.innerHTML.replace(
-                        /YASHH\s*©\s*2026/g,
-                        `YASHH © ${currentYear}`
-                    );
-
             }
         );
+
+
+    /* =====================================================
+       CLEANUP THEME ON PAGE UNLOAD
+    ===================================================== */
+
+    window.addEventListener(
+        "beforeunload",
+        () => {
+
+            clearInterval(
+                themeInterval
+            );
+
+        }
+    );
 
 
     /* =====================================================
@@ -1173,18 +1262,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
 
     console.log(`
-╔══════════════════════════════════╗
-║                                  ║
-║       YASHH'S STORY              ║
-║                                  ║
-║   The story is still being       ║
-║   written...                     ║
-║                                  ║
-║   Neon theme: ACTIVE             ║
-║   Loader: SAFE                   ║
-║   Reveal system: ACTIVE          ║
-║                                  ║
-╚══════════════════════════════════╝
+╔══════════════════════════════════════╗
+║                                      ║
+║          YASHH'S STORY               ║
+║                                      ║
+║      THE STORY IS STILL ALIVE        ║
+║                                      ║
+║      Neon theme: ACTIVE              ║
+║      Loader: SAFE                    ║
+║      Star field: ACTIVE              ║
+║      Orb center: FIXED               ║
+║      Reveal system: ACTIVE           ║
+║                                      ║
+╚══════════════════════════════════════╝
     `);
 
 });
