@@ -2,29 +2,87 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Yashh's personal story — memories, chapters, mindset, dreams and the journey behind the screen."
+    >
+
+    <meta
+        name="theme-color"
+        content="#03030a"
+    >
 
     <title>Yashh — My Story</title>
 
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2300e5ff'/%3E%3Cstop offset='.5' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23ff2bd6'/%3E%3C/linearGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='3' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='%23050712'/%3E%3Cpath d='M50 72C39 64 29 63 20 67V31c10-4 20-3 30 5z' fill='none' stroke='url(%23g)' stroke-width='6' stroke-linejoin='round' filter='url(%23glow)'/%3E%3Cpath d='M50 72c11-8 21-9 30-5V31c-10-4-20-3-30 5z' fill='none' stroke='url(%23g)' stroke-width='6' stroke-linejoin='round' filter='url(%23glow)'/%3E%3Cpath d='M73 16l2.5 6.5L82 25l-6.5 2.5L73 34l-2.5-6.5L64 25l6.5-2.5z' fill='%23fff' filter='url(%23glow)'/%3E%3C/svg%3E">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2300e5ff'/%3E%3Cstop offset='.5' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23ff2bd6'/%3E%3C/linearGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='3' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='%23050712'/%3E%3Cpath d='M50 72C39 64 29 63 20 67V31c10-4 20-3 30 5z' fill='none' stroke='url(%23g)' stroke-width='6' stroke-linejoin='round' filter='url(%23glow)'/%3E%3Cpath d='M50 72c11-8 21-9 30-5V31c-10-4-20-3-30 5z' fill='none' stroke='url(%23g)' stroke-width='6' stroke-linejoin='round' filter='url(%23glow)'/%3E%3Cpath d='M73 16l2.5 6.5L82 25l-6.5 2.5L73 34l-2.5-6.5L64 25l6.5-2.5z' fill='%23fff' filter='url(%23glow)'/%3E%3C/svg%3E"
+    >
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"
+    >
 
-    <link rel="stylesheet" href="story.css">
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         STORY CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="story.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- BACKGROUND -->
+
+    <!-- =====================================================
+         GLOBAL BACKGROUND
+    ====================================================== -->
+
     <div class="space-bg"></div>
 
     <div class="aurora aurora-one"></div>
@@ -33,11 +91,19 @@
 
     <div id="stars"></div>
 
-    <!-- =====================================================
-     STORY PAGE — CINEMATIC LOADER
-===================================================== -->
-    <div id="storyLoader">
+    <div class="cursor-glow"></div>
 
+
+    <!-- =====================================================
+         STORY LOADER
+         IMPORTANT:
+         JS + CSS BOTH USE #storyLoader
+    ====================================================== -->
+
+    <div
+        id="storyLoader"
+        aria-hidden="false"
+    >
 
         <div class="story-loader-bg">
 
@@ -45,43 +111,58 @@
             <div class="story-neon-orb story-orb-2"></div>
             <div class="story-neon-orb story-orb-3"></div>
 
+
             <div class="story-light-beam beam-1"></div>
             <div class="story-light-beam beam-2"></div>
 
+
             <div class="story-particles">
+
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
+
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
+
             </div>
 
         </div>
 
 
-
         <div class="story-loader-content">
+
+
+            <!-- PROFILE -->
 
             <div class="story-profile">
 
                 <div class="story-profile-ring">
 
-                    <img src="IMG/01.png" alt="Yashh">
+                    <img
+                        src="IMG/01.png"
+                        alt="Yashh"
+                        loading="eager"
+                    >
 
                 </div>
 
             </div>
 
 
+            <!-- LABEL -->
+
             <div class="story-loader-label">
                 ENTERING THE STORY
             </div>
 
+
+            <!-- TITLE -->
 
             <h1>
                 YASHH'S
@@ -89,15 +170,24 @@
             </h1>
 
 
-            <div class="story-progress">
+            <!-- PROGRESS -->
+
+            <div
+                class="story-progress"
+                aria-label="Loading story"
+            >
                 <div></div>
             </div>
 
+
+            <!-- LOADER MESSAGE -->
 
             <p>
                 UNLOCKING MEMORIES • CHAPTERS • DREAMS
             </p>
 
+
+            <!-- META -->
 
             <div class="story-loader-meta">
 
@@ -114,59 +204,94 @@
     </div>
 
 
-    <div class="cursor-glow"></div>
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
 
-
-    <!-- NAVBAR -->
     <header class="story-nav">
 
-        <div class="story-logo">
+        <a
+            href="index.html"
+            class="story-logo"
+            aria-label="Back to Yashh World"
+        >
             Y<span>H</span>
-        </div>
+        </a>
+
 
         <div class="story-nav-title">
             YASHH / STORY
         </div>
 
-        <a href="index.html" class="back-btn">
+
+        <a
+            href="index.html"
+            class="back-btn"
+        >
             ← BACK TO WORLD
         </a>
 
     </header>
 
 
+    <!-- =====================================================
+         MAIN STORY
+    ====================================================== -->
+
     <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
         <section class="story-hero">
 
             <div class="hero-particles"></div>
 
+
             <div class="hero-content reveal">
 
                 <div class="eyebrow">
+
                     <span></span>
+
                     A LITTLE PIECE OF MY UNIVERSE
+
                     <span></span>
+
                 </div>
+
 
                 <h1>
                     THIS IS
                     <span>MY STORY.</span>
                 </h1>
 
+
                 <p>
                     Not everything about me can fit inside a
                     portfolio. Some things need a story.
                 </p>
 
+
                 <div class="scroll-indicator">
+
                     <span></span>
+
                     SCROLL TO EXPLORE
+
                 </div>
 
             </div>
 
-            <div class="hero-orb">
+
+            <!-- HERO ORB -->
+
+            <div
+                class="hero-orb"
+                aria-hidden="true"
+            >
 
                 <div class="orb-core">
                     Y
@@ -181,16 +306,24 @@
         </section>
 
 
-      
-        <section class="story-section intro-section reveal">
+        <!-- =================================================
+             INTRODUCTION
+        ================================================== -->
+
+        <section
+            class="story-section intro-section reveal"
+        >
 
             <div class="section-number">
                 01
             </div>
 
+
             <div class="section-heading">
 
-                <p>THE PERSON BEHIND THE SCREEN</p>
+                <p>
+                    THE PERSON BEHIND THE SCREEN
+                </p>
 
                 <h2>
                     More than
@@ -199,11 +332,19 @@
 
             </div>
 
+
             <div class="intro-grid">
+
+
+                <!-- PHOTO -->
 
                 <div class="story-photo big-photo">
 
-                    <img src="IMG/story img 2.png" alt="Yashh ">
+                    <img
+                        src="IMG/story img 2.png"
+                        alt="Yashh"
+                        loading="lazy"
+                    >
 
                     <div class="photo-label">
                         YASHH / 001
@@ -211,33 +352,109 @@
 
                 </div>
 
+
+                <!-- TEXT -->
+
                 <div class="story-text">
 
                     <p class="large-text">
-                        Hey, I'm <strong>Yashh.</strong>
+                        Hey, I'm
+                        <strong>Yashh.</strong>
                     </p>
 
-                    <p>
-                        I’m in 12th, preparing for JEE, I write when I can’t explain what
-                        I feel, poetry, stories aur woh saari baatein jo shayad kisi ko keh nahi pata ✍️🌙 . <b>Some of my best memories are with people I will never talk to again.</b>
-                        But i'll always cherish those moments. I'm scared of attachments because I believe every attachment that I have will finally break my heart or leave me.The only time I cry is when I loose the people that I love.<br>
-                        wanting to be an actor, a filmmaker, write books, be a musician, a poet, a therapist, I wanna heal people, be a teacher in kids' classes, a tech guru, someone's mum, a director, a model, a Realtor, a wife, an editor, and also want to be a farmer, who grows only beautiful flowers. How I love flowers!! And yes, I also love to disappear. And there have been days I wonder if all these are not too much for just me? But the funny thing is, I have lived through all these days battling with this question, while becoming each and every thing on my list. The only thing left for me to be on my list, is a teacher (Teaching children) I still look forward to doing that someday. However, I see so many new things crawling into my list to make up a new list for me. And it a beautiful thing journeying through time, and becoming each and every thing.
-                       <u> A collage of everything I ever wanted to be 🤌❤️.</u> <br>
-                       
-                    </p>
 
                     <p>
-                        <b>You become that you hate💗🤞.</b>
+                        I’m in 12th, preparing for JEE, I write when
+                        I can’t explain what I feel, poetry, stories
+                        aur woh saari baatein jo shayad kisi ko keh
+                        nahi pata ✍️🌙.
                     </p>
+
+
+                    <p>
+                        <b>
+                            Some of my best memories are with people
+                            I will never talk to again.
+                        </b>
+                        But I'll always cherish those moments.
+                    </p>
+
+
+                    <p>
+                        I'm scared of attachments because I believe
+                        every attachment that I have will finally
+                        break my heart or leave me.
+                        The only time I cry is when I lose the
+                        people that I love.
+                    </p>
+
+
+                    <p>
+                        Wanting to be an actor, a filmmaker, write
+                        books, be a musician, a poet, a therapist,
+                        I wanna heal people, be a teacher in kids'
+                        classes, a tech guru, someone's mum, a
+                        director, a model, a Realtor, a wife, an
+                        editor, and also want to be a farmer, who
+                        grows only beautiful flowers.
+                    </p>
+
+
+                    <p>
+                        How I love flowers!
+                        And yes, I also love to disappear.
+                    </p>
+
+
+                    <p>
+                        And there have been days I wonder if all
+                        these are not too much for just me?
+                        But the funny thing is, I have lived through
+                        all these days battling with this question,
+                        while becoming each and every thing on my
+                        list.
+                    </p>
+
+
+                    <p>
+                        The only thing left for me to be on my list
+                        is a teacher — teaching children.
+                        I still look forward to doing that someday.
+                    </p>
+
+
+                    <p>
+                        However, I see so many new things crawling
+                        into my list to make up a new list for me.
+                        And it's a beautiful thing journeying
+                        through time, and becoming each and every
+                        thing.
+                    </p>
+
+
+                    <p>
+                        <u>
+                            A collage of everything I ever wanted
+                            to be 🤌❤️.
+                        </u>
+                    </p>
+
+
+                    <p>
+                        <b>
+                            You become that you hate 💗🤞.
+                        </b>
+                    </p>
+
 
                     <div class="quote-box">
 
                         <span>“</span>
 
                         <p>
-                            “Somewhere between the life I’m living and the life I dream about,
-                            there’s a version of me waiting to be discovered.”
-
+                            Somewhere between the life I’m living
+                            and the life I dream about, there’s a
+                            version of me waiting to be discovered.
                         </p>
 
                     </div>
@@ -249,16 +466,24 @@
         </section>
 
 
-       
-        <section class="story-section timeline-section reveal">
+        <!-- =================================================
+             TIMELINE
+        ================================================== -->
+
+        <section
+            class="story-section timeline-section reveal"
+        >
 
             <div class="section-number">
                 02
             </div>
 
+
             <div class="section-heading">
 
-                <p>THE JOURNEY</p>
+                <p>
+                    THE JOURNEY
+                </p>
 
                 <h2>
                     Chapters of
@@ -270,6 +495,9 @@
 
             <div class="timeline">
 
+
+                <!-- CHAPTER 01 -->
+
                 <div class="timeline-item">
 
                     <div class="timeline-dot">
@@ -278,7 +506,9 @@
 
                     <div class="timeline-card">
 
-                        <small>THE BEGINNING</small>
+                        <small>
+                            THE BEGINNING
+                        </small>
 
                         <h3>
                             Curiosity Started Everything
@@ -295,6 +525,8 @@
                 </div>
 
 
+                <!-- CHAPTER 02 -->
+
                 <div class="timeline-item">
 
                     <div class="timeline-dot">
@@ -303,7 +535,9 @@
 
                     <div class="timeline-card">
 
-                        <small>THE DISCOVERY</small>
+                        <small>
+                            THE DISCOVERY
+                        </small>
 
                         <h3>
                             Entering The Digital World
@@ -321,6 +555,8 @@
                 </div>
 
 
+                <!-- CHAPTER 03 -->
+
                 <div class="timeline-item">
 
                     <div class="timeline-dot">
@@ -329,15 +565,18 @@
 
                     <div class="timeline-card">
 
-                        <small>THE PRESENT</small>
+                        <small>
+                            THE PRESENT
+                        </small>
 
                         <h3>
                             Class 12 & Building My Future
                         </h3>
 
                         <p>
-                            Right now I'm studying in Class 12 and preparing for JEE.
-                            while continuing to explore coding,
+                            Right now I'm studying in Class 12
+                            and preparing for JEE, while
+                            continuing to explore coding,
                             design, AI, technology and creative
                             projects.
                         </p>
@@ -347,6 +586,8 @@
                 </div>
 
 
+                <!-- FUTURE -->
+
                 <div class="timeline-item future">
 
                     <div class="timeline-dot">
@@ -355,7 +596,9 @@
 
                     <div class="timeline-card">
 
-                        <small>THE NEXT CHAPTER</small>
+                        <small>
+                            THE NEXT CHAPTER
+                        </small>
 
                         <h3>
                             Still Being Written...
@@ -375,23 +618,33 @@
         </section>
 
 
-        <!-- MINDSET -->
-        <section class="story-section mindset-section reveal">
+        <!-- =================================================
+             MINDSET
+        ================================================== -->
+
+        <section
+            class="story-section mindset-section reveal"
+        >
 
             <div class="section-number">
                 03
             </div>
 
+
             <div class="mindset-card">
+
 
                 <div class="mindset-glow"></div>
 
-              
+
+                <!-- LEFT -->
+
                 <div class="mindset-content">
 
                     <span class="mini-label">
                         MY MINDSET
                     </span>
+
 
                     <h2>
                         Learn.
@@ -400,14 +653,19 @@
                         <span>Repeat.</span>
                     </h2>
 
+
                     <p>
                         I'm not trying to become perfect.
                         I'm trying to become better than
-                        yesterday.<br>
+                        yesterday.
+                        <br><br>
+
                         <b>
-                            "NO one can beat me , I have to be the best thats why I'm the best🪐🛡️"
+                            "NO one can beat me, I have to be
+                            the best thats why I'm the best 🪐🛡️"
                         </b>
                     </p>
+
 
                     <div class="mindset-stats">
 
@@ -431,16 +689,38 @@
                 </div>
 
 
-                <!-- RIGHT SIDE MINDSET VIDEO -->
+                <!-- RIGHT VIDEO -->
+
                 <div class="mindset-visual">
 
-                    <video autoplay muted loop playsinline preload="auto">
-                        <source src="VID/MINDSET.mp4" type="video/mp4">
+                    <video
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                    >
+
+                        <source
+                            src="VID/MINDSET.mp4"
+                            type="video/mp4"
+                        >
+
+                        Your browser does not support video.
                     </video>
 
+
                     <div class="mindset-visual-text">
-                        <span>KEEP GOING</span>
-                        <strong>ONE DAY<br> IT'S PAY OFF</strong>
+
+                        <span>
+                            KEEP GOING
+                        </span>
+
+                        <strong>
+                            ONE DAY<br>
+                            IT'S PAY OFF
+                        </strong>
+
                     </div>
 
                 </div>
@@ -449,16 +729,25 @@
 
         </section>
 
-        <!-- MY GESTURES -->
-        <section class="story-section facts-section reveal">
+
+        <!-- =================================================
+             GESTURES / FACTS
+        ================================================== -->
+
+        <section
+            class="story-section facts-section reveal"
+        >
 
             <div class="section-number">
                 05
             </div>
 
+
             <div class="section-heading">
 
-                <p>BEYOND THE PORTFOLIO</p>
+                <p>
+                    BEYOND THE PORTFOLIO
+                </p>
 
                 <h2>
                     The little
@@ -470,89 +759,282 @@
 
             <div class="facts-grid">
 
-                <div class="fact-card">
-                    <span>01</span>
-                    <h3> <span class="gesture-icon"><i class="fa-solid fa-book-open"></i></span> BOOKHOLIC</h3>
+
+                <!-- BOOKHOLIC -->
+
+                <article class="fact-card">
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+
+                        <span class="gesture-icon">
+                            <i class="fa-solid fa-book-open"></i>
+                        </span>
+
+                        BOOKHOLIC
+
+                    </h3>
+
                     <p>
-                       <b> Lost in pages 📖<br> </b>
-                        Books ke beech sirf stories nahi, apna ek chhota sa world milta hai.
-                        Jitna padhta hoon, utna hi khud ko aur duniya ko thoda better samajhta hoon 🔖✨.
+
+                        <b>
+                            Lost in pages 📖
+                        </b>
+
+                        <br>
+
+                        Books ke beech sirf stories nahi,
+                        apna ek chhota sa world milta hai.
+                        Jitna padhta hoon, utna hi khud ko
+                        aur duniya ko thoda better samajhta
+                        hoon 🔖✨.
+
                     </p>
-                </div>
+
+                </article>
 
 
-                <div class="fact-card">
-                    <span>02</span>
-                    <h3> <span class="gesture-icon"><i class="fa-solid fa-atom"></i></span> ATHEIST</h3>
+                <!-- ATHEIST -->
+
+                <article class="fact-card">
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+
+                        <span class="gesture-icon">
+                            <i class="fa-solid fa-atom"></i>
+                        </span>
+
+                        ATHEIST
+
+                    </h3>
+
                     <p>
-                        <b> I question everything 🙋? <br> </b>
-                        <B>"Do hi vikalp h - ya to Ishwar per chor do ya Ishwar ko."</B><br>
-                        “Agar faith humein ek-dusre se nafrat karna, religion ke naam par ladna, ya un logon ko blindly
-                        follow karna sikhaye jo humein exploit karte hain, then I choose not to follow it.
-                        For me, humanity first, nation first — everything else comes after.” 🇮🇳
+
+                        <b>
+                            I question everything 🙋?
+                        </b>
+
+                        <br>
+
+                        <b>
+                            "Do hi vikalp h - ya to Ishwar
+                            per chor do ya Ishwar ko."
+                        </b>
+
+                        <br>
+
+                        “Agar faith humein ek-dusre se nafrat
+                        karna, religion ke naam par ladna,
+                        ya un logon ko blindly follow karna
+                        sikhaye jo humein exploit karte hain,
+                        then I choose not to follow it.
+
+                        For me, humanity first, nation first —
+                        everything else comes after.” 🇮🇳
 
                     </p>
-                </div>
+
+                </article>
 
 
-                <div class="fact-card">
-                    <span>03</span>
-                    <h3>  <span class="gesture-icon"><i class="fa-solid fa-heart-crack"></i></span> PHILOPHOBIA</h3>
+                <!-- PHILOPHOBIA -->
+
+                <article class="fact-card">
+
+                    <span>
+                        03
+                    </span>
+
+                    <h3>
+
+                        <span class="gesture-icon">
+                            <i class="fa-solid fa-heart-crack"></i>
+                        </span>
+
+                        PHILOPHOBIA
+
+                    </h3>
+
                     <p>
-                      <b>  Fear of falling, not of dreaming💗⭐<br></b>
-                        “losing the person after getting attached" worst part of life.
-                        Feelings hoti toh hain, bas unhe kisi ke saamne kehne ki aadat nahi.” 💖
-                        <b>“Love is a verb, not a noun,”</b> I mean that love is more than a feeling, it is an action. Feelings can change with time and circumstances, but love reveals itself through what I choose to do: listening, caring, supporting, forgiving, staying when things are difficult, and choosing someone again and again. Saying “I love you” is easy; living those words every day is what gives them meaning. To me, love is not something I simply feel, it is something I practice🙋.
+
+                        <b>
+                            Fear of falling, not of dreaming 💗⭐
+                        </b>
+
+                        <br>
+
+                        “Losing the person after getting attached"
+                        worst part of life.
+
+                        Feelings hoti toh hain, bas unhe kisi
+                        ke saamne kehne ki aadat nahi.” 💖
+
+                        <br><br>
+
+                        <b>
+                            “Love is a verb, not a noun.”
+                        </b>
+
+                        I mean that love is more than a feeling,
+                        it is an action.
+
+                        Feelings can change with time and
+                        circumstances, but love reveals itself
+                        through what I choose to do: listening,
+                        caring, supporting, forgiving, staying
+                        when things are difficult, and choosing
+                        someone again and again.
+
+                        Saying “I love you” is easy; living those
+                        words every day is what gives them meaning.
 
                     </p>
-                </div>
+
+                </article>
 
 
-                <div class="fact-card">
-                    <span>04</span>
-                    <h3> <span class="gesture-icon"><i class="fa-solid fa-user-tie"></i></span>   GENTLEMAN</h3>
+                <!-- GENTLEMAN -->
+
+                <article class="fact-card">
+
+                    <span>
+                        04
+                    </span>
+
+                    <h3>
+
+                        <span class="gesture-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </span>
+
+                        GENTLEMAN
+
+                    </h3>
+
                     <p>
-                        <b>Respect is never optional 🙇💗 <br> </b>
-                        “Respect is something I give to everyone, but for girls, it comes with a little more care and
-                        understanding.
-                        <b> Gentleman hona looks ya words se nahi, balki tum kisi ko kaise treat karte ho usse prove
-                            hota hai” 🙇 </b>
+
+                        <b>
+                            Respect is never optional 🙇💗
+                        </b>
+
+                        <br>
+
+                        “Respect is something I give to everyone,
+                        but for girls, it comes with a little more
+                        care and understanding.”
+
+                        <br>
+
+                        <b>
+                            Gentleman hona looks ya words se nahi,
+                            balki tum kisi ko kaise treat karte ho
+                            usse prove hota hai 🙇
+                        </b>
+
                     </p>
-                </div>
+
+                </article>
 
 
-                <div class="fact-card">
-                    <span>05</span>
-                    <h3>  <span class="gesture-icon"><i class="fa-solid fa-child-reaching"></i></span> CHILD-LOVING</h3>
+                <!-- CHILD LOVING -->
+
+                <article class="fact-card">
+
+                    <span>
+                        05
+                    </span>
+
+                    <h3>
+
+                        <span class="gesture-icon">
+                            <i class="fa-solid fa-child-reaching"></i>
+                        </span>
+
+                        CHILD-LOVING
+
+                    </h3>
+
                     <p>
-                        <b>Soft corner for little souls🫶🏻💗<br></b>
-                        “Jahan bhi jaata hoon, kisi na kisi chhote se face se dosti ho hi jaati hai.
-                        Maybe bachchon ki innocence mujhe genuinely pasand hai, isliye unke saath connect karna
-                        naturally easy lagta hai.” 🫶🏻✨
+
+                        <b>
+                            Soft corner for little souls 🫶🏻💗
+                        </b>
+
+                        <br>
+
+                        “Jahan bhi jaata hoon, kisi na kisi
+                        chhote se face se dosti ho hi jaati hai.
+
+                        Maybe bachchon ki innocence mujhe
+                        genuinely pasand hai, isliye unke saath
+                        connect karna naturally easy lagta hai.”
+                        🫶🏻✨
+
                     </p>
-                </div>
+
+                </article>
 
 
-                <div class="fact-card">
-                    <span>06</span>
-                    <h3> <span class="gesture-icon"><i class="fa-solid fa-leaf"></i></span>  ECOPHILE </h3>
+                <!-- ECOPHILE -->
+
+                <article class="fact-card">
+
+                    <span>
+                        06
+                    </span>
+
+                    <h3>
+
+                        <span class="gesture-icon">
+                            <i class="fa-solid fa-leaf"></i>
+                        </span>
+
+                        ECOPHILE
+
+                    </h3>
+
                     <p>
-                      <b>  Nature and their peace🕊️<br></b>
-                        “Nature ke beech rehna mujhe genuinely sukoon deta hai — greenery, open skies aur woh peaceful
-                        silence.
-                        Jahan log sirf view dekhte hain, main uss moment ko feel karta hoon.” 🌿
+
+                        <b>
+                            Nature and their peace 🕊️
+                        </b>
+
+                        <br>
+
+                        “Nature ke beech rehna mujhe genuinely
+                        sukoon deta hai — greenery, open skies
+                        aur woh peaceful silence.
+
+                        Jahan log sirf view dekhte hain,
+                        main uss moment ko feel karta hoon.” 🌿
+
                     </p>
-                </div>
+
+                </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- DREAMS -->
-        <section class="story-section dream-section reveal">
+        <!-- =================================================
+             DREAMS
+        ================================================== -->
+
+        <section
+            class="story-section dream-section reveal"
+        >
 
             <div class="dream-bg"></div>
+
 
             <div class="dream-content">
 
@@ -560,10 +1042,12 @@
                     WHAT'S NEXT?
                 </span>
 
+
                 <h2>
                     The story is
                     <span>not finished.</span>
                 </h2>
+
 
                 <p>
                     This isn't the final version
@@ -571,11 +1055,13 @@
                     I am right now.
                 </p>
 
+
                 <p>
                     One day I'll come back here and look
                     at this version of myself.
                     Hopefully, I'll smile.
                 </p>
+
 
                 <div class="future-word">
                     NEXT
@@ -586,8 +1072,13 @@
         </section>
 
 
-        <!-- FINAL -->
-        <section class="final-section reveal">
+        <!-- =================================================
+             FINAL
+        ================================================== -->
+
+        <section
+            class="final-section reveal"
+        >
 
             <div class="final-orbit">
 
@@ -601,14 +1092,17 @@
 
             </div>
 
+
             <p>
                 THANK YOU FOR VISITING MY STORY
             </p>
+
 
             <h2>
                 SEE YOU IN THE
                 <span>NEXT CHAPTER.</span>
             </h2>
+
 
             <a href="index.html">
                 ENTER MY WORLD →
@@ -618,38 +1112,76 @@
 
     </main>
 
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
     <footer>
 
         <div class="footer-left">
             YASHH © 2026
         </div>
 
+
         <div class="footer-socials">
 
-            <a href="https://instagram.com/yashh.dy" target="_blank" rel="noopener" title="Instagram">
+            <a
+                href="https://instagram.com/yashh.dy"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Instagram"
+                aria-label="Instagram"
+            >
                 <i class="fa-brands fa-instagram"></i>
             </a>
 
-            <a href="https://www.tiktok.com/@yashh.dy" target="_blank" rel="noopener" title="TikTok">
+
+            <a
+                href="https://www.tiktok.com/@yashh.dy"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="TikTok"
+                aria-label="TikTok"
+            >
                 <i class="fa-brands fa-tiktok"></i>
             </a>
 
-            <a href="https://www.facebook.com/profile.php?id=61592565651494" target="_blank" rel="noopener"
-                title="Facebook">
+
+            <a
+                href="https://www.facebook.com/profile.php?id=61592565651494"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Facebook"
+                aria-label="Facebook"
+            >
                 <i class="fa-brands fa-facebook-f"></i>
             </a>
 
-            <a href="https://www.snapchat.com/add/yashh.dy" target="_blank" rel="noopener" title="Snapchat">
+
+            <a
+                href="https://www.snapchat.com/add/yashh.dy"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Snapchat"
+                aria-label="Snapchat"
+            >
                 <i class="fa-brands fa-snapchat"></i>
             </a>
 
         </div>
 
+
         <div class="footer-right">
-            <B>THE STORY IS NOT OVER YET DUDEE...✦</B>
+            THE STORY IS NOT OVER YET DUDEE...✦
         </div>
 
     </footer>
+
+
+    <!-- =====================================================
+         STORY JAVASCRIPT
+    ====================================================== -->
 
     <script src="story.js"></script>
 

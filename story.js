@@ -1,362 +1,638 @@
-/* =====================================================
-   YASHH STORY — JAVASCRIPT
-===================================================== */
+/* =========================================================
+   YASHH STORY — FINAL JAVASCRIPT
+   story.js
+========================================================= */
 
-/* LOADER */
+"use strict";
 
-window.addEventListener("load", () => {
 
-    const loader =
-        document.getElementById(
-            "storyLoader"
+/* =========================================================
+   DOM READY
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const storyLoader =
+        document.getElementById("storyLoader");
+
+    const cursorGlow =
+        document.querySelector(".cursor-glow");
+
+    const heroOrb =
+        document.querySelector(".hero-orb");
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+    const tiltCards =
+        document.querySelectorAll(
+            ".fact-card, .timeline-card, .mindset-card"
         );
 
-    setTimeout(() => {
 
-        loader.classList.add("hide");
+    /* =====================================================
+       RANDOM STORY THEME
+    ===================================================== */
 
-    }, 2600);
+    const colors = [
 
-});
+        ["#8b5cf6", "#00e5ff", "#ff2bd6"],
 
-/* =====================================================
-   RANDOM NEON COLORS
-===================================================== */
+        ["#00ffcc", "#0066ff", "#a855f7"],
 
-const colors = [
+        ["#ff006e", "#ffb000", "#7c3aed"],
 
-    ["#8b5cf6","#00e5ff","#ff2bd6"],
+        ["#00ff88", "#00d9ff", "#d946ef"],
 
-    ["#00ffcc","#0066ff","#a855f7"],
+        ["#f43f5e", "#8b5cf6", "#06b6d4"],
 
-    ["#ff006e","#ffb000","#7c3aed"],
+        ["#22d3ee", "#a78bfa", "#f472b6"],
 
-    ["#00ff88","#00d9ff","#d946ef"],
+        ["#84cc16", "#00f5ff", "#ec4899"],
 
-    ["#f43f5e","#8b5cf6","#06b6d4"],
+        ["#3b82f6", "#ff00cc", "#00ff9d"],
 
-    ["#22d3ee","#a78bfa","#f472b6"],
+        ["#f97316", "#e879f9", "#22d3ee"],
 
-    ["#84cc16","#00f5ff","#ec4899"],
+        ["#14b8a6", "#6366f1", "#f43f5e"]
 
-    ["#3b82f6","#ff00cc","#00ff9d"],
-
-    ["#f97316","#e879f9","#22d3ee"],
-
-    ["#14b8a6","#6366f1","#f43f5e"]
-
-];
+    ];
 
 
-let lastColor = -1;
+    let lastColor = -1;
 
 
-function changeStoryTheme() {
+    function changeStoryTheme() {
 
-    let index;
+        if (!colors.length) {
+            return;
+        }
 
-    do {
+        let index;
 
-        index =
-            Math.floor(
-                Math.random() *
-                colors.length
-            );
+        do {
 
-    }
+            index =
+                Math.floor(
+                    Math.random() * colors.length
+                );
 
-    while(index === lastColor);
+        } while (
+            colors.length > 1 &&
+            index === lastColor
+        );
 
-    lastColor = index;
 
-    const color =
-        colors[index];
+        lastColor = index;
 
-    document.documentElement
-        .style.setProperty(
+
+        const color =
+            colors[index];
+
+
+        document.documentElement.style.setProperty(
             "--a1",
             color[0]
         );
 
-    document.documentElement
-        .style.setProperty(
+        document.documentElement.style.setProperty(
             "--a2",
             color[1]
         );
 
-    document.documentElement
-        .style.setProperty(
+        document.documentElement.style.setProperty(
             "--a3",
             color[2]
         );
 
-}
+    }
 
 
-changeStoryTheme();
+    changeStoryTheme();
 
 
-setInterval(
-    changeStoryTheme,
-    7000
-);
-
-
-/* =====================================================
-   STAR FIELD
-===================================================== */
-
-const stars =
-    document.getElementById(
-        "stars"
+    setInterval(
+        changeStoryTheme,
+        7000
     );
 
 
-for(
-    let i = 0;
-    i < 160;
-    i++
-) {
+    /* =====================================================
+       STORY LOADER
+    ===================================================== */
 
-    const star =
-        document.createElement(
-            "span"
+    function hideStoryLoader() {
+
+        if (!storyLoader) {
+            return;
+        }
+
+
+        /* Prevent duplicate execution */
+
+        if (
+            storyLoader.classList.contains("hide")
+        ) {
+            return;
+        }
+
+
+        storyLoader.classList.add("hide");
+
+        storyLoader.setAttribute(
+            "aria-hidden",
+            "true"
         );
 
-    const size =
-        Math.random() * 2 + .5;
 
-    star.style.position =
-        "absolute";
+        /* Completely remove it after transition */
 
-    star.style.width =
-        size + "px";
+        setTimeout(() => {
 
-    star.style.height =
-        size + "px";
+            if (storyLoader) {
 
-    star.style.left =
-        Math.random() * 100 + "%";
+                storyLoader.style.display =
+                    "none";
 
-    star.style.top =
-        Math.random() * 100 + "%";
+            }
 
-    star.style.borderRadius =
-        "50%";
-
-    star.style.background =
-        "white";
-
-    star.style.opacity =
-        Math.random() * .7;
-
-    star.style.boxShadow =
-        "0 0 8px white";
-
-    star.style.animation =
-        `twinkle ${
-            Math.random()*4+2
-        }s ease-in-out infinite`;
-
-    star.style.animationDelay =
-        `-${Math.random()*5}s`;
-
-    stars.appendChild(
-        star
-    );
-
-}
-
-
-/* =====================================================
-   STAR ANIMATION
-===================================================== */
-
-const starStyle =
-    document.createElement(
-        "style"
-    );
-
-starStyle.innerHTML = `
-
-@keyframes twinkle {
-
-    0%,100% {
-
-        opacity: .15;
-
-        transform:
-            scale(.6);
+        }, 1100);
 
     }
 
-    50% {
 
-        opacity: 1;
+    /*
+       The loader should NEVER permanently block
+       the page.
 
-        transform:
-            scale(1.4);
+       Start a fallback timer immediately.
+    */
 
-    }
-
-}
-
-`;
-
-document.head.appendChild(
-    starStyle
-);
+    const loaderFallback =
+        setTimeout(
+            hideStoryLoader,
+            3200
+        );
 
 
-/* =====================================================
-   REVEAL ANIMATION
-===================================================== */
+    window.addEventListener(
+        "load",
+        () => {
 
-const reveal =
-    document.querySelectorAll(
-        ".reveal"
+            clearTimeout(loaderFallback);
+
+
+            setTimeout(
+                hideStoryLoader,
+                1200
+            );
+
+        },
+        {
+            once: true
+        }
     );
 
 
-const revealObserver =
-    new IntersectionObserver(
+    /* =====================================================
+       STAR FIELD
+    ===================================================== */
 
-        entries => {
+    const stars =
+        document.getElementById("stars");
 
-            entries.forEach(
-                entry => {
 
-                    if(
-                        entry.isIntersecting
-                    ) {
+    if (stars) {
 
-                        entry.target
-                            .classList
-                            .add(
-                                "active"
+        /* Clear old stars */
+
+        stars.innerHTML = "";
+
+
+        for (
+            let i = 0;
+            i < 160;
+            i++
+        ) {
+
+            const star =
+                document.createElement("span");
+
+
+            const size =
+                Math.random() * 2 + 0.5;
+
+
+            star.style.position =
+                "absolute";
+
+            star.style.width =
+                `${size}px`;
+
+            star.style.height =
+                `${size}px`;
+
+            star.style.left =
+                `${Math.random() * 100}%`;
+
+            star.style.top =
+                `${Math.random() * 100}%`;
+
+            star.style.borderRadius =
+                "50%";
+
+            star.style.background =
+                "#ffffff";
+
+            star.style.opacity =
+                String(
+                    Math.random() * 0.7
+                );
+
+            star.style.boxShadow =
+                "0 0 8px #ffffff";
+
+            star.style.animation =
+                `storyTwinkle ${
+                    Math.random() * 4 + 2
+                }s ease-in-out infinite`;
+
+            star.style.animationDelay =
+                `-${Math.random() * 5}s`;
+
+
+            stars.appendChild(star);
+
+        }
+
+    }
+
+
+    /* =====================================================
+       STAR ANIMATION
+    ===================================================== */
+
+    if (
+        !document.getElementById(
+            "story-dynamic-star-style"
+        )
+    ) {
+
+        const starStyle =
+            document.createElement("style");
+
+
+        starStyle.id =
+            "story-dynamic-star-style";
+
+
+        starStyle.textContent = `
+
+            @keyframes storyTwinkle {
+
+                0%, 100% {
+
+                    opacity: .15;
+
+                    transform: scale(.6);
+
+                }
+
+                50% {
+
+                    opacity: 1;
+
+                    transform: scale(1.4);
+
+                }
+
+            }
+
+        `;
+
+
+        document.head.appendChild(
+            starStyle
+        );
+
+    }
+
+
+    /* =====================================================
+       REVEAL ANIMATION
+    ===================================================== */
+
+    if (
+        revealElements.length
+    ) {
+
+        /*
+           Make first viewport content visible
+           even if IntersectionObserver behaves
+           differently in some browser.
+        */
+
+        revealElements.forEach(
+            (element, index) => {
+
+                element.style.transitionDelay =
+                    `${(index % 5) * 70}ms`;
+
+            }
+        );
+
+
+        if (
+            "IntersectionObserver" in window
+        ) {
+
+            const revealObserver =
+                new IntersectionObserver(
+
+                    (entries, observer) => {
+
+                        entries.forEach(
+                            (entry) => {
+
+                                if (
+                                    entry.isIntersecting
+                                ) {
+
+                                    entry.target.classList.add(
+                                        "active"
+                                    );
+
+                                    observer.unobserve(
+                                        entry.target
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    },
+
+                    {
+                        threshold: 0.12,
+                        rootMargin:
+                            "0px 0px -40px 0px"
+                    }
+
+                );
+
+
+            revealElements.forEach(
+                (element) => {
+
+                    revealObserver.observe(
+                        element
+                    );
+
+                }
+            );
+
+        } else {
+
+            revealElements.forEach(
+                (element) => {
+
+                    element.classList.add(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CURSOR GLOW
+    ===================================================== */
+
+    if (cursorGlow) {
+
+        document.addEventListener(
+            "mousemove",
+            (event) => {
+
+                cursorGlow.style.left =
+                    `${event.clientX}px`;
+
+                cursorGlow.style.top =
+                    `${event.clientY}px`;
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       HERO ORB PARALLAX
+    ===================================================== */
+
+    if (heroOrb) {
+
+        let orbFrame = null;
+
+
+        document.addEventListener(
+            "mousemove",
+            (event) => {
+
+                if (orbFrame) {
+                    cancelAnimationFrame(
+                        orbFrame
+                    );
+                }
+
+
+                orbFrame =
+                    requestAnimationFrame(
+                        () => {
+
+                            const x =
+                                (
+                                    window.innerWidth / 2 -
+                                    event.clientX
+                                ) / 35;
+
+
+                            const y =
+                                (
+                                    window.innerHeight / 2 -
+                                    event.clientY
+                                ) / 35;
+
+
+                            heroOrb.style.setProperty(
+                                "--orb-x",
+                                `${x}px`
                             );
+
+                            heroOrb.style.setProperty(
+                                "--orb-y",
+                                `${y}px`
+                            );
+
+
+                            heroOrb.style.transform =
+                                `translate3d(${x}px, ${y}px, 0)`;
+
+                        }
+                    );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       3D TILT
+    ===================================================== */
+
+    tiltCards.forEach(
+        (card) => {
+
+            let resetTimeout = null;
+
+
+            card.addEventListener(
+                "mousemove",
+                (event) => {
+
+                    const rect =
+                        card.getBoundingClientRect();
+
+
+                    const x =
+                        event.clientX -
+                        rect.left;
+
+
+                    const y =
+                        event.clientY -
+                        rect.top;
+
+
+                    const centerX =
+                        rect.width / 2;
+
+
+                    const centerY =
+                        rect.height / 2;
+
+
+                    const rotateY =
+                        (
+                            x - centerX
+                        ) / 30;
+
+
+                    const rotateX =
+                        -(
+                            y - centerY
+                        ) / 30;
+
+
+                    card.style.transform =
+                        `perspective(900px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)
+                         translateY(-5px)`;
+
+
+                    if (resetTimeout) {
+
+                        clearTimeout(
+                            resetTimeout
+                        );
 
                     }
 
                 }
             );
 
-        },
 
-        {
-            threshold: .12
+            card.addEventListener(
+                "mouseleave",
+                () => {
+
+                    resetTimeout =
+                        setTimeout(
+                            () => {
+
+                                card.style.transform =
+                                    "";
+
+                            },
+                            20
+                        );
+
+                }
+            );
+
         }
-
     );
 
 
-reveal.forEach(
-    element => {
+    /* =====================================================
+       MEMORY IMAGE PARALLAX
+       Works only if memory cards exist.
+    ===================================================== */
 
-        revealObserver.observe(
-            element
+    const memoryImages =
+        document.querySelectorAll(
+            ".memory-card img"
         );
 
-    }
-);
+
+    memoryImages.forEach(
+        (image) => {
+
+            const parent =
+                image.parentElement;
 
 
-/* =====================================================
-   MOUSE GLOW
-===================================================== */
-
-const glow =
-    document.querySelector(
-        ".cursor-glow"
-    );
+            if (!parent) {
+                return;
+            }
 
 
-if(glow) {
-
-    document.addEventListener(
-        "mousemove",
-        event => {
-
-            glow.style.left =
-                event.clientX +
-                "px";
-
-            glow.style.top =
-                event.clientY +
-                "px";
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   HERO ORB PARALLAX
-===================================================== */
-
-const orb =
-    document.querySelector(
-        ".hero-orb"
-    );
-
-
-document.addEventListener(
-    "mousemove",
-    event => {
-
-        if(!orb) return;
-
-        const x =
-            (window.innerWidth / 2 -
-                event.clientX) /
-            35;
-
-        const y =
-            (window.innerHeight / 2 -
-                event.clientY) /
-            35;
-
-        orb.style.transform =
-            `translate(${x}px,${y}px)`;
-
-    }
-);
-
-
-/* =====================================================
-   IMAGE PARALLAX
-===================================================== */
-
-const images =
-    document.querySelectorAll(
-        ".memory-card img"
-    );
-
-
-images.forEach(
-    image => {
-
-        image.parentElement
-            .addEventListener(
+            parent.addEventListener(
                 "mousemove",
-                event => {
+                (event) => {
 
                     const rect =
-                        image.parentElement
-                            .getBoundingClientRect();
+                        parent.getBoundingClientRect();
+
 
                     const x =
-                        (event.clientX -
-                            rect.left) /
+                        (
+                            event.clientX -
+                            rect.left
+                        ) /
                         rect.width -
-                        .5;
+                        0.5;
+
 
                     const y =
-                        (event.clientY -
-                            rect.top) /
+                        (
+                            event.clientY -
+                            rect.top
+                        ) /
                         rect.height -
-                        .5;
+                        0.5;
+
 
                     image.style.transform =
                         `scale(1.08)
@@ -369,8 +645,7 @@ images.forEach(
             );
 
 
-        image.parentElement
-            .addEventListener(
+            parent.addEventListener(
                 "mouseleave",
                 () => {
 
@@ -380,240 +655,524 @@ images.forEach(
                 }
             );
 
-    }
-);
-
-
-/* =====================================================
-   3D TILT
-===================================================== */
-
-const cards =
-    document.querySelectorAll(
-        ".fact-card,.timeline-card,.mindset-card"
+        }
     );
 
 
-cards.forEach(
-    card => {
+    /* =====================================================
+       CURSOR TRAIL
+    ===================================================== */
 
-        card.addEventListener(
-            "mousemove",
-            event => {
+    let trailTime = 0;
 
-                const rect =
-                    card.getBoundingClientRect();
 
-                const x =
-                    event.clientX -
-                    rect.left;
+    document.addEventListener(
+        "mousemove",
+        (event) => {
 
-                const y =
-                    event.clientY -
-                    rect.top;
+            const now =
+                Date.now();
 
-                const rotateY =
-                    (x -
-                        rect.width / 2) /
-                    30;
 
-                const rotateX =
-                    -(y -
-                        rect.height / 2) /
-                    30;
+            if (
+                now - trailTime < 50
+            ) {
 
-                card.style.transform =
-                    `perspective(900px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateY(-5px)`;
+                return;
 
             }
-        );
 
 
-        card.addEventListener(
-            "mouseleave",
-            () => {
-
-                card.style.transform =
-                    "";
-
-            }
-        );
-
-    }
-);
+            trailTime =
+                now;
 
 
-/* =====================================================
-   CURSOR TRAIL
-===================================================== */
-
-let trailTime = 0;
+            const dot =
+                document.createElement("span");
 
 
-document.addEventListener(
-    "mousemove",
-    event => {
-
-        const now =
-            Date.now();
-
-        if(
-            now - trailTime <
-            50
-        ) return;
-
-        trailTime =
-            now;
+            dot.className =
+                "story-cursor-trail";
 
 
-        const dot =
-            document.createElement(
-                "span"
+            dot.style.left =
+                `${event.clientX}px`;
+
+            dot.style.top =
+                `${event.clientY}px`;
+
+
+            document.body.appendChild(
+                dot
             );
 
-        dot.style.position =
-            "fixed";
 
-        dot.style.left =
-            event.clientX + "px";
+            dot.animate(
 
-        dot.style.top =
-            event.clientY + "px";
+                [
 
-        dot.style.width =
-            "5px";
+                    {
+                        transform:
+                            "translate(-50%, -50%) scale(1)",
 
-        dot.style.height =
-            "5px";
+                        opacity: 0.8
 
-        dot.style.borderRadius =
-            "50%";
+                    },
 
-        dot.style.pointerEvents =
-            "none";
+                    {
 
-        dot.style.zIndex =
-            "99999";
+                        transform:
+                            "translate(-50%, -50%) scale(0)",
 
-        dot.style.background =
-            "var(--a2)";
+                        opacity: 0
 
-        dot.style.boxShadow =
-            "0 0 15px var(--a2)";
+                    }
 
-        document.body.appendChild(
-            dot
-        );
-
-
-        dot.animate(
-
-            [
+                ],
 
                 {
-                    transform:
-                        "translate(-50%,-50%) scale(1)",
 
-                    opacity: .8
+                    duration: 550,
+
+                    easing: "ease-out"
+
+                }
+
+            );
+
+
+            setTimeout(
+                () => {
+
+                    dot.remove();
 
                 },
-
-                {
-
-                    transform:
-                        "translate(-50%,-50%) scale(0)",
-
-                    opacity: 0
-
-                }
-
-            ],
-
-            {
-
-                duration: 550,
-
-                easing: "ease-out"
-
-            }
-
-        );
-
-
-        setTimeout(
-            () => dot.remove(),
-            600
-        );
-
-    }
-);
-
-
-/* =====================================================
-   SCROLL DEPTH EFFECT
-===================================================== */
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        const scroll =
-            window.scrollY;
-
-        document
-            .querySelectorAll(
-                ".aurora"
-            )
-            .forEach(
-                (element,index) => {
-
-                    const speed =
-                        (index + 1) *
-                        .025;
-
-                    element.style.transform =
-                        `translateY(
-                            ${scroll * speed}px
-                        )`;
-
-                }
+                600
             );
-
-    }
-);
-
-
-/* =====================================================
-   DYNAMIC YEAR
-===================================================== */
-
-document
-    .querySelectorAll(
-        "footer"
-    )
-    .forEach(
-        footer => {
-
-            footer.innerHTML =
-                footer.innerHTML
-                    .replace(
-                        "2026",
-                        new Date()
-                            .getFullYear()
-                    );
 
         }
     );
 
 
-/* =====================================================
-   CONSOLE
-===================================================== */
+    /* =====================================================
+       CURSOR TRAIL STYLE
+    ===================================================== */
 
-console.log(`
+    if (
+        !document.getElementById(
+            "story-cursor-style"
+        )
+    ) {
+
+        const cursorStyle =
+            document.createElement("style");
+
+
+        cursorStyle.id =
+            "story-cursor-style";
+
+
+        cursorStyle.textContent = `
+
+            .story-cursor-trail {
+
+                position: fixed;
+
+                width: 5px;
+
+                height: 5px;
+
+                border-radius: 50%;
+
+                pointer-events: none;
+
+                z-index: 99999;
+
+                background: var(--a2);
+
+                box-shadow:
+                    0 0 15px var(--a2);
+
+            }
+
+        `;
+
+
+        document.head.appendChild(
+            cursorStyle
+        );
+
+    }
+
+
+    /* =====================================================
+       SCROLL DEPTH
+    ===================================================== */
+
+    let scrollFrame = null;
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (scrollFrame) {
+                cancelAnimationFrame(
+                    scrollFrame
+                );
+            }
+
+
+            scrollFrame =
+                requestAnimationFrame(
+                    () => {
+
+                        const scroll =
+                            window.scrollY;
+
+
+                        document
+                            .querySelectorAll(
+                                ".aurora"
+                            )
+                            .forEach(
+                                (
+                                    element,
+                                    index
+                                ) => {
+
+                                    const speed =
+                                        (
+                                            index + 1
+                                        ) *
+                                        0.012;
+
+
+                                    element.style.marginTop =
+                                        `${scroll * speed}px`;
+
+                                }
+                            );
+
+                    }
+                );
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /* =====================================================
+       SMOOTH INTERNAL LINKS
+    ===================================================== */
+
+    document
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach(
+            (link) => {
+
+                link.addEventListener(
+                    "click",
+                    (event) => {
+
+                        const href =
+                            link.getAttribute(
+                                "href"
+                            );
+
+
+                        if (
+                            !href ||
+                            href === "#"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const target =
+                            document.querySelector(
+                                href
+                            );
+
+
+                        if (!target) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       IMAGE FALLBACK
+       Only activates if a local image genuinely fails.
+    ===================================================== */
+
+    document
+        .querySelectorAll("img")
+        .forEach(
+            (image) => {
+
+                image.addEventListener(
+                    "error",
+                    () => {
+
+                        /*
+                           Do not replace images with an
+                           unrelated external photo.
+                           Hide the broken image instead.
+                        */
+
+                        image.style.opacity =
+                            "0";
+
+
+                        image.setAttribute(
+                            "data-image-error",
+                            "true"
+                        );
+
+                    },
+                    {
+                        once: true
+                    }
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       VIDEO SAFETY
+    ===================================================== */
+
+    document
+        .querySelectorAll("video")
+        .forEach(
+            (video) => {
+
+                video.setAttribute(
+                    "playsinline",
+                    ""
+                );
+
+
+                /*
+                   Try autoplay where allowed.
+                   Muted autoplay is generally permitted.
+                */
+
+                if (
+                    video.autoplay &&
+                    video.muted
+                ) {
+
+                    const playPromise =
+                        video.play();
+
+
+                    if (
+                        playPromise &&
+                        typeof playPromise.catch ===
+                        "function"
+                    ) {
+
+                        playPromise.catch(
+                            () => {
+                                /* Browser blocked autoplay. */
+                            }
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+
+    /* =====================================================
+       VISIBILITY OPTIMIZATION
+    ===================================================== */
+
+    document.addEventListener(
+        "visibilitychange",
+        () => {
+
+            const animations =
+                document.querySelectorAll(
+                    ".aurora, .story-neon-orb, .story-light-beam"
+                );
+
+
+            animations.forEach(
+                (element) => {
+
+                    element.style.animationPlayState =
+                        document.hidden
+                            ? "paused"
+                            : "running";
+
+                }
+            );
+
+
+            const videos =
+                document.querySelectorAll(
+                    "video"
+                );
+
+
+            videos.forEach(
+                (video) => {
+
+                    if (
+                        document.hidden
+                    ) {
+
+                        video.pause();
+
+                    } else if (
+                        video.autoplay &&
+                        video.muted
+                    ) {
+
+                        const promise =
+                            video.play();
+
+
+                        if (
+                            promise &&
+                            typeof promise.catch ===
+                            "function"
+                        ) {
+
+                            promise.catch(
+                                () => {}
+                            );
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       REDUCED MOTION
+    ===================================================== */
+
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
+
+
+    if (
+        reduceMotion.matches
+    ) {
+
+        document
+            .querySelectorAll(
+                ".reveal"
+            )
+            .forEach(
+                (element) => {
+
+                    element.classList.add(
+                        "active"
+                    );
+
+                }
+            );
+
+    }
+
+
+    reduceMotion.addEventListener?.(
+        "change",
+        (event) => {
+
+            if (
+                event.matches
+            ) {
+
+                document
+                    .querySelectorAll(
+                        ".reveal"
+                    )
+                    .forEach(
+                        (element) => {
+
+                            element.classList.add(
+                                "active"
+                            );
+
+                        }
+                    );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       DYNAMIC YEAR
+    ===================================================== */
+
+    const currentYear =
+        new Date().getFullYear();
+
+
+    document
+        .querySelectorAll("footer")
+        .forEach(
+            (footer) => {
+
+                footer.innerHTML =
+                    footer.innerHTML.replace(
+                        /©\s*2026/g,
+                        `© ${currentYear}`
+                    );
+
+                footer.innerHTML =
+                    footer.innerHTML.replace(
+                        /YASHH\s*©\s*2026/g,
+                        `YASHH © ${currentYear}`
+                    );
+
+            }
+        );
+
+
+    /* =====================================================
+       CONSOLE SIGNATURE
+    ===================================================== */
+
+    console.log(`
 ╔══════════════════════════════════╗
 ║                                  ║
 ║       YASHH'S STORY              ║
@@ -621,5 +1180,11 @@ console.log(`
 ║   The story is still being       ║
 ║   written...                     ║
 ║                                  ║
+║   Neon theme: ACTIVE             ║
+║   Loader: SAFE                   ║
+║   Reveal system: ACTIVE          ║
+║                                  ║
 ╚══════════════════════════════════╝
-`);
+    `);
+
+});
