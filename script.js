@@ -1,78 +1,244 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const passwordScreen = document.getElementById("password-screen");
-    const passwordForm = document.getElementById("password-form");
-    const passwordInput = document.getElementById("site-password");
-    const passwordError = document.getElementById("password-error");
-    const loader = document.getElementById("loader");
+    const passwordScreen =
+        document.getElementById("password-screen");
 
-    const CORRECT_PASSWORD = "YOUR_PASSWORD";
+    const passwordForm =
+        document.getElementById("password-form");
 
-    // Initially website locked
+    const passwordInput =
+        document.getElementById("site-password");
+
+    const passwordError =
+        document.getElementById("password-error");
+
+    const loader =
+        document.getElementById("loader");
+
+    const togglePassword =
+        document.getElementById("toggle-password");
+
+
+    /* =====================================================
+       🔐 PASSWORD CHANGE HERE
+    ===================================================== */
+
+    const CORRECT_PASSWORD = "yashh@2026";
+
+
+    /* =====================================================
+       🔒 WEBSITE INITIALLY LOCKED
+    ===================================================== */
+
     document.body.classList.add("locked");
+
+
+    /* =====================================================
+       👁 SHOW / HIDE PASSWORD
+    ===================================================== */
+
+    if (togglePassword) {
+
+        togglePassword.addEventListener("click", () => {
+
+            const isPassword =
+                passwordInput.type === "password";
+
+            passwordInput.type =
+                isPassword ? "text" : "password";
+
+            togglePassword.innerHTML =
+                isPassword
+                    ? '<i class="fa-solid fa-eye-slash"></i>'
+                    : '<i class="fa-solid fa-eye"></i>';
+
+        });
+
+    }
+
+
+    /* =====================================================
+       🔑 PASSWORD SUBMIT
+    ===================================================== */
 
     passwordForm.addEventListener("submit", (event) => {
 
         event.preventDefault();
 
-        const enteredPassword = passwordInput.value;
+        const enteredPassword =
+            passwordInput.value.trim();
 
-        if (enteredPassword === CORRECT_PASSWORD) {
 
-            // Hide password screen
-            passwordScreen.style.display = "none";
+        /* =================================================
+           ❌ WRONG PASSWORD
+        ================================================= */
 
-            // Show loader
-            loader.classList.add("active");
+        if (enteredPassword !== CORRECT_PASSWORD) {
 
-            // Start loader animation
-            startLoader();
+            passwordError.textContent =
+                "ACCESS DENIED — INVALID ACCESS KEY";
 
-        } else {
+            passwordError.style.color = "#ff5577";
 
-            passwordError.textContent = "Incorrect password. Try again.";
+
+            /* Shake animation */
+
+            passwordError.classList.remove(
+                "password-error-shake"
+            );
+
+            void passwordError.offsetWidth;
+
+            passwordError.classList.add(
+                "password-error-shake"
+            );
+
+
+            /* Shake the input box too */
+
+            const passwordBox =
+                document.querySelector(".password-field");
+
+            if (passwordBox) {
+
+                passwordBox.classList.remove(
+                    "password-error-shake"
+                );
+
+                void passwordBox.offsetWidth;
+
+                passwordBox.classList.add(
+                    "password-error-shake"
+                );
+
+            }
+
 
             passwordInput.value = "";
+
             passwordInput.focus();
 
+            return;
         }
+
+
+        /* =================================================
+           ✅ CORRECT PASSWORD
+        ================================================= */
+
+        passwordError.textContent =
+            "ACCESS GRANTED — INITIALIZING...";
+
+        passwordError.style.color = "#00ff9d";
+
+
+        passwordInput.disabled = true;
+
+
+        /* Disable button */
+
+        const accessButton =
+            document.querySelector(".access-button");
+
+        if (accessButton) {
+            accessButton.disabled = true;
+        }
+
+
+        /* =================================================
+           ✨ PASSWORD SCREEN EXIT
+        ================================================= */
+
+        setTimeout(() => {
+
+            passwordScreen.classList.add(
+                "access-success"
+            );
+
+        }, 300);
+
+
+        /* =================================================
+           🚀 START LOADER
+        ================================================= */
+
+        setTimeout(() => {
+
+            loader.classList.add("active");
+
+            startLoader();
+
+        }, 800);
 
     });
 
 
+    /* =====================================================
+       🚀 LOADER FUNCTION
+    ===================================================== */
+
     function startLoader() {
 
-        // Make sure loader starts from beginning
-        const loaderBar = document.querySelector(".loader-line i");
+        const loaderBar =
+            document.querySelector(".loader-line i");
+
+
+        /* Restart loader animation */
 
         if (loaderBar) {
+
             loaderBar.style.width = "0%";
 
-            // Restart CSS animation
             loaderBar.style.animation = "none";
 
             void loaderBar.offsetWidth;
 
             loaderBar.style.animation = "";
+
         }
 
-        /*
-         * Loader kitne time tak dikhega.
-         * 4000 = 4 seconds
-         */
+
+        /* =================================================
+           ⏱ LOADER DURATION
+
+           4000 = 4 seconds
+           5000 = 5 seconds
+           3000 = 3 seconds
+        ================================================= */
+
         setTimeout(() => {
 
-            // Hide loader
+
+            /* Hide loader */
+
             loader.classList.remove("active");
 
-            // Unlock website
-            document.body.classList.remove("locked");
-            document.body.classList.add("site-ready");
 
-            // Start reveal animations if your script uses them
-            document.querySelectorAll(".reveal").forEach((element) => {
-                element.classList.add("visible");
-            });
+            /* Unlock website */
+
+            document.body.classList.remove(
+                "locked"
+            );
+
+            document.body.classList.add(
+                "site-ready"
+            );
+
+
+            /* =================================================
+               🎬 REVEAL WEBSITE
+            ================================================= */
+
+            document
+                .querySelectorAll(".reveal")
+                .forEach((element) => {
+
+                    element.classList.add(
+                        "visible"
+                    );
+
+                });
+
 
         }, 4000);
 

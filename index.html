@@ -41,48 +41,129 @@
 
 
 <body>
-    <!-- =========================
-     PASSWORD PROTECTION
-========================= -->
+  <!-- =====================================================
+     PREMIUM PASSWORD / PRIVATE ACCESS SCREEN
+===================================================== -->
 
 <div id="password-screen">
 
-    <div class="password-box">
+    <div class="access-bg">
+        <div class="access-grid"></div>
 
-        <div class="password-icon">
-            🔐
+        <div class="access-orb access-orb-1"></div>
+        <div class="access-orb access-orb-2"></div>
+        <div class="access-orb access-orb-3"></div>
+
+        <div class="access-stars">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
         </div>
 
-        <h2>YASHH'S PRIVATE WORLD</h2>
+        <div class="scanline"></div>
+    </div>
 
-        <p>
-            This website is private.<br>
-            Enter the password to continue.
-        </p>
+    <div class="access-panel">
+
+        <div class="access-topline">
+            <span class="access-status-dot"></span>
+            <span>SECURE CONNECTION</span>
+            <span class="access-code">Y/2026</span>
+        </div>
+
+        <div class="access-core">
+
+            <div class="core-ring ring-a"></div>
+            <div class="core-ring ring-b"></div>
+            <div class="core-ring ring-c"></div>
+
+            <div class="core-icon">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+
+        </div>
+
+        <div class="access-heading">
+
+            <span class="access-label">PRIVATE ACCESS</span>
+
+            <h1>
+                WELCOME TO
+                <strong>YASHH'S WORLD</strong>
+            </h1>
+
+            <p>
+                This digital universe is private.
+                <br>
+                Authenticate yourself to continue.
+            </p>
+
+        </div>
 
         <form id="password-form">
 
-            <input
-                type="password"
-                id="site-password"
-                placeholder="Enter password"
-                autocomplete="off"
-                required
-            >
+            <div class="password-field">
 
-            <button type="submit">
-                ENTER
-                <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-key"></i>
+
+                <input
+                    type="password"
+                    id="site-password"
+                    placeholder="ENTER ACCESS KEY"
+                    autocomplete="off"
+                    required
+                >
+
+                <button
+                    type="button"
+                    id="toggle-password"
+                    aria-label="Show password"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+
+            </div>
+
+            <button type="submit" class="access-button">
+
+                <span class="button-text">
+                    AUTHENTICATE
+                </span>
+
+                <span class="button-icon">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+                <span class="button-shine"></span>
+
             </button>
 
             <div id="password-error"></div>
 
         </form>
 
+        <div class="access-footer">
+
+            <span>
+                <i class="fa-solid fa-shield-halved"></i>
+                END-TO-END PRIVATE
+            </span>
+
+            <span>
+                <i class="fa-solid fa-fingerprint"></i>
+                AUTHORIZED ONLY
+            </span>
+
+        </div>
+
     </div>
 
-</div>
+    <div class="access-corner corner-tl"></div>
+    <div class="access-corner corner-tr"></div>
+    <div class="access-corner corner-bl"></div>
+    <div class="access-corner corner-br"></div>
 
+</div>
 
     <!-- =====================================================
      LOADING / ENTRY SCREEN
