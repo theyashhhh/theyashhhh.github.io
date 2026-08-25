@@ -49,36 +49,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
-       🔄 REFRESH CHECK
-
-       Agar password already diya hai:
-       → password screen nahi
-       → loader nahi
-       → website direct
-    ========================================= */
 
     if (sessionStorage.getItem(SESSION_KEY) === "true") {
 
-        document.body.classList.remove("locked");
-        document.body.classList.add("site-ready");
+  
 
-        if (passwordScreen) {
-            passwordScreen.style.display = "none";
-        }
+    document.body.classList.remove("locked");
+    document.body.classList.add("site-ready");
 
-        if (loader) {
-            loader.classList.remove("active");
-            loader.classList.remove("hide");
-        }
 
-        document.querySelectorAll(".reveal").forEach((element) => {
-            element.classList.add("visible");
-        });
 
-        return;
+    if (passwordScreen) {
+
+        passwordScreen.style.display = "none";
+        passwordScreen.style.visibility = "hidden";
+        passwordScreen.style.opacity = "0";
+
     }
 
+
+   
+
+    if (loader) {
+
+        loader.classList.remove("active");
+        loader.classList.add("hide");
+
+        loader.style.display = "none";
+        loader.style.visibility = "hidden";
+        loader.style.opacity = "0";
+
+    }
+
+
+ 
+
+    document.querySelectorAll(".reveal").forEach((element) => {
+
+        element.classList.add("visible");
+
+    });
+
+
+    return;
+}
 
     /* =========================================
        🔒 FIRST VISIT
@@ -126,12 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
         passwordError.style.color = "#00ff9d";
 
 
-        /* =====================================
-           💾 SAVE SESSION
-
-           Refresh karne par password nahi
-           maangega.
-        ===================================== */
+       
 
         sessionStorage.setItem(
             SESSION_KEY,
@@ -139,9 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* =====================================
-           🚀 PASSWORD SCREEN HIDE
-        ===================================== */
 
         setTimeout(() => {
 
@@ -150,9 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =================================
-               🔥 EXISTING LOADER SHOW
-            ================================= */
 
             if (loader) {
 
@@ -170,9 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =========================================
-       🚀 START EXISTING LOADER
-    ========================================= */
 
     function startLoader() {
 
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector(".loader-line i");
 
 
-        /* Restart loader progress */
+       
 
         if (loaderBar) {
 
@@ -194,14 +194,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* =====================================
-           ⏱ 4 SECOND LOADER
-        ===================================== */
 
         setTimeout(() => {
 
 
-            /* Hide loader */
+           
 
             if (loader) {
 
@@ -211,14 +208,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* Unlock website */
+         
 
             document.body.classList.remove("locked");
 
             document.body.classList.add("site-ready");
 
 
-            /* Reveal website */
 
             document.querySelectorAll(".reveal").forEach((element) => {
 
@@ -238,12 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
    script.js
 ========================================================= */
 
-
-
-/* =========================================================
-   2. AUTOMATIC THEME ENGINE
-   New neon combination every 7 seconds
-========================================================= */
 
 const themes = [
 
@@ -343,7 +333,7 @@ const themes = [
 let currentTheme = -1;
 
 
-/* Random theme without immediate repetition */
+
 
 function changeTheme() {
 
@@ -387,12 +377,12 @@ function changeTheme() {
 }
 
 
-/* First theme */
+
 
 changeTheme();
 
 
-/* Every 7 seconds */
+
 
 setInterval(() => {
 
@@ -401,9 +391,6 @@ setInterval(() => {
 }, 7000);
 
 
-/* =========================================================
-   3. MOUSE LIGHT / GLOW
-========================================================= */
 
 document.addEventListener("mousemove", (event) => {
 
@@ -420,9 +407,6 @@ document.addEventListener("mousemove", (event) => {
 });
 
 
-/* =========================================================
-   4. SCROLL REVEAL
-========================================================= */
 
 const revealElements =
     document.querySelectorAll(".reveal");
@@ -461,9 +445,6 @@ revealElements.forEach((element) => {
 });
 
 
-/* =========================================================
-   5. NAVIGATION MOBILE MENU
-========================================================= */
 
 const menuButton =
     document.querySelector(".menu");
@@ -488,9 +469,6 @@ if (menuButton && navLinks) {
 }
 
 
-/* =========================================================
-   6. CLOSE MOBILE MENU AFTER CLICK
-========================================================= */
 
 document
     .querySelectorAll(".nav-links a")
@@ -513,10 +491,6 @@ document
 
     });
 
-
-/* =========================================================
-   7. ACTIVE NAV LINK
-========================================================= */
 
 const sections =
     document.querySelectorAll("section[id]");
@@ -578,9 +552,6 @@ window.addEventListener(
 );
 
 
-/* =========================================================
-   8. PARALLAX BACKGROUND
-========================================================= */
 
 window.addEventListener(
     "scroll",
@@ -610,9 +581,6 @@ window.addEventListener(
 );
 
 
-/* =========================================================
-   9. 3D TILT CARDS
-========================================================= */
 
 const tiltCards =
     document.querySelectorAll(
@@ -674,9 +642,6 @@ tiltCards.forEach((card) => {
 });
 
 
-/* =========================================================
-   10. HERO PHOTO PARALLAX
-========================================================= */
 
 const heroPhoto =
     document.querySelector(
@@ -709,10 +674,6 @@ if (heroPhoto) {
 
 }
 
-
-/* =========================================================
-   11. NUMBER COUNTER
-========================================================= */
 
 const counters =
     document.querySelectorAll(
@@ -825,9 +786,6 @@ counters.forEach(
 );
 
 
-/* =========================================================
-   12. SKILL BAR ANIMATION
-========================================================= */
 
 const skillBars =
     document.querySelectorAll(
@@ -899,9 +857,6 @@ skillBars.forEach(
 );
 
 
-/* =========================================================
-   13. RANDOM FLOATING PARTICLES
-========================================================= */
 
 function createParticle() {
 
@@ -1028,9 +983,6 @@ for (
 }
 
 
-/* =========================================================
-   14. CURSOR TRAIL
-========================================================= */
 
 let lastTrailTime = 0;
 
@@ -1126,10 +1078,6 @@ document.addEventListener(
     }
 );
 
-
-/* =========================================================
-   15. DYNAMIC CURSOR CSS
-========================================================= */
 
 const cursorStyle =
     document.createElement(
@@ -1228,45 +1176,7 @@ document.head.appendChild(
 );
 
 
-/* =========================================================
-   16. ENTER MY STORY
-========================================================= */
 
-const storyButtons =
-    document.querySelectorAll(
-        '[href="story.html"]'
-    );
-
-
-storyButtons.forEach(
-    (button) => {
-
-        button.addEventListener(
-            "click",
-            (event) => {
-
-                /*
-                   Story page opens in a NEW TAB.
-                */
-
-                event.preventDefault();
-
-                window.open(
-                    "story.html",
-                    "_blank",
-                    "noopener,noreferrer"
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   17. SMOOTH INTERNAL LINKS
-========================================================= */
 
 document
     .querySelectorAll(
@@ -1323,10 +1233,6 @@ document
     );
 
 
-/* =========================================================
-   18. IMAGE ERROR FALLBACK
-========================================================= */
-
 document
     .querySelectorAll("img")
     .forEach(
@@ -1346,9 +1252,6 @@ document
     );
 
 
-/* =========================================================
-   19. PAGE VISIBILITY
-========================================================= */
 
 document.addEventListener(
     "visibilitychange",
@@ -1394,10 +1297,6 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   20. RANDOM CARD DELAY
-========================================================= */
-
 document
     .querySelectorAll(
         ".reveal"
@@ -1430,13 +1329,6 @@ console.log(
 `
 );
 
-
-/* =========================================================
-   END
-========================================================= */
-/* =========================================================
-   22. INTERACTIVE VIDEO
-========================================================= */
 
 const interactiveVideo =
     document.querySelector("#interactiveVideo video");
