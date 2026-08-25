@@ -1,52 +1,84 @@
-/* =========================
-   WEBSITE PASSWORD PROTECTION
-========================= */
+document.addEventListener("DOMContentLoaded", () => {
 
-const SITE_PASSWORD = "yashh@2026";
+    const passwordScreen = document.getElementById("password-screen");
+    const passwordForm = document.getElementById("password-form");
+    const passwordInput = document.getElementById("site-password");
+    const passwordError = document.getElementById("password-error");
+    const loader = document.getElementById("loader");
 
-const passwordScreen = document.getElementById("password-screen");
-const passwordForm = document.getElementById("password-form");
-const passwordInput = document.getElementById("site-password");
-const passwordError = document.getElementById("password-error");
+    const CORRECT_PASSWORD = "YOUR_PASSWORD";
 
-document.body.classList.add("site-locked");
+    // Initially website locked
+    document.body.classList.add("locked");
 
-passwordForm.addEventListener("submit", function (event) {
+    passwordForm.addEventListener("submit", (event) => {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const enteredPassword = passwordInput.value;
+        const enteredPassword = passwordInput.value;
 
-    if (enteredPassword === SITE_PASSWORD) {
+        if (enteredPassword === CORRECT_PASSWORD) {
 
-        document.body.classList.remove("site-locked");
-        document.body.classList.add("site-unlocked");
+            // Hide password screen
+            passwordScreen.style.display = "none";
 
-        sessionStorage.setItem("yashh_site_access", "granted");
+            // Show loader
+            loader.classList.add("active");
 
-        passwordInput.value = "";
-        passwordError.textContent = "";
+            // Start loader animation
+            startLoader();
 
-    } else {
+        } else {
 
-        passwordError.textContent = "❌ Incorrect password.";
+            passwordError.textContent = "Incorrect password. Try again.";
 
-        passwordInput.value = "";
-        passwordInput.focus();
+            passwordInput.value = "";
+            passwordInput.focus();
+
+        }
+
+    });
+
+
+    function startLoader() {
+
+        // Make sure loader starts from beginning
+        const loaderBar = document.querySelector(".loader-line i");
+
+        if (loaderBar) {
+            loaderBar.style.width = "0%";
+
+            // Restart CSS animation
+            loaderBar.style.animation = "none";
+
+            void loaderBar.offsetWidth;
+
+            loaderBar.style.animation = "";
+        }
+
+        /*
+         * Loader kitne time tak dikhega.
+         * 4000 = 4 seconds
+         */
+        setTimeout(() => {
+
+            // Hide loader
+            loader.classList.remove("active");
+
+            // Unlock website
+            document.body.classList.remove("locked");
+            document.body.classList.add("site-ready");
+
+            // Start reveal animations if your script uses them
+            document.querySelectorAll(".reveal").forEach((element) => {
+                element.classList.add("visible");
+            });
+
+        }, 4000);
 
     }
 
 });
-
-
-/* Keep access during this browser session */
-
-if (sessionStorage.getItem("yashh_site_access") === "granted") {
-
-    document.body.classList.remove("site-locked");
-    document.body.classList.add("site-unlocked");
-
-}
 
 
 /* =========================================================
