@@ -1,3 +1,54 @@
+/* =========================
+   WEBSITE PASSWORD PROTECTION
+========================= */
+
+const SITE_PASSWORD = "yashh@2026";
+
+const passwordScreen = document.getElementById("password-screen");
+const passwordForm = document.getElementById("password-form");
+const passwordInput = document.getElementById("site-password");
+const passwordError = document.getElementById("password-error");
+
+document.body.classList.add("site-locked");
+
+passwordForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    const enteredPassword = passwordInput.value;
+
+    if (enteredPassword === SITE_PASSWORD) {
+
+        document.body.classList.remove("site-locked");
+        document.body.classList.add("site-unlocked");
+
+        sessionStorage.setItem("yashh_site_access", "granted");
+
+        passwordInput.value = "";
+        passwordError.textContent = "";
+
+    } else {
+
+        passwordError.textContent = "❌ Incorrect password.";
+
+        passwordInput.value = "";
+        passwordInput.focus();
+
+    }
+
+});
+
+
+/* Keep access during this browser session */
+
+if (sessionStorage.getItem("yashh_site_access") === "granted") {
+
+    document.body.classList.remove("site-locked");
+    document.body.classList.add("site-unlocked");
+
+}
+
+
 /* =========================================================
    YASHH — FUTURISTIC PERSONAL UNIVERSE
    script.js
