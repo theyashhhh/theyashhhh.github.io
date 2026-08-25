@@ -1,77 +1,106 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const passwordScreen =
-        document.getElementById("password-screen");
+    const passwordScreen = document.getElementById("password-screen");
+    const passwordForm = document.getElementById("password-form");
+    const passwordInput = document.getElementById("site-password");
+    const passwordError = document.getElementById("password-error");
+    const loader = document.getElementById("loader");
+    const togglePassword = document.getElementById("toggle-password");
 
-    const passwordForm =
-        document.getElementById("password-form");
-
-    const passwordInput =
-        document.getElementById("site-password");
-
-    const passwordError =
-        document.getElementById("password-error");
-
-    const loader =
-        document.getElementById("loader");
-
-    const togglePassword =
-        document.getElementById("toggle-password");
-
-
-    /* =====================================================
-       🔐 PASSWORD CHANGE HERE
-    ===================================================== */
+    /* =========================================
+       🔐 PASSWORD — CHANGE HERE
+    ========================================= */
 
     const CORRECT_PASSWORD = "yashh@2026";
 
+    /* =========================================
+       🔑 SESSION KEY
+    ========================================= */
 
-    /* =====================================================
-       🔒 WEBSITE INITIALLY LOCKED
-    ===================================================== */
-
-    document.body.classList.add("locked");
+    const SESSION_KEY = "yashh_access_granted";
 
 
-    /* =====================================================
+    /* =========================================
        👁 SHOW / HIDE PASSWORD
-    ===================================================== */
+    ========================================= */
 
     if (togglePassword) {
 
         togglePassword.addEventListener("click", () => {
 
-            const isPassword =
-                passwordInput.type === "password";
+            if (passwordInput.type === "password") {
 
-            passwordInput.type =
-                isPassword ? "text" : "password";
+                passwordInput.type = "text";
 
-            togglePassword.innerHTML =
-                isPassword
-                    ? '<i class="fa-solid fa-eye-slash"></i>'
-                    : '<i class="fa-solid fa-eye"></i>';
+                togglePassword.innerHTML =
+                    '<i class="fa-solid fa-eye-slash"></i>';
+
+            } else {
+
+                passwordInput.type = "password";
+
+                togglePassword.innerHTML =
+                    '<i class="fa-solid fa-eye"></i>';
+
+            }
 
         });
 
     }
 
 
-    /* =====================================================
-       🔑 PASSWORD SUBMIT
-    ===================================================== */
+    /* =========================================
+       🔄 REFRESH CHECK
+
+       Agar password already diya hai:
+       → password screen nahi
+       → loader nahi
+       → website direct
+    ========================================= */
+
+    if (sessionStorage.getItem(SESSION_KEY) === "true") {
+
+        document.body.classList.remove("locked");
+        document.body.classList.add("site-ready");
+
+        if (passwordScreen) {
+            passwordScreen.style.display = "none";
+        }
+
+        if (loader) {
+            loader.classList.remove("active");
+            loader.classList.remove("hide");
+        }
+
+        document.querySelectorAll(".reveal").forEach((element) => {
+            element.classList.add("visible");
+        });
+
+        return;
+    }
+
+
+    /* =========================================
+       🔒 FIRST VISIT
+    ========================================= */
+
+    document.body.classList.add("locked");
+
+
+    /* =========================================
+       🔐 PASSWORD SUBMIT
+    ========================================= */
 
     passwordForm.addEventListener("submit", (event) => {
 
         event.preventDefault();
 
-        const enteredPassword =
-            passwordInput.value.trim();
+        const enteredPassword = passwordInput.value.trim();
 
 
-        /* =================================================
+        /* =====================================
            ❌ WRONG PASSWORD
-        ================================================= */
+        ===================================== */
 
         if (enteredPassword !== CORRECT_PASSWORD) {
 
@@ -80,51 +109,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             passwordError.style.color = "#ff5577";
 
-
-            /* Shake animation */
-
-            passwordError.classList.remove(
-                "password-error-shake"
-            );
-
-            void passwordError.offsetWidth;
-
-            passwordError.classList.add(
-                "password-error-shake"
-            );
-
-
-            /* Shake the input box too */
-
-            const passwordBox =
-                document.querySelector(".password-field");
-
-            if (passwordBox) {
-
-                passwordBox.classList.remove(
-                    "password-error-shake"
-                );
-
-                void passwordBox.offsetWidth;
-
-                passwordBox.classList.add(
-                    "password-error-shake"
-                );
-
-            }
-
-
             passwordInput.value = "";
-
             passwordInput.focus();
 
             return;
         }
 
 
-        /* =================================================
+        /* =====================================
            ✅ CORRECT PASSWORD
-        ================================================= */
+        ===================================== */
 
         passwordError.textContent =
             "ACCESS GRANTED — INITIALIZING...";
@@ -132,50 +126,53 @@ document.addEventListener("DOMContentLoaded", () => {
         passwordError.style.color = "#00ff9d";
 
 
-        passwordInput.disabled = true;
+        /* =====================================
+           💾 SAVE SESSION
+
+           Refresh karne par password nahi
+           maangega.
+        ===================================== */
+
+        sessionStorage.setItem(
+            SESSION_KEY,
+            "true"
+        );
 
 
-        /* Disable button */
-
-        const accessButton =
-            document.querySelector(".access-button");
-
-        if (accessButton) {
-            accessButton.disabled = true;
-        }
-
-
-        /* =================================================
-           ✨ PASSWORD SCREEN EXIT
-        ================================================= */
-
-        setTimeout(() => {
-
-            passwordScreen.classList.add(
-                "access-success"
-            );
-
-        }, 300);
-
-
-        /* =================================================
-           🚀 START LOADER
-        ================================================= */
+        /* =====================================
+           🚀 PASSWORD SCREEN HIDE
+        ===================================== */
 
         setTimeout(() => {
 
-            loader.classList.add("active");
+            if (passwordScreen) {
+                passwordScreen.style.display = "none";
+            }
+
+
+            /* =================================
+               🔥 EXISTING LOADER SHOW
+            ================================= */
+
+            if (loader) {
+
+                loader.classList.remove("hide");
+
+                loader.classList.add("active");
+
+            }
+
 
             startLoader();
 
-        }, 800);
+        }, 500);
 
     });
 
 
-    /* =====================================================
-       🚀 LOADER FUNCTION
-    ===================================================== */
+    /* =========================================
+       🚀 START EXISTING LOADER
+    ========================================= */
 
     function startLoader() {
 
@@ -183,13 +180,12 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector(".loader-line i");
 
 
-        /* Restart loader animation */
+        /* Restart loader progress */
 
         if (loaderBar) {
 
-            loaderBar.style.width = "0%";
-
             loaderBar.style.animation = "none";
+            loaderBar.style.width = "0%";
 
             void loaderBar.offsetWidth;
 
@@ -198,46 +194,37 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* =================================================
-           ⏱ LOADER DURATION
-
-           4000 = 4 seconds
-           5000 = 5 seconds
-           3000 = 3 seconds
-        ================================================= */
+        /* =====================================
+           ⏱ 4 SECOND LOADER
+        ===================================== */
 
         setTimeout(() => {
 
 
             /* Hide loader */
 
-            loader.classList.remove("active");
+            if (loader) {
+
+                loader.classList.remove("active");
+                loader.classList.add("hide");
+
+            }
 
 
             /* Unlock website */
 
-            document.body.classList.remove(
-                "locked"
-            );
+            document.body.classList.remove("locked");
 
-            document.body.classList.add(
-                "site-ready"
-            );
+            document.body.classList.add("site-ready");
 
 
-            /* =================================================
-               🎬 REVEAL WEBSITE
-            ================================================= */
+            /* Reveal website */
 
-            document
-                .querySelectorAll(".reveal")
-                .forEach((element) => {
+            document.querySelectorAll(".reveal").forEach((element) => {
 
-                    element.classList.add(
-                        "visible"
-                    );
+                element.classList.add("visible");
 
-                });
+            });
 
 
         }, 4000);
@@ -246,32 +233,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
 /* =========================================================
    YASHH — FUTURISTIC PERSONAL UNIVERSE
    script.js
 ========================================================= */
 
-
-/* =========================================================
-   1. PAGE LOADER
-========================================================= */
-
-window.addEventListener("load", () => {
-
-    const loader = document.getElementById("loader");
-
-    if (loader) {
-
-        setTimeout(() => {
-
-            loader.classList.add("hide");
-
-        }, 2400);
-
-    }
-
-});
 
 
 /* =========================================================
