@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -28,9 +28,8 @@
         rel="stylesheet">
 
 
-  <!-- FONT AWESOME -->
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="style.css">
 
@@ -38,129 +37,120 @@
 
 
 <body>
-  <!-- =====================================================
+    <!-- =====================================================
      PREMIUM PASSWORD / PRIVATE ACCESS SCREEN
 ===================================================== -->
 
-<div id="password-screen">
+    <div id="password-screen">
 
-    <div class="access-bg">
-        <div class="access-grid"></div>
+        <div class="access-bg">
+            <div class="access-grid"></div>
 
-        <div class="access-orb access-orb-1"></div>
-        <div class="access-orb access-orb-2"></div>
-        <div class="access-orb access-orb-3"></div>
+            <div class="access-orb access-orb-1"></div>
+            <div class="access-orb access-orb-2"></div>
+            <div class="access-orb access-orb-3"></div>
 
-        <div class="access-stars">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-        </div>
-
-        <div class="scanline"></div>
-    </div>
-
-    <div class="access-panel">
-
-        <div class="access-topline">
-            <span class="access-status-dot"></span>
-            <span>SECURE CONNECTION</span>
-            <span class="access-code">Y/2026</span>
-        </div>
-
-        <div class="access-core">
-
-            <div class="core-ring ring-a"></div>
-            <div class="core-ring ring-b"></div>
-            <div class="core-ring ring-c"></div>
-
-            <div class="core-icon">
-                <i class="fa-solid fa-lock"></i>
+            <div class="access-stars">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
             </div>
 
+            <div class="scanline"></div>
         </div>
 
-        <div class="access-heading">
+        <div class="access-panel">
 
-            <span class="access-label">PRIVATE ACCESS</span>
+            <div class="access-topline">
+                <span class="access-status-dot"></span>
+                <span>SECURE CONNECTION</span>
+                <span class="access-code">Y/2026</span>
+            </div>
 
-            <h1>
-                WELCOME TO
-                <strong>YASHH'S WORLD</strong>
-            </h1>
+            <div class="access-core">
 
-            <p>
-                This digital universe is private.
-                <br>
-                Authenticate yourself to continue.
-            </p>
+                <div class="core-ring ring-a"></div>
+                <div class="core-ring ring-b"></div>
+                <div class="core-ring ring-c"></div>
 
-        </div>
+                <div class="core-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
 
-        <form id="password-form">
+            </div>
 
-            <div class="password-field">
+            <div class="access-heading">
 
-                <i class="fa-solid fa-key"></i>
+                <span class="access-label">PRIVATE ACCESS</span>
 
-                <input
-                    type="password"
-                    id="site-password"
-                    placeholder="ENTER ACCESS KEY"
-                    autocomplete="off"
-                    required
-                >
+                <h1>
+                    WELCOME TO
+                    <strong>YASHH'S WORLD</strong>
+                </h1>
 
-                <button
-                    type="button"
-                    id="toggle-password"
-                    aria-label="Show password"
-                >
-                    <i class="fa-solid fa-eye"></i>
+                <p>
+                    This digital universe is private.
+                    <br>
+                    Authenticate yourself to continue.
+                </p>
+
+            </div>
+
+            <form id="password-form">
+
+                <div class="password-field">
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <input type="password" id="site-password" placeholder="ENTER ACCESS KEY" autocomplete="off"
+                        required>
+
+                    <button type="button" id="toggle-password" aria-label="Show password">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+
+                </div>
+
+                <button type="submit" class="access-button">
+
+                    <span class="button-text">
+                        AUTHENTICATE
+                    </span>
+
+                    <span class="button-icon">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                    <span class="button-shine"></span>
+
                 </button>
 
+                <div id="password-error"></div>
+
+            </form>
+
+            <div class="access-footer">
+
+                <span>
+                    <i class="fa-solid fa-shield-halved"></i>
+                    END-TO-END PRIVATE
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-fingerprint"></i>
+                    AUTHORIZED ONLY
+                </span>
+
             </div>
-
-            <button type="submit" class="access-button">
-
-                <span class="button-text">
-                    AUTHENTICATE
-                </span>
-
-                <span class="button-icon">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </span>
-
-                <span class="button-shine"></span>
-
-            </button>
-
-            <div id="password-error"></div>
-
-        </form>
-
-        <div class="access-footer">
-
-            <span>
-                <i class="fa-solid fa-shield-halved"></i>
-                END-TO-END PRIVATE
-            </span>
-
-            <span>
-                <i class="fa-solid fa-fingerprint"></i>
-                AUTHORIZED ONLY
-            </span>
 
         </div>
 
+        <div class="access-corner corner-tl"></div>
+        <div class="access-corner corner-tr"></div>
+        <div class="access-corner corner-bl"></div>
+        <div class="access-corner corner-br"></div>
+
     </div>
-
-    <div class="access-corner corner-tl"></div>
-    <div class="access-corner corner-tr"></div>
-    <div class="access-corner corner-bl"></div>
-    <div class="access-corner corner-br"></div>
-
-</div>
 
     <!-- =====================================================
      LOADING / ENTRY SCREEN
@@ -370,36 +360,38 @@
 
                 <h1>
 
-    HELLO,
+                    HELLO,
 
-    <br>
+                    <br>
 
-    <span>I'M YASHH.</span>
+                    <span>I'M YASHH.</span>
 
-</h1>
+                </h1>
 
-<div class="hero-roles">
-    <span>STUDENT</span>
-    <i>•</i>
-    <span>WRITER</span>
-    <i>•</i>
-    <span>POET</span>
-    <i>•</i>
-    <span>GAMER</span>
-    <i>•</i>
-    <span>PROGRAMMER</span>
-    <i>•</i>
-    <span>MENTOR</span>
-</div>
+                <div class="hero-roles">
+                    <span>STUDENT</span>
+                    <i>•</i>
+                    <span>WRITER</span>
+                    <i>•</i>
+                    <span>POET</span>
+                    <i>•</i>
+                    <span>GAMER</span>
+                    <i>•</i>
+                    <span>PROGRAMMER</span>
+                    <i>•</i>
+                    <span>MENTOR</span>
+                </div>
 
 
                 <p class="hero-description">
 
-                    A curious student with a creative mind, a calm nature, and a little too much imagination. meri duniya sirf books aur classes tak limited nahi hai thoda creative, thoda calm , aur imagination kaafi zyada hai.
+                    A curious student with a creative mind, a calm nature, and a little too much imagination. meri
+                    duniya sirf books aur classes tak limited nahi hai thoda creative, thoda calm , aur imagination
+                    kaafi zyada hai.
                     Sometimes I use my imagination to make myself happy<br>
                     <b>How bad did it hurt ? - Maine Dost bnane chordiye.<br>
-                    आशिक था एक मेरे अंदर, कुछ साल पहले गुज़र गया..!!
-अब कोई शायर सा है, अजीब अजीब सी बातें करता है,…</b> <br>
+                        आशिक था एक मेरे अंदर, कुछ साल पहले गुज़र गया..!!
+                        अब कोई शायर सा है, अजीब अजीब सी बातें करता है,…</b> <br>
                     <b>“what if what you’re manifesting… is manifesting you too? 🤍🙇.”</b>
 
 
@@ -426,7 +418,7 @@
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
                     </a>
-                   
+
 
                 </div>
 
@@ -509,12 +501,12 @@
                 <div class="photo-orbit orbit-two"></div>
 
 
-               
+
 
                 <div class="photo-frame">
 
 
-                    
+
 
                     <div class="photo-badge">
 
@@ -525,7 +517,7 @@
                     </div>
 
 
-                   
+
 
                     <div class="floating-card card-top">
 
@@ -544,7 +536,7 @@
                     <img src="IMG/Screenshot 2026-08-23 031752.png" alt="Yashh Portrait">
 
 
-                  
+
 
                     <div class="photo-overlay"></div>
 
@@ -627,10 +619,13 @@
                         I’m <b>Yashh</b> — bas ek simple sa person, jo is beautiful aur unpredictable journey called
                         life ko apne way mein jeene ki koshish kar raha hai 🌌
 
-                       <b> "People notice your change, but rarely notice what changed you." Actually I follow the rule that When life makes you a VILLIAN , make sure that the hero will fail.</b>
-                        <i>one thing that everyone loved the most is Singing . Things I'm bad at : Singing , Things I do a lot : Singing.</i>
+                        <b> "People notice your change, but rarely notice what changed you." Actually I follow the rule
+                            that When life makes you a VILLIAN , make sure that the hero will fail.</b>
+                        <i>one thing that everyone loved the most is Singing . Things I'm bad at : Singing , Things I do
+                            a lot : Singing.</i>
 
-                        Sometimes… doing nothing feels heavier than doing everything.If you want to achieve something big in life, you will have to sacrifice what already exists✨.
+                        Sometimes… doing nothing feels heavier than doing everything.If you want to achieve something
+                        big in life, you will have to sacrifice what already exists✨.
                         <i>All need is एकान्तः </i>
 
                         <b>"Even my doubts have doubts."</b>
@@ -691,22 +686,20 @@
 
                     <i class="fa-solid fa-fire card-icon"></i>
 
-                    <h3>MY ENERGY</h3>
+                    <h3>MY ADVICE</h3>
 
                     <p>
 
-                        Curious.
+                        1. <b> "Your caste, religion, birth place, and gender are all accidents of birth. You did
+                            nothing to earn them, so don't take pride in them. Instead, be proud of your own character,
+                            your actions, and the humanity you choose every single day."</b>
+                        2. तुम केवल सुंदर नहीं सक्षम बनना !<br>
+                        इतना सक्षम -<br>
+                        की जब कोई तुम्हारे गुणों की बात करे तो सुंदरता की बात सबसे आखिरी में हो.....<br>
+                        3. <b>Be proud of yourself, because noone knows about the battles you are fighting
+                            everyday🥲</b><br>
+                        <!-- 4. <b></b><br> -->
 
-                        Experimental.
-
-                        Sometimes chaotic.
-
-                        Always learning.
-                        I’m mostly a chill person who likes to keep things simple. I enjoy being around people I’m
-                        comfortable with, laughing over stupid things, going on random plans, listening to music, and
-                        sometimes just sitting alone with my thoughts. My mood can change from “let’s stay home” to
-                        “let’s go somewhere” pretty quickly. I don’t really try to have a certain vibe — I just go with
-                        whatever feels right.
 
                     </p>
 
@@ -726,17 +719,10 @@
 
                     <p>
 
-                        I like trying things instead of
-                        only thinking about them.
-                        <br>
+                        <b> "If a god can welcome Criminal and rapists Into temple, He can definitely Welcome a
+                            menstruation women💗🕉️."</b><br>
+                        <!-- <b> ""</b><br> -->
 
-                        I overthink a lot, but somehow still figure things out.
-                        I take things personally sometimes, even when I shouldn’t.
-                        I need my own space when my head gets too loud.
-                        I care more than I usually show.
-                        I remember small things people say and do.
-                        I can be stubborn when I really believe in something.
-                        I don’t open up quickly, but once I do, I’m completely myself.
 
                     </p>
 
@@ -752,21 +738,17 @@
 
                     <i class="fa-solid fa-rocket card-icon"></i>
 
-                    <h3>MY VISION</h3>
+                    <h3>DEAR GIRLS</h3>
 
                     <p>
+                        <b>Be selfish girls because even your parents first priority is society🥲</b><br>
 
-                        Build something meaningful,
-                        keep improving and create a
-                        future that feels like my own.
+                        <B>Girl, go focus on you.
+                            There is nothing more beautiful than a woman who knows her worth, works toward her goals,
+                            and dreams big.
+                            You don't need to prove anything to anyone.
+                            You just need to believe in you.</B>
                         <br>
-                        To wake up one day and genuinely love the life I’ve built.
-                        To take my parents somewhere they’ve always wanted to go.
-                        To travel without having to think twice about the cost or time.
-                        To have my own space, my own rules, and my own kind of peace.
-                        To keep a small circle of people who actually know the real me.
-                        To collect crazy memories instead of just collecting things.
-                        To look back at my younger self and think, “Yeah, we did pretty well.”
 
                     </p>
 
@@ -791,7 +773,8 @@
                         passing. Kabhi kuch karne ka mann hota hai, kabhi bas time nikal jaata hai. I know I need to get
                         back on track, and maybe I’m still figuring out how — but for now, I’m just trying to understand
                         myself, get my head straight, and slowly find my way again. <br>
-                        <b>Every night i questioning myself why all these things happend to me,even after my intention were pure and genuine.</b>
+                        <b>Every night i questioning myself why all these things happend to me,even after my intention
+                            were pure and genuine.</b>
 
                     </p>
 
@@ -1422,238 +1405,37 @@
 
         <section class="section" id="oneday">
 
-    <div class="section-head reveal">
-        <span>04 / ONEDAY</span>
-
-        <h2>
-            BUILDING THE
-            <br>
-            <em>NEXT VERSION.</em>
-        </h2>
-    </div>
-
-    <div class="now-grid">
-        
-            <!-- 01 -->
-
-            <article class="now-card reveal">
-
-                <span>01</span>
-
-                <i class="fa-solid fa-earth-americas"></i>
-
-                <h3>SEE THE WORLD</h3>
-
-                <p>
-
-                    Ek din poori duniya dekhni hai — jitna ho sake, jitni door tak jaa sakun 🌍
-                    Har country, har city, naye roads, naye places… bas keep travelling and keep discovering ✈️
-                    Life ek hi baar milti hai, and I want to see as much of this beautiful world as I possibly can ❤️✨.
-
-                </p>
-
-            </article>
-
-
-
-            <!-- 02 -->
-
-            <article class="now-card reveal">
-
-                <span>02</span>
-
-                <i class="fa-solid fa-passport"></i>
-
-                <h3>VISIT A NEW COUNTRY</h3>
-
-                <p>
-
-                    India ke bahar jaana hai,
-                    ek completely new place, new people aur new experience ke liye.
-                    Ek completely new country ko khud experience karna hai ✈️
-                    Naye log, naye places, different culture aur woh feeling ki “main sach mein itni door aa gaya” ❤️
-                    I want to collect countries, experiences and memories — not just destinations🌎✨.
-
-                </p>
-
-            </article>
-
-
-
-            <!-- 03 -->
-
-            <article class="now-card reveal">
-
-                <span>03</span>
-
-                <i class="fa-solid fa-road"></i>
-
-                <h3>ONE DAY, I'LL JUST LEAVE</h3>
-
-                <p>
-
-                    One day, I’ll just leave — leaving behind the people, the memories, and everything that once felt
-                    like home 🥀
-                    No goodbyes, no explanations… just me, somewhere far away from the past 🌌
-                    <B>Maybe some distances are meant to be permanent 🕊️.</B>
-                    <b>वो बताकर जा रहा है,
-असल में वो जाना नहीं चाहता ! 🤍 </b>
-
-
-                </p>
-
-            </article>
-
-
-
-            <!-- 04 -->
-
-            <article class="now-card reveal">
-
-                <span>04</span>
-
-                <i class="fa-solid fa-mountain-sun"></i>
-
-                <h3>VISIT THE MOUNTAINS</h3>
-
-                <p>
-
-                    Kuch din sheher ke noise se door,
-                    mountains ke beech slow life jeeni hai.<BR>
-                    One day, I’ll walk away into the mountains — far from the noise, the people, and everything I’ve
-                    known 🏔️
-                    Just me, the silence, and a world where nobody knows my past 🌌
-                    <b>Maybe I’ll finally find myself there 🕊️. </b>
-
-
-                </p>
-
-            </article>
-
-
-
-            <!-- 05 -->
-
-            <article class="now-card reveal">
-
-                <span>05</span>
-
-                <i class="fa-solid fa-ghost"></i>
-
-                <h3>DISAPPEAR</h3>
-
-                <p>
-
-                    Someday, I’ll fade away from everything I once knew — quietly, completely, without looking back 🌙
-                    No trace, no noise… <B>just a life somewhere far beyond the past 🕊️.<br>
-                    Take the blame and walk away from the story.
-                    </B>
-
-                </p>
-
-            </article>
-
-
-
-            <!-- 06 -->
-
-            <article class="now-card reveal">
-
-                <span>06</span>
-
-                <i class="fa-solid fa-person-running"></i>
-
-                <h3>BECOME MORE DISCIPLINED</h3>
-
-                <p>
-
-                    Motivation ka wait nahi karna,
-                    even on the days I don't feel like it, still show up.<BR>
-                    I’ll become the person I always knew I could be — focused, consistent, and unstoppable ⚡
-                    Less excuses, less distractions… just discipline, growth, and a better version of me🖤🔥.
-
-
-                </p>
-
-            </article>
-
-
-
-            <!-- 07 -->
-
-            <article class="now-card reveal">
-
-                <span>07</span>
-
-                <i class="fa-solid fa-headphones"></i>
-
-                <h3>ENJOY MY OWN COMPANY</h3>
-
-                <p>
-
-                    Khud ke saath comfortable hona,
-                    bina kisi distraction ke apne thoughts aur moments enjoy karna.<BR>
-                    Maybe one day, I’ll stop looking for someone to fill the silence🌙
-                    I’ll sit with my thoughts, make peace with my past, and finally feel okay being alone 🥀
-                    <B>Just me — and the version of myself I almost forgot 🕊️</B>
-
-
-                </p>
-
-            </article>
-
-
-        </div>
-
-
-
-        <!-- =====================================================
-     INSPIRATIONS
-===================================================== -->
-
-        <section id="inspiration" class="section">
-
-
             <div class="section-head reveal">
-
-                <span>05 / INSPIRATIONS</span>
+                <span>04 / ONEDAY</span>
 
                 <h2>
-
-                    PEOPLE WHO
-
+                    BUILDING THE
                     <br>
-
-                    <em> LEFT A MARK .</em>
-
+                    <em>NEXT VERSION.</em>
                 </h2>
-
             </div>
 
-
-
-            <div class="people-grid">
-
+            <div class="now-grid">
 
                 <!-- 01 -->
 
-                <article class="person-card reveal">
+                <article class="now-card reveal">
 
-                    <img src="IMG/PAPAA.jpg" alt=" PAPAA ">
+                    <span>01</span>
 
-                    <div>
+                    <i class="fa-solid fa-earth-americas"></i>
 
-                        <span>01</span>
+                    <h3>SEE THE WORLD</h3>
 
-                        <h3> PAPAA </h3>
+                    <p>
+                        <b>Once you start seeing the world, you'll never wants to stop.
+                            it's addictive</b><br>
+                        Ek din poori duniya dekhni hai — jitna ho sake, jitni door tak jaa sakun 🌍
+                        Har country, har city, naye roads, naye places… bas keep travelling and keep discovering ✈️
+                        Life ek hi baar milti hai, and I want to see as much of this beautiful world as I possibly can
+                        ❤️✨.
 
-                        <p> <STRONG>DEAR PAPAA YOU ARE THE BEST 💗</STRONG> <BR>
-                            He never asked me to be perfect, he only taught me to keep going❤️
-                            <B>Whatever I become tomorrow, a part of it will always be because of him 🫶</B>
-
-                        </p>
-
-                    </div>
+                    </p>
 
                 </article>
 
@@ -1661,29 +1443,24 @@
 
                 <!-- 02 -->
 
-                <article class="person-card reveal">
+                <article class="now-card reveal">
 
-                    <img src="IMG/SSR.jpg" alt=" SSR ">
+                    <span>02</span>
 
-                    <div>
+                    <i class="fa-solid fa-passport"></i>
 
-                        <span>02</span>
+                    <h3>VISIT A NEW COUNTRY</h3>
 
-                        <h3>SUSHANT SINGH RAJPUT</h3>
+                    <p>
 
-                        <p>
-                            <STRONG>Alwys miss you Sir 💗</STRONG><br>
-                            <b>We both are died but only you stopped breathing 💔</b><br>
-                            He taught me ki dreams ko sirf dekhna nahi, unke liye chase karna bhi zaroori hai 🌌
-                            Unki curiosity ne mujhe sikhaya ki life mein “why?” poochna kabhi band nahi karna chahiye 🚀
-                            Science, stars aur life — har cheez ko explore karne ka unka way truly inspiring tha. ✨
-                            Main bhi ek aisi life jeena chahta hoon jahan learning kabhi stop na ho 🖤<br>
-                            <B>Kuch log sirf inspire nahi karte, woh tumhari soch hi badal dete hain🕊️</B>
+                        India ke bahar jaana hai,
+                        ek completely new place, new people aur new experience ke liye.
+                        Ek completely new country ko khud experience karna hai ✈️
+                        Naye log, naye places, different culture aur woh feeling ki “main sach mein itni door aa gaya”
+                        ❤️
+                        I want to collect countries, experiences and memories — not just destinations🌎✨.
 
-
-                        </p>
-
-                    </div>
+                    </p>
 
                 </article>
 
@@ -1691,28 +1468,26 @@
 
                 <!-- 03 -->
 
-                <article class="person-card reveal">
+                <article class="now-card reveal">
 
-                    <img src="IMG/ARIJIT SINGH.jpg" alt="ARIJIT SINGH ">
+                    <span>03</span>
 
-                    <div>
+                    <i class="fa-solid fa-road"></i>
 
-                        <span>03</span>
+                    <h3>ONE DAY, I'LL JUST LEAVE</h3>
 
-                        <h3> ARIJIT SINGH </h3>
+                    <p>
 
-                        <p>
+                        One day, I’ll just leave — leaving behind the people, the memories, and everything that once
+                        felt
+                        like home 🥀
+                        No goodbyes, no explanations… just me, somewhere far away from the past 🌌
+                        <B>Maybe some distances are meant to be permanent 🕊️.</B>
+                        <b>वो बताकर जा रहा है,
+                            असल में वो जाना नहीं चाहता ! 🤍 </b>
 
-                            Inki awaaz mein ek aisi feeling hai jo bina words ke bhi dil tak pahunch jaati hai 🎶🖤
-                            Arijit Singh taught me ki emotions ko feel karna bhi ek art hai ✨
-                            Unki simplicity, passion aur music ke liye dedication mujhe genuinely inspire karti
-                            hai🌙<br>
-                            <B>Kuch awaazein sirf suni nahi jaati… feel ki jaati hain 🫶 and one thing that i want to tell u Arijit sir that is ki "chale jaate h risten purane kisi naye ke aa jne se."</B>
 
-
-                        </p>
-
-                    </div>
+                    </p>
 
                 </article>
 
@@ -1720,35 +1495,25 @@
 
                 <!-- 04 -->
 
-                <article class="person-card reveal">
+                <article class="now-card reveal">
 
-                    <img src="IMG/MS DHONI.jpg" alt="MS DHONI ">
+                    <span>04</span>
 
-                    <div>
+                    <i class="fa-solid fa-mountain-sun"></i>
 
-                        <span>04</span>
+                    <h3>VISIT THE MOUNTAINS</h3>
 
-                        <h3>MS DHONI</h3>
+                    <p>
 
-                        <p>
-                            <STRONG>
-                                <B>
-                                    The reason I watch cricket🏏💗
-
-                                </B><br>
-                            </STRONG>
-                            Jab poora stadium pressure mein hota hai, ek insaan ka calm rehna hi kaafi lagta hai 🏏
-                            MSD ki batting se zyada, unka decision-making, patience aur never-give-up attitude inspire
-                            karta hai 🦁
-                            Unki journey batati hai ki silence mein bhi confidence hota hai, aur simplicity mein bhi
-                            greatness ✨<br>
-                            <B>For me, MSD isn’t just the reason I love cricket — he’s one of the reasons I believe in
-                                myself</B> 💛
+                        Kuch din sheher ke noise se door,
+                        mountains ke beech slow life jeeni hai.<BR>
+                        One day, I’ll walk away into the mountains — far from the noise, the people, and everything I’ve
+                        known 🏔️
+                        Just me, the silence, and a world where nobody knows my past 🌌
+                        <b>Maybe I’ll finally find myself there 🕊️. </b>
 
 
-                        </p>
-
-                    </div>
+                    </p>
 
                 </article>
 
@@ -1756,28 +1521,23 @@
 
                 <!-- 05 -->
 
-                <article class="person-card reveal">
+                <article class="now-card reveal">
 
-                    <img src="IMG/ZAKIR KHAN.jpg" alt=" ZAKIR KHAN">
+                    <span>05</span>
 
-                    <div>
+                    <i class="fa-solid fa-ghost"></i>
 
-                        <span>05</span>
+                    <h3>DISAPPEAR</h3>
 
-                        <h3> ZAKIR KHAN</h3>
+                    <p>
 
-                        <p>
-
-                            Kuch log stage par sirf jokes nahi bolte, woh life ke emotions ko words de dete hain🎙️🖤
-                            Zakir Khan ki baaton mein woh desi simplicity aur asli struggle hai jo dil tak pahunchti hai
-                            🌙
-                            Unki storytelling mein kabhi hasi milti hai, kabhi apni hi kahani ka ek hissa ✨<br>
-                            <B>Maybe that’s why his words don’t just make you laugh — they make you feel 🫶</B>
-
-
-                        </p>
-
-                    </div>
+                        Someday, I’ll fade away from everything I once knew — quietly, completely, without looking back
+                        🌙
+                        No trace, no noise… <B>just a life somewhere far beyond the past 🕊️.<br>
+                            Take the blame and walk away from the story.
+                        </B>
+                        Don't be surprised if I ever record a message and disappear.
+                    </p>
 
                 </article>
 
@@ -1785,30 +1545,23 @@
 
                 <!-- 06 -->
 
-                <article class="person-card reveal">
+                <article class="now-card reveal">
 
-                    <img src="IMG/RATAN TATA.jpg" alt="RATAN TATA SIR ">
+                    <span>06</span>
 
-                    <div>
+                    <i class="fa-solid fa-person-running"></i>
 
-                        <span>06</span>
+                    <h3>BECOME MORE DISCIPLINED</h3>
 
-                        <h3>RATAN TATA</h3>
+                    <p>
 
-                        <p>
-
-                            <B> Power aur success ke baad bhi itna humble rehna — that’s what makes him truly different
-                                🖤</B>
-                            Ratan Tata sir ki personality mein ek aisi simplicity thi jo respect automatically earn
-                            karti thi ✨
-                            Unki life dekhkar lagta hai ki <I>bada banna sirf achievements ka naam nahi, character ka
-                                bhi hai </I>🌱<br>
-                            <B>A legacy built not just on success, but on kindness, dignity and purpose 🕊️</B>
+                        Motivation ka wait nahi karna,
+                        even on the days I don't feel like it, still show up.<BR>
+                        I’ll become the person I always knew I could be — focused, consistent, and unstoppable ⚡
+                        Less excuses, less distractions… just discipline, growth, and a better version of me🖤🔥.
 
 
-                        </p>
-
-                    </div>
+                    </p>
 
                 </article>
 
@@ -1816,896 +1569,1155 @@
 
                 <!-- 07 -->
 
-                <article class="person-card reveal">
+                <article class="now-card reveal">
 
-                    <img src="IMG/APJ ABDUL KALAM.jpg" alt="APJ ABDUL KALAM ">
+                    <span>07</span>
 
-                    <div>
+                    <i class="fa-solid fa-headphones"></i>
 
-                        <span>07</span>
-
-                        <h3>APJ ABDUL KALAM</h3>
-
-                        <p>
-
-                            Ek simple background se aakar dreams ko itna bada banana — that’s what inspires me about
-                            him🚀
-                            Dr. Kalam sir ki curiosity, humility aur knowledge ke liye hunger truly unmatched thi. ✨
-                            Unki life remind karti hai ki <B>sapne wahi nahi jo hum sote waqt dekhte hain, but those we
-                                work for every day</B> 🌌<br>
-                            <B>For me, he wasn’t just a great scientist — he was a reminder to dream bigger</B> 🕊️
-
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 08 -->
-
-                <article class="person-card reveal">
-
-                    <img src="IMG/SUNDAR PICHAI.jpg" alt="SUNDAR PICHAI ">
-
-                    <div>
-
-                        <span>08</span>
-
-                        <h3>SUNDAR PICHAI</h3>
-
-                        <p>
-
-                            Ek ordinary beginning se world ke biggest tech platforms tak ka journey — that’s what
-                            inspires me. 💻🌍
-                            Sundar Pichai ki calm personality aur quiet confidence** genuinely alag lagti hai ✨
-                            Unki story batati hai ki background tumhari limits decide nahi karta, your mindset does
-                            🚀<br>
-                            <B>Dream quietly, work consistently, and let your journey speak for itself🖤</B>
-
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 09 -->
-
-                <article class="person-card reveal">
-
-                    <img src="IMG/MR BEASTE.jpg" alt=" MRBEAST ">
-
-                    <div>
-
-                        <span>09</span>
-
-                        <h3>James Stephen Donaldson (MRBEAST) </h3>
-
-                        <p>
-
-                            <b> 0 se 500M+ subscribers tak ka journey</b> — aur aaj duniya ke No. 1 YouTuber h 🚀
-                            Lekin numbers se zyada inspiring hai ki usne apni success ko real lives change karne ke liye
-                            use kiya ❤️
-                            Kisi ko ghar, kisi ko clean water, kisi ko school — aur kisi ka woh sapna poora kiya jo
-                            kabhi impossible lagta tha 🌍✨
-                            Uski videos sirf entertainment nahi, kisi ke liye ek new beginning hoti hain🫶<br>
-                            <b><i> He proves that success tab aur beautiful ban jaati hai, jab tumhare rise ke saath
-                                    kisi
-                                    aur ki life bhi better ho 💗</i></b>
-
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 10 -->
-
-                <article class="person-card reveal">
-
-                    <img src="IMG/ALAKH IR.jpg" alt="ALAKH SIR ">
-
-                    <div>
-
-                        <span>10</span>
-
-                        <h3>ALAKH PANDEY</h3>
-
-                        <p>
-
-                            Ek teacher jisne sirf subjects nahi, lakho students ko apne dreams par believe karna sikhaya
-                            📚🔥
-                            Alakh Sir ki energy aur ground-level teaching ka way genuinely inspiring hai ❤️
-                            Unki journey dikhati hai ki knowledge tab sabse powerful hoti hai, jab woh har kisi tak
-                            pahunch sake 🌱<br>
-                            <b> he’s not just a teacher — he’s a reason many students dare to dream bigger </b>
-
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 11 -->
-
-                <article class="person-card reveal">
-
-                    <img src="IMG/ELON MUSK.jpg" alt="ELON MUSK ">
-
-                    <div>
-
-                        <span>11</span>
-
-                        <h3>ELON MUSK </h3>
-
-                        <p>
-
-                            Ek aisa insaan jo impossible ideas ko bhi <b>“let’s try”</b> kehkar reality ke closer le
-                            aata hai 🚀
-                            Space, electric cars, AI — <b> he keeps thinking beyond what already exists</b> 🌌
-                            Unki ambition mujhe inspire karti hai ki safe dreams nahi, meaningful aur crazy dreams chase
-                            karne chahiye⚡<br>
-                            <b> Elon Musk — it’s about thinking big enough to build something that matters💗⭐</b>
-
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 12 -->
-
-                <article class="person-card reveal">
-
-                    <img src="IMG/Screenshot 2026-08-23 032418.png" alt=" FUTURE ME ">
-
-                    <div>
-
-                        <span>12</span>
-
-                        <h3>MY FUTURE SELF</h3>
-
-                        <p>
-                            I don’t know ki future mein main exactly kaisa hounga, but I know <b>I want to become
-                                someone I’m genuinely proud of</b>🌌
-                            Aaj jo confusion hai, jo distractions hain, jo things I’m still figuring out — <b>I hope one
-                                day they all make sense</b>🖤
-                            I want to be more disciplined, more confident, aur apni life ko apne terms par live karne
-                            wala insaan ⚡
-                            Jo dreams aaj sirf mere mind mein hain, <b> I want to turn them into something real,
-                                something I can actually look at and say — “I did it.”</b>✨
-                            Aur sabse important, I don’t want to lose the person I am today while becoming the person
-                            I’ve always wanted to be 🫶<br>
-                            <b>Maybe that future version of me is the biggest dream I’m working on right now.</b>🌙
-
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-
-
-
-        <!-- =====================================================
-     FRIENDS
-===================================================== -->
-
-        <section id="friends" class="section">
-
-
-            <div class="section-head reveal">
-
-                <span>06 / MY PEOPLE</span>
-
-                <h2>
-
-                    FRIENDS &
-
-                    <br>
-
-                    <em>MEMORIES.</em>
-
-                </h2>
-
-            </div>
-
-
-            <p class="muted reveal">
-                A little corner for the people who made ordinary moments feel a little more special 🫶✨<br>
-                And somehow became a beautiful part of the story along the way 🤍🌙.
-
-
-            </p>
-
-
-
-            <div class="friends-grid">
-
-
-                <!-- FRIEND 01 -->
-
-                <article class="friend-card reveal">
-
-                    <img src="IMG/AAYUSHI.png">
-
-                    <div>
-
-                        <span>01</span>
-
-                        <h3>AAYUSHI </h3>
-                        <small>
-                            <a href="https://www.instagram.com/ayushi_43singh/" target="_blank">
-                                <b>@ayushi_43singh</b>
-                            </a>
-                        </small>
-
-
-                        <p>
-                            <STRONG>BESTIEE💗</STRONG><BR>
-
-                            <B>Met online • Gaming 📍 • </B><br>
-                            Some people just become a beautiful part of your life 🫶
-                            <b>Lucky to have you, bestiee — truly, more than you’ll ever know 🤍✨ </b>
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- FRIEND 02 -->
-
-                <article class="friend-card reveal">
-
-                    <img src="IMG/choco.png">
-
-                    <div>
-
-                        <span>02</span>
-
-                        <h3>MEGHAA</h3>
-                        <small>
-                            <a href="https://www.instagram.com/annie_47771/" target="_blank">
-                                <b>@annie_47771</b>
-                            </a>
-                        </small>
-
-                        <p>
-                            <strong>CHOCO💗</strong><BR>
-                            <b> Met on social media 📍 • </b><br>
-                            Sometimes you just meet someone randomly, and without even realizing it, they become an
-                            important part of your life 🫶
-                            <b>Choco</b> Grateful for the laughs, the conversations, and the kind of friendship that
-                            simply feels good to have 🤍✨
-
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- FRIEND 03 -->
-
-
-                <article class="friend-card reveal">
-
-                    <img src="IMG/naveen.png">
-
-                    <div>
-
-                        <span>03</span>
-
-                        <h3>NAVEEN</h3>
-                        <small>
-                            <a href="https://www.instagram.com/naveen14_.3/" target="_blank">
-                                <b>@naveen14_.3</b>
-                            </a>
-                        </small>
-                        <p>
-                            <b> Met on social media 📍 • </b><br>
-                            He’s still a small creator, but you can tell he genuinely enjoys creating and wants to build
-                            something of his own 🎥
-                            Abhi journey starting hai, let’s see where this passion takes him 🤝🔥
-
-
-
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- FRIEND 04 -->
-
-                <article class="friend-card reveal">
-
-                    <img src="IMG/khushi.png">
-
-                    <div>
-
-                        <span>04</span>
-
-                        <h3>KHUSHI</h3>
-                        <small>
-                            <a href="https://www.instagram.com/khushii_core.01/" target="_blank">
-                                <b>@khushii_core.01</b>
-                            </a>
-                        </small>
-                        <p>
-
-                            <b> Met on social media 📍 • </b><br>
-                            She’s the kind of person who can spend hours admiring her own vibe — and honestly, she owns
-                            it 😌✨
-                            A little self-obsessed, a lot confident, and somehow that’s exactly what makes her fun to
-                            have around🪞
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-
-                <!-- FRIEND 05 -->
-
-                <article class="friend-card reveal">
-
-                    <img src="IMG/vivek.jpeg">
-
-                    <div>
-
-                        <span>05</span>
-
-                        <h3>VIVEK SHARMA</h3>
-
-                        <small>
-                            <a href="https://www.instagram.com/_v1vek_xd/" target="_blank">
-                                <b>@_v1vek_xd</b>
-                            </a>
-                        </small>
-                        <p>
-                            <b> Met on social media 📍 • </b><br>
-                            Dil se genuine, baaton mein apni ek alag si vibe, aur personality jo easily notice ho jaaye.
-                            A person you’d be glad to have around ✨
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- FRIEND 06 -->
-
-                <article class="friend-card reveal">
-
-                    <img src="IMG/sreekunt.jpeg">
-
-                    <div>
-
-                        <span>06</span>
-
-                        <h3>SREEKUTTANN</h3>
-
-                        <small>
-                            <a href="https://www.instagram.com/sreekutt_ann/" target="_blank">
-                                <b>@sreekutt_ann</b>
-                            </a>
-                        </small>
-                        <p>
-                            <b> Met on social media 📍 • </b><br>
-                            A person with a calm vibe and a personality that stands out naturally.
-                            Easy to talk to, fun to be around, and always carrying his own unique energy🔥.
-                            
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                 <!-- FRIEND 07 -->
-
-                <article class="friend-card reveal">
-
-                    <img src="IMG/shreyaan.png">
-
-                    <div>
-
-                        <span>07</span>
-
-                        <h3>Shreyaan Gupta </h3>
-
-                        <small>
-                            <a href="https://www.instagram.com/_shreyaan18_/" target="_blank">
-                                <b>@_shreyaan18_</b>
-                            </a>
-                        </small>
-                        <p>
-                            <b> Met on social media 📍 • </b><br>
-                            He’s one of those guys who’s good at pretty much everything he tries 🎸😎. From playing guitar in the school band to dominating in sports, he always manages to stand out 🏆🔥. He’s super chill with his friends and somehow ends up being everyone’s favourite in the group 🤝. Basically, talented, fun, and always bringing good vibes wherever he goes ❤️‍🔥✨.
-                            
-
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-
-
-
-        <!-- =====================================================
-     SOCIAL UNIVERSE
-===================================================== -->
-
-        <section class="section social-section">
-
-
-            <div class="section-head reveal">
-
-                <span>07 / SOCIAL UNIVERSE</span>
-
-                <h2>
-
-                    FIND ME
-
-                    <br>
-
-                    <em>OUTSIDE.</em>
-
-                </h2>
-
-            </div>
-
-
-
-            <div class="social-universe reveal">
-
-
-                <!-- CENTER -->
-
-                <div class="social-core">
-
-                    <strong>Y</strong>
-
-                    <span>YASHH</span>
-
-                </div>
-
-
-
-                <!-- INSTAGRAM -->
-
-                <a href="https://instagram.com/yashh.dy" target="_blank" class="social-node instagram">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                    <span>Instagram</span>
-
-                </a>
-
-
-
-                <!-- SNAPCHAT -->
-
-                <a href="https://www.snapchat.com/@yashh.dy" target="_blank" class="social-node snapchat">
-
-                    <i class="fa-brands fa-snapchat"></i>
-
-                    <span>Snapchat</span>
-
-                </a>
-
-
-
-                <!-- FACEBOOK -->
-
-                <a href="https://www.facebook.com/profile.php?id=61592565651494" target="_blank"
-                    class="social-node facebook">
-
-                    <i class="fa-brands fa-facebook-f"></i>
-
-                    <span>Facebook</span>
-
-                </a>
-
-
-
-                <!-- TIKTOK -->
-
-                <a href="https://www.tiktok.com/@yashh.dy" target="_blank" class="social-node tiktok">
-
-                    <i class="fa-brands fa-tiktok"></i>
-
-                    <span>TikTok</span>
-
-                </a>
-
-
-            </div>
-
-        </section>
-
-
-
-
-
-        <!-- =====================================================
-     VISUAL DIARY
-===================================================== -->
-
-        <section class="section gallery-section">
-
-            <div class="section-head reveal">
-
-                <span>08 / VISUAL DIARY</span>
-
-                <h2>
-                    THE
-                    <br>
-                    <em>MOMENTS.</em>
-                </h2>
-
-            </div>
-
-
-            <!-- =================================================
-         VIDEO DIARY
-    ================================================== -->
-
-            <div class="video-diary">
-
-                <!-- VIDEO 01 : 1080 × 1920 | AUTOPLAY -->
-
-                <div class="diary-video video-01 reveal">
-
-                    <video autoplay muted loop playsinline preload="auto">
-
-                        <source src="VID/IND FLAG.mp4" type="video/mp4">
-
-                    </video>
-
-                </div>
-
-
-                <!-- VIDEO 02 : 720 × 1280 | AUTOPLAY -->
-
-                <div class="diary-video video-02 reveal">
-
-                    <video autoplay muted loop playsinline preload="auto">
-
-                        <source src="VID/MOON.mp4" type="video/mp4">
-
-                    </video>
-
-                </div>
-
-
-                <!-- VIDEO 03 : 720 × 1280 | HOVER / CLICK TO PLAY -->
-
-                <div class="diary-video video-03 reveal" id="interactiveVideo">
-
-                    <video muted loop playsinline preload="metadata">
-
-                        <source src="VID/INDIA TRAVEL.mp4" type="video/mp4">
-
-                    </video>
-
-                    <div class="video-play-hint">
-                        ▶
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-         PHOTO DIARY
-    ================================================== -->
-
-            <div class="photo-diary">
-
-                <!-- PHOTO 01 -->
-
-                <div class="diary-photo reveal">
-
-                    <img src="IMG/MEMORIES.jpg" alt="SEA">
-
-                </div>
-
-
-                <!-- PHOTO 02 -->
-
-                <div class="diary-photo reveal">
-
-                    <img src="IMG/MOMENT 2.png" alt="EXPLORE THE WORLD">
-
-                </div>
-
-
-                <!-- PHOTO 03 -->
-
-                <div class="diary-photo reveal">
-
-                    <img src="IMG/MOMENT 3.jpg" alt="BOOKS">
-
-                </div>
-
-
-                <!-- PHOTO 04 -->
-
-                <div class="diary-photo reveal">
-
-                    <img src="IMG/MOMENT 4.jpg" alt="FLIGHT">
-
-                </div>
-
-
-                <!-- PHOTO 05 -->
-
-                <div class="diary-photo reveal">
-
-                    <img src="IMG/MOMET 5.jpg" alt="NATURE">
-
-                </div>
-
-
-                <!-- PHOTO 06 -->
-
-                <div class="diary-photo reveal">
-
-                    <img src="IMG/MOMENT 6.jpg" alt="PROGRAMER">
-
-                </div>
-
-
-                <!-- PHOTO 07 -->
-
-                <div class="diary-photo reveal">
-
-                    <img src="IMG/MOMENT 7.png" alt="MADHAV">
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-
-
-        <!-- =====================================================
-     EXTRA / FUTURE SECTION
-===================================================== -->
-
-        <section class="section future-section">
-
-
-            <div class="section-head reveal">
-
-                <span>09 / FUTURE</span>
-
-                <h2>
-
-                    NOT THERE
-
-                    <br>
-
-                    <em>YET.</em>
-
-                </h2>
-
-            </div>
-
-
-            <div class="future-card reveal">
-
-                <div class="future-icon">
-
-                    <i class="fa-solid fa-hourglass-half"></i>
-
-                </div>
-
-
-                <div>
-
-                    <span>NEXT CHAPTER</span>
-
-                    <h3>COMING SOON...</h3>
+                    <h3>ENJOY MY OWN COMPANY</h3>
 
                     <p>
 
-                        More projects, more skills,
-                        bigger ideas and a better version
-                        of Yashh.
+                        Khud ke saath comfortable hona,
+                        bina kisi distraction ke apne thoughts aur moments enjoy karna.<BR>
+                        Maybe one day, I’ll stop looking for someone to fill the silence🌙
+                        I’ll sit with my thoughts, make peace with my past, and finally feel okay being alone 🥀
+                        <B>Just me — and the version of myself I almost forgot 🕊️</B>
+
 
                     </p>
 
-                </div>
+                </article>
 
-
-                <div class="future-number">
-
-                    ∞
-
-                </div>
 
             </div>
 
-        </section>
+
+
+            <!-- =====================================================
+     INSPIRATIONS
+===================================================== -->
+
+            <section id="inspiration" class="section">
+
+
+                <div class="section-head reveal">
+
+                    <span>05 / INSPIRATIONS</span>
+
+                    <h2>
+
+                        PEOPLE WHO
+
+                        <br>
+
+                        <em> LEFT A MARK .</em>
+
+                    </h2>
+
+                </div>
+
+
+
+                <div class="people-grid">
+
+
+                    <!-- 01 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/PAPAA.jpg" alt=" PAPAA ">
+
+                        <div>
+
+                            <span>01</span>
+
+                            <h3> PAPAA </h3>
+
+                            <p> <STRONG>DEAR PAPAA YOU ARE THE BEST 💗</STRONG> <BR>
+                                He never asked me to be perfect, he only taught me to keep going❤️
+                                <B>Whatever I become tomorrow, a part of it will always be because of him 🫶</B>
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 02 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/SSR.jpg" alt=" SSR ">
+
+                        <div>
+
+                            <span>02</span>
+
+                            <h3>SUSHANT SINGH RAJPUT</h3>
+
+                            <p>
+                                <STRONG>Alwys miss you Sir 💗</STRONG><br>
+                                <b>We both are died but only you stopped breathing 💔</b><br>
+                                He taught me ki dreams ko sirf dekhna nahi, unke liye chase karna bhi zaroori hai 🌌
+                                Unki curiosity ne mujhe sikhaya ki life mein “why?” poochna kabhi band nahi karna
+                                chahiye 🚀
+                                Science, stars aur life — har cheez ko explore karne ka unka way truly inspiring tha. ✨
+                                Main bhi ek aisi life jeena chahta hoon jahan learning kabhi stop na ho 🖤<br>
+                                <B>Kuch log sirf inspire nahi karte, woh tumhari soch hi badal dete hain🕊️</B>
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 03 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/ARIJIT SINGH.jpg" alt="ARIJIT SINGH ">
+
+                        <div>
+
+                            <span>03</span>
+
+                            <h3> ARIJIT SINGH </h3>
+
+                            <p>
+
+                                Inki awaaz mein ek aisi feeling hai jo bina words ke bhi dil tak pahunch jaati hai 🎶🖤
+                                Arijit Singh taught me ki emotions ko feel karna bhi ek art hai ✨
+                                Unki simplicity, passion aur music ke liye dedication mujhe genuinely inspire karti
+                                hai🌙<br>
+                                <B>Kuch awaazein sirf suni nahi jaati… feel ki jaati hain 🫶 and one thing that i want
+                                    to tell u Arijit sir that is ki "chale jaate h risten purane kisi naye ke aa jne
+                                    se."</B>
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 04 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/MS DHONI.jpg" alt="MS DHONI ">
+
+                        <div>
+
+                            <span>04</span>
+
+                            <h3>MS DHONI</h3>
+
+                            <p>
+                                <STRONG>
+                                    <B>
+                                        The reason I watch cricket🏏💗
+
+                                    </B><br>
+                                </STRONG>
+                                Jab poora stadium pressure mein hota hai, ek insaan ka calm rehna hi kaafi lagta hai 🏏
+                                MSD ki batting se zyada, unka decision-making, patience aur never-give-up attitude
+                                inspire
+                                karta hai 🦁
+                                Unki journey batati hai ki silence mein bhi confidence hota hai, aur simplicity mein bhi
+                                greatness ✨<br>
+                                <B>For me, MSD isn’t just the reason I love cricket — he’s one of the reasons I believe
+                                    in
+                                    myself</B> 💛
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 05 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/ZAKIR KHAN.jpg" alt=" ZAKIR KHAN">
+
+                        <div>
+
+                            <span>05</span>
+
+                            <h3> ZAKIR KHAN</h3>
+
+                            <p>
+
+                                Kuch log stage par sirf jokes nahi bolte, woh life ke emotions ko words de dete
+                                hain🎙️🖤
+                                Zakir Khan ki baaton mein woh desi simplicity aur asli struggle hai jo dil tak pahunchti
+                                hai
+                                🌙
+                                Unki storytelling mein kabhi hasi milti hai, kabhi apni hi kahani ka ek hissa ✨<br>
+                                <B>Maybe that’s why his words don’t just make you laugh — they make you feel 🫶</B>
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 06 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/RATAN TATA.jpg" alt="RATAN TATA SIR ">
+
+                        <div>
+
+                            <span>06</span>
+
+                            <h3>RATAN TATA</h3>
+
+                            <p>
+
+                                <B> Power aur success ke baad bhi itna humble rehna — that’s what makes him truly
+                                    different
+                                    🖤</B>
+                                Ratan Tata sir ki personality mein ek aisi simplicity thi jo respect automatically earn
+                                karti thi ✨
+                                Unki life dekhkar lagta hai ki <I>bada banna sirf achievements ka naam nahi, character
+                                    ka
+                                    bhi hai </I>🌱<br>
+                                <B>A legacy built not just on success, but on kindness, dignity and purpose 🕊️</B>
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 07 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/APJ ABDUL KALAM.jpg" alt="APJ ABDUL KALAM ">
+
+                        <div>
+
+                            <span>07</span>
+
+                            <h3>APJ ABDUL KALAM</h3>
+
+                            <p>
+
+                                Ek simple background se aakar dreams ko itna bada banana — that’s what inspires me about
+                                him🚀
+                                Dr. Kalam sir ki curiosity, humility aur knowledge ke liye hunger truly unmatched thi. ✨
+                                Unki life remind karti hai ki <B>sapne wahi nahi jo hum sote waqt dekhte hain, but those
+                                    we
+                                    work for every day</B> 🌌<br>
+                                <B>For me, he wasn’t just a great scientist — he was a reminder to dream bigger</B> 🕊️
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 08 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/SUNDAR PICHAI.jpg" alt="SUNDAR PICHAI ">
+
+                        <div>
+
+                            <span>08</span>
+
+                            <h3>SUNDAR PICHAI</h3>
+
+                            <p>
+
+                                Ek ordinary beginning se world ke biggest tech platforms tak ka journey — that’s what
+                                inspires me. 💻🌍
+                                Sundar Pichai ki calm personality aur quiet confidence** genuinely alag lagti hai ✨
+                                Unki story batati hai ki background tumhari limits decide nahi karta, your mindset does
+                                🚀<br>
+                                <B>Dream quietly, work consistently, and let your journey speak for itself🖤</B>
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 09 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/MR BEASTE.jpg" alt=" MRBEAST ">
+
+                        <div>
+
+                            <span>09</span>
+
+                            <h3>James Stephen Donaldson (MRBEAST) </h3>
+
+                            <p>
+
+                                <b> 0 se 500M+ subscribers tak ka journey</b> — aur aaj duniya ke No. 1 YouTuber h 🚀
+                                Lekin numbers se zyada inspiring hai ki usne apni success ko real lives change karne ke
+                                liye
+                                use kiya ❤️
+                                Kisi ko ghar, kisi ko clean water, kisi ko school — aur kisi ka woh sapna poora kiya jo
+                                kabhi impossible lagta tha 🌍✨
+                                Uski videos sirf entertainment nahi, kisi ke liye ek new beginning hoti hain🫶<br>
+                                <b><i> He proves that success tab aur beautiful ban jaati hai, jab tumhare rise ke saath
+                                        kisi
+                                        aur ki life bhi better ho 💗</i></b>
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 10 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/ALAKH IR.jpg" alt="ALAKH SIR ">
+
+                        <div>
+
+                            <span>10</span>
+
+                            <h3>ALAKH PANDEY</h3>
+
+                            <p>
+
+                                Ek teacher jisne sirf subjects nahi, lakho students ko apne dreams par believe karna
+                                sikhaya
+                                📚🔥
+                                Alakh Sir ki energy aur ground-level teaching ka way genuinely inspiring hai ❤️
+                                Unki journey dikhati hai ki knowledge tab sabse powerful hoti hai, jab woh har kisi tak
+                                pahunch sake 🌱<br>
+                                <b> he’s not just a teacher — he’s a reason many students dare to dream bigger </b>
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 11 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/ELON MUSK.jpg" alt="ELON MUSK ">
+
+                        <div>
+
+                            <span>11</span>
+
+                            <h3>ELON MUSK </h3>
+
+                            <p>
+
+                                Ek aisa insaan jo impossible ideas ko bhi <b>“let’s try”</b> kehkar reality ke closer le
+                                aata hai 🚀
+                                Space, electric cars, AI — <b> he keeps thinking beyond what already exists</b> 🌌
+                                Unki ambition mujhe inspire karti hai ki safe dreams nahi, meaningful aur crazy dreams
+                                chase
+                                karne chahiye⚡<br>
+                                <b> Elon Musk — it’s about thinking big enough to build something that matters💗⭐</b>
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 12 -->
+
+                    <article class="person-card reveal">
+
+                        <img src="IMG/Screenshot 2026-08-23 032418.png" alt=" FUTURE ME ">
+
+                        <div>
+
+                            <span>12</span>
+
+                            <h3>MY FUTURE SELF</h3>
+
+                            <p>
+                                I don’t know ki future mein main exactly kaisa hounga, but I know <b>I want to become
+                                    someone I’m genuinely proud of</b>🌌
+                                Aaj jo confusion hai, jo distractions hain, jo things I’m still figuring out — <b>I hope
+                                    one
+                                    day they all make sense</b>🖤
+                                I want to be more disciplined, more confident, aur apni life ko apne terms par live
+                                karne
+                                wala insaan ⚡
+                                Jo dreams aaj sirf mere mind mein hain, <b> I want to turn them into something real,
+                                    something I can actually look at and say — “I did it.”</b>✨
+                                Aur sabse important, I don’t want to lose the person I am today while becoming the
+                                person
+                                I’ve always wanted to be 🫶<br>
+                                <b>Maybe that future version of me is the biggest dream I’m working on right now.</b>🌙
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
 
 
 
 
 
-        <!-- =====================================================
+            <!-- =====================================================
+     FRIENDS
+===================================================== -->
+
+            <section id="friends" class="section">
+
+
+                <div class="section-head reveal">
+
+                    <span>06 / MY PEOPLE</span>
+
+                    <h2>
+
+                        FRIENDS &
+
+                        <br>
+
+                        <em>MEMORIES.</em>
+
+                    </h2>
+
+                </div>
+
+
+                <p class="muted reveal">
+                    A little corner for the people who made ordinary moments feel a little more special 🫶✨<br>
+                    And somehow became a beautiful part of the story along the way 🤍🌙.
+
+
+                </p>
+
+
+
+                <div class="friends-grid">
+
+
+                    <!-- FRIEND 01 -->
+
+                    <article class="friend-card reveal">
+
+                        <img src="IMG/AAYUSHI.png">
+
+                        <div>
+
+                            <span>01</span>
+
+                            <h3>AAYUSHI </h3>
+                            <small>
+                                <a href="https://www.instagram.com/ayushi_43singh/" target="_blank">
+                                    <b>@ayushi_43singh</b>
+                                </a>
+                            </small>
+
+
+                            <p>
+                                <STRONG>BESTIEE💗</STRONG><BR>
+
+                                <B>Met online • Gaming 📍 • </B><br>
+                                Some people just become a beautiful part of your life 🫶
+                                <b>Lucky to have you, bestiee — truly, more than you’ll ever know 🤍✨ </b>
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- FRIEND 02 -->
+
+                    <article class="friend-card reveal">
+
+                        <img src="IMG/choco.png">
+
+                        <div>
+
+                            <span>02</span>
+
+                            <h3>MEGHAA</h3>
+                            <small>
+                                <a href="https://www.instagram.com/annie_47771/" target="_blank">
+                                    <b>@annie_47771</b>
+                                </a>
+                            </small>
+
+                            <p>
+                                <strong>CHOCO💗</strong><BR>
+                                <b> Met on social media 📍 • </b><br>
+                                Sometimes you just meet someone randomly, and without even realizing it, they become an
+                                important part of your life 🫶
+                                <b>Choco</b> Grateful for the laughs, the conversations, and the kind of friendship that
+                                simply feels good to have 🤍✨
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- FRIEND 03 -->
+
+
+                    <article class="friend-card reveal">
+
+                        <img src="IMG/naveen.png">
+
+                        <div>
+
+                            <span>03</span>
+
+                            <h3>NAVEEN</h3>
+                            <small>
+                                <a href="https://www.instagram.com/naveen14_.3/" target="_blank">
+                                    <b>@naveen14_.3</b>
+                                </a>
+                            </small>
+                            <p>
+                                <b> Met on social media 📍 • </b><br>
+                                He’s still a small creator, but you can tell he genuinely enjoys creating and wants to
+                                build
+                                something of his own 🎥
+                                Abhi journey starting hai, let’s see where this passion takes him 🤝🔥
+
+
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- FRIEND 04 -->
+
+                    <article class="friend-card reveal">
+
+                        <img src="IMG/khushi.png">
+
+                        <div>
+
+                            <span>04</span>
+
+                            <h3>KHUSHI</h3>
+                            <small>
+                                <a href="https://www.instagram.com/khushii_core.01/" target="_blank">
+                                    <b>@khushii_core.01</b>
+                                </a>
+                            </small>
+                            <p>
+
+                                <b> Met on social media 📍 • </b><br>
+                                She’s the kind of person who can spend hours admiring her own vibe — and honestly, she
+                                owns
+                                it 😌✨
+                                A little self-obsessed, a lot confident, and somehow that’s exactly what makes her fun
+                                to
+                                have around🪞
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+
+                    <!-- FRIEND 05 -->
+
+                    <article class="friend-card reveal">
+
+                        <img src="IMG/vivek.jpeg">
+
+                        <div>
+
+                            <span>05</span>
+
+                            <h3>VIVEK SHARMA</h3>
+
+                            <small>
+                                <a href="https://www.instagram.com/_v1vek_xd/" target="_blank">
+                                    <b>@_v1vek_xd</b>
+                                </a>
+                            </small>
+                            <p>
+                                <b> Met on social media 📍 • </b><br>
+                                Dil se genuine, baaton mein apni ek alag si vibe, aur personality jo easily notice ho
+                                jaaye.
+                                A person you’d be glad to have around ✨
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- FRIEND 06 -->
+
+                    <article class="friend-card reveal">
+
+                        <img src="IMG/sreekunt.jpeg">
+
+                        <div>
+
+                            <span>06</span>
+
+                            <h3>SREEKUTTANN</h3>
+
+                            <small>
+                                <a href="https://www.instagram.com/sreekutt_ann/" target="_blank">
+                                    <b>@sreekutt_ann</b>
+                                </a>
+                            </small>
+                            <p>
+                                <b> Met on social media 📍 • </b><br>
+                                A person with a calm vibe and a personality that stands out naturally.
+                                Easy to talk to, fun to be around, and always carrying his own unique energy🔥.
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- FRIEND 07 -->
+
+                    <article class="friend-card reveal">
+
+                        <img src="IMG/shreyaan.png">
+
+                        <div>
+
+                            <span>07</span>
+
+                            <h3>Shreyaan Gupta </h3>
+
+                            <small>
+                                <a href="https://www.instagram.com/_shreyaan18_/" target="_blank">
+                                    <b>@_shreyaan18_</b>
+                                </a>
+                            </small>
+                            <p>
+                                <b> Met on social media 📍 • </b><br>
+                                He’s one of those guys who’s good at pretty much everything he tries 🎸😎. From playing
+                                guitar in the school band to dominating in sports, he always manages to stand out 🏆🔥.
+                                He’s super chill with his friends and somehow ends up being everyone’s favourite in the
+                                group 🤝. Basically, talented, fun, and always bringing good vibes wherever he goes
+                                ❤️‍🔥✨.
+
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+
+
+            <!-- =====================================================
+     SOCIAL UNIVERSE
+===================================================== -->
+
+            <section class="section social-section">
+
+
+                <div class="section-head reveal">
+
+                    <span>07 / SOCIAL UNIVERSE</span>
+
+                    <h2>
+
+                        FIND ME
+
+                        <br>
+
+                        <em>OUTSIDE.</em>
+
+                    </h2>
+
+                </div>
+
+
+
+                <div class="social-universe reveal">
+
+
+                    <!-- CENTER -->
+
+                    <div class="social-core">
+
+                        <strong>Y</strong>
+
+                        <span>YASHH</span>
+
+                    </div>
+
+
+
+                    <!-- INSTAGRAM -->
+
+                    <a href="https://instagram.com/yashh.dy" target="_blank" class="social-node instagram">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                        <span>Instagram</span>
+
+                    </a>
+
+
+
+                    <!-- SNAPCHAT -->
+
+                    <a href="https://www.snapchat.com/@yashh.dy" target="_blank" class="social-node snapchat">
+
+                        <i class="fa-brands fa-snapchat"></i>
+
+                        <span>Snapchat</span>
+
+                    </a>
+
+
+
+                    <!-- FACEBOOK -->
+
+                    <a href="https://www.facebook.com/profile.php?id=61592565651494" target="_blank"
+                        class="social-node facebook">
+
+                        <i class="fa-brands fa-facebook-f"></i>
+
+                        <span>Facebook</span>
+
+                    </a>
+
+
+
+                    <!-- TIKTOK -->
+
+                    <a href="https://www.tiktok.com/@yashh.dy" target="_blank" class="social-node tiktok">
+
+                        <i class="fa-brands fa-tiktok"></i>
+
+                        <span>TikTok</span>
+
+                    </a>
+
+
+                </div>
+
+            </section>
+
+
+
+
+
+            <!-- =====================================================
+     VISUAL DIARY
+===================================================== -->
+
+            <section class="section gallery-section">
+
+                <div class="section-head reveal">
+
+                    <span>08 / VISUAL DIARY</span>
+
+                    <h2>
+                        THE
+                        <br>
+                        <em>MOMENTS.</em>
+                    </h2>
+
+                </div>
+
+
+                <!-- =================================================
+         VIDEO DIARY
+    ================================================== -->
+
+                <div class="video-diary">
+
+                    <!-- VIDEO 01 : 1080 × 1920 | AUTOPLAY -->
+
+                    <div class="diary-video video-01 reveal">
+
+                        <video autoplay muted loop playsinline preload="auto">
+
+                            <source src="VID/IND FLAG.mp4" type="video/mp4">
+
+                        </video>
+
+                    </div>
+
+
+                    <!-- VIDEO 02 : 720 × 1280 | AUTOPLAY -->
+
+                    <div class="diary-video video-02 reveal">
+
+                        <video autoplay muted loop playsinline preload="auto">
+
+                            <source src="VID/MOON.mp4" type="video/mp4">
+
+                        </video>
+
+                    </div>
+
+
+                    <!-- VIDEO 03 : 720 × 1280 | HOVER / CLICK TO PLAY -->
+
+                    <div class="diary-video video-03 reveal" id="interactiveVideo">
+
+                        <video muted loop playsinline preload="metadata">
+
+                            <source src="VID/INDIA TRAVEL.mp4" type="video/mp4">
+
+                        </video>
+
+                        <div class="video-play-hint">
+                            ▶
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+         PHOTO DIARY
+    ================================================== -->
+
+                <div class="photo-diary">
+
+                    <!-- PHOTO 01 -->
+
+                    <div class="diary-photo reveal">
+
+                        <img src="IMG/MEMORIES.jpg" alt="SEA">
+
+                    </div>
+
+
+                    <!-- PHOTO 02 -->
+
+                    <div class="diary-photo reveal">
+
+                        <img src="IMG/MOMENT 2.png" alt="EXPLORE THE WORLD">
+
+                    </div>
+
+
+                    <!-- PHOTO 03 -->
+
+                    <div class="diary-photo reveal">
+
+                        <img src="IMG/MOMENT 3.jpg" alt="BOOKS">
+
+                    </div>
+
+
+                    <!-- PHOTO 04 -->
+
+                    <div class="diary-photo reveal">
+
+                        <img src="IMG/MOMENT 4.jpg" alt="FLIGHT">
+
+                    </div>
+
+
+                    <!-- PHOTO 05 -->
+
+                    <div class="diary-photo reveal">
+
+                        <img src="IMG/MOMET 5.jpg" alt="NATURE">
+
+                    </div>
+
+
+                    <!-- PHOTO 06 -->
+
+                    <div class="diary-photo reveal">
+
+                        <img src="IMG/MOMENT 6.jpg" alt="PROGRAMER">
+
+                    </div>
+
+
+                    <!-- PHOTO 07 -->
+
+                    <div class="diary-photo reveal">
+
+                        <img src="IMG/MOMENT 7.png" alt="MADHAV">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
+
+            <!-- =====================================================
+     EXTRA / FUTURE SECTION
+===================================================== -->
+
+            <section class="section future-section">
+
+
+                <div class="section-head reveal">
+
+                    <span>09 / FUTURE</span>
+
+                    <h2>
+
+                        NOT THERE
+
+                        <br>
+
+                        <em>YET.</em>
+
+                    </h2>
+
+                </div>
+
+
+                <div class="future-card reveal">
+
+                    <div class="future-icon">
+
+                        <i class="fa-solid fa-hourglass-half"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>NEXT CHAPTER</span>
+
+                        <h3>COMING SOON...</h3>
+
+                        <p>
+
+                            More projects, more skills,
+                            bigger ideas and a better version
+                            of Yashh.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="future-number">
+
+                        ∞
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
+
+            <!-- =====================================================
      QUOTE
 ===================================================== -->
 
-        <section class="section quote-section reveal">
+            <section class="section quote-section reveal">
 
 
-            <div class="quote-mark">
+                <div class="quote-mark">
 
-                “
-
-            </div>
-
-
-            <h2>
-
-                THE VERSION OF ME
-
-                <br>
-
-                I WANT TO MEET
-
-                <br>
-
-                <em>DOESN'T EXIST YET.</em>
-
-            </h2>
-
-
-            <p>
-
-                So I'm building him.
-
-            </p>
-
-        </section>
-
-
-
-
-
-        <!-- =====================================================
-     CONTACT
-===================================================== -->
-
-        <section id="contact" class="section contact-section">
-
-
-            <div class="section-head reveal">
-
-                <span>10 / CONTACT</span>
-
-                <h2>
-
-                    LET'S
-
-                    <br>
-
-                    <em>CONNECT.</em>
-
-                </h2>
-
-            </div>
-
-
-
-            <div class="contact-grid">
-
-
-                <!-- EMAIL -->
-
-                <a href="mailto:yashu232889@gmail.com" class="contact-card reveal">
-
-                    <i class="fa-solid fa-envelope"></i>
-
-                    <span>EMAIL ME</span>
-
-                    <strong>
-
-                        yashu232889@gmail.com
-
-                    </strong>
-
-                </a>
-
-
-
-                <!-- INSTAGRAM -->
-
-                <a href="https://instagram.com/yashh.dy" target="_blank" class="contact-card reveal">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                    <span>DM ON INSTAGRAM</span>
-
-                    <strong>
-
-                        @yashh.dy
-
-                    </strong>
-
-                </a>
-
-
-
-                <!-- STATUS -->
-
-                <div class="contact-card reveal">
-
-                    <i class="fa-solid fa-signal"></i>
-
-                    <span>STATUS</span>
-
-                    <strong>
-
-                        LEARNING • BUILDING • EVOLVING
-
-                    </strong>
+                    “
 
                 </div>
 
 
-            </div>
+                <h2>
 
-        </section>
+                    THE VERSION OF ME
+
+                    <br>
+
+                    I WANT TO MEET
+
+                    <br>
+
+                    <em>DOESN'T EXIST YET.</em>
+
+                </h2>
+
+
+                <p>
+
+                    So I'm building him.
+
+                </p>
+
+            </section>
+
+
+
+
+
+            <!-- =====================================================
+     CONTACT
+===================================================== -->
+
+            <section id="contact" class="section contact-section">
+
+
+                <div class="section-head reveal">
+
+                    <span>10 / CONTACT</span>
+
+                    <h2>
+
+                        LET'S
+
+                        <br>
+
+                        <em>CONNECT.</em>
+
+                    </h2>
+
+                </div>
+
+
+
+                <div class="contact-grid">
+
+
+                    <!-- EMAIL -->
+
+                    <a href="mailto:yashu232889@gmail.com" class="contact-card reveal">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <span>EMAIL ME</span>
+
+                        <strong>
+
+                            yashu232889@gmail.com
+
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- INSTAGRAM -->
+
+                    <a href="https://instagram.com/yashh.dy" target="_blank" class="contact-card reveal">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                        <span>DM ON INSTAGRAM</span>
+
+                        <strong>
+
+                            @yashh.dy
+
+                        </strong>
+
+                    </a>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="contact-card reveal">
+
+                        <i class="fa-solid fa-signal"></i>
+
+                        <span>STATUS</span>
+
+                        <strong>
+
+                            LEARNING • BUILDING • EVOLVING
+
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </section>
 
 
 
